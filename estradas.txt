@@ -1,0 +1,66 @@
+14295354;Chris Craft Street;True
+14297339;Extravagant Avenue;False
+14307321;Bayliner Avenue;False
+14309570;Sentimental Court;False
+14309929;Crownline Court;False
+14311702;Ranch House Road;False
+14312937;Passionate Court;False
+14313477;Gingham Street;True
+14313589;Beeline Court;True
+14317552;Confidant Way;True
+14317658;Mastercraft Avenue;True
+14320201;Glamorous Court;False
+14323291;Abyss Court;False
+96895428;Bellbird Street;False
+99884476;Sapphire Sea Court;False
+99884556;Deep Blue Street;False
+99884559;Aqua Blue Court;False
+99884567;Red Glitter Street;False
+99884568;Red Fire Avenue;False
+99884569;Glitter Gold Court;False
+99884571;Sandy Brown Avenue;False
+99884594;Armers Branch Avenue;True
+99884638;Blueberry Climber Avenue;True
+99884641;Shower Orchid Court;False
+99884642;Mast Glorious Court;False
+99884646;Majestic Sand Avenue;False
+99884647;Balch Springs Court;False
+99884648;Shady Shopes Street;False
+99884649;Dawn Wood Court;False
+99884650;Highland Gardens Drive;False
+99884651;Ashby Field Avenue;False
+99884652;Hickory Creek Street;False
+99884653;Pantego Avenue;False
+99884654;Little Elm Street;False
+99884655;Double Oak Street;False
+99884656;Villa Emo Street;False
+99884657;Villa Pisani Court;False
+99884658;Salutare Court;False
+99884659;Bonnasola Avenue;False
+99884660;Amish Avenue;False
+99884661;Palladio Avenue;False
+99884662;Catullo Street;False
+99884663;Albergo Street;False
+99884664;San Niccolo Court;False
+99884665;River Brenta Court;False
+99884666;American Spirit Street;False
+99884667;Battle Point Avenue;False
+99884668;Pageant Street;False
+99884669;Patriot Wave Street;False
+99884670;Colonial Bay Street;False
+99884671;Power Quest Way;False
+99884672;Cafe Racer Court;False
+99884673;Nautique Avenue;False
+99884674;Old Yankee Avenue;False
+99884686;Forever Amber Avenue;False
+191523157;West Tropical Parkway;False
+191523165;Allen Lane;False
+191523166;West Centennial Parkway;False
+191523185;Allen Lane;False
+191523198;West Tropical Parkway;False
+191523251;Simmons Street;False
+209751259;Ferrell Street;False
+225883269;Simmons Street;False
+225883276;West Centennial Parkway;False
+226202163;West Tropical Parkway;False
+226202569;Ferrell Street;False
