@@ -30,13 +30,13 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 //atualizado pelo exercício 5
 template<class T>
 Vertex<T>::Vertex(T in) :
-		info(in), visited(false), processing(false), indegree(0), dist(0) {
+		info(in), visited(false), processing(false), indegree(0), dist(0){
 	path = NULL;
 }
 
 template<class T>
-void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
-	Edge<T> edgeD(dest, w);
+void Vertex<T>::addEdge(Vertex<T> *dest, double w,int id) {
+	Edge<T> edgeD(dest, w,id);
 	adj.push_back(edgeD);
 }
 
@@ -62,17 +62,33 @@ int Vertex<T>::getIndegree() const {
 }
 
 template<class T>
-int Edge<T>::count = 0;
+Edge<T>::Edge(Vertex<T> *d, double w,int id) :
+		dest(d), weight(w), ID(id) {}
 
 template<class T>
-Edge<T>::Edge(Vertex<T> *d, double w) :
-		dest(d), weight(w), ID(count) { count++; }
+Edge<T>::Edge(){
+
+}
 
 template<class T>
 Vertex<T>* Edge<T>::getDest() const { return dest; }
 
 template<class T>
 int Edge<T>::getID() const { return ID; }
+
+template<class T>
+int Edge<T>::getIdRua() const{
+	return this->idRua;
+}
+template<class T>
+void Edge<T>::setID(int id){
+	this->ID = id;
+}
+
+template<class T>
+void Edge<T>::setIdRua(int id){
+	this->idRua = id;
+}
 
 template<class T>
 double Graph<T>::minLat = M_PI / 2;
@@ -160,7 +176,7 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template<class T>
-bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
+bool Graph<T>::addEdge(const T &sourc, const T &dest, double w,int id) {
 	typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
 	typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
 
@@ -180,9 +196,34 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
 	if (found != 2)
 		return false;
 	vD->indegree++;
-	vS->addEdge(vD, w);
+	vS->addEdge(vD, w,id);
 
 	return true;
+}
+
+template<class T>
+Edge<T> Graph<T>::getEdge(const T &source, const T &dest){
+	vector<Edge<T>> adjs;
+	typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
+	typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
+
+	int found = 0;
+	while (found != 1 && it != ite) {
+		if ((*it)->info == source) {
+			adjs = (*it)->getAdj();
+			found =1;
+		}
+	}
+	typename vector<Edge<T>>::iterator itadj = adjs.begin();
+	typename vector<Edge<T>>::iterator iteadj = adjs.end();
+	Edge<T> temp;
+	while (itadj != iteadj) {
+		if((*itadj).dest->info.getId() == dest.getId()){
+			return (*itadj);
+		}
+	}
+	return temp;
+
 }
 
 template<class T>
@@ -302,6 +343,24 @@ Vertex<T>* Graph<T>::getVertex(const T &v) const {
 	for (unsigned int i = 0; i < vertexSet.size(); i++)
 		if (vertexSet[i]->info == v)
 			return vertexSet[i];
+	return NULL;
+}
+
+template<class T>
+T Graph<T>::getInfoVertexId(int id) const{
+	for (unsigned int i = 0; i < vertexSet.size(); i++){
+		if(vertexSet[i]->info.getId() == id)
+			return vertexSet[i]->info;
+	}
+	return Info();
+}
+
+template<class T>
+Vertex<T> * Graph<T>::getVertexId(int id) const{
+	for (unsigned int i = 0; i < vertexSet.size(); i++){
+		if(vertexSet[i]->info.getId() == id)
+			return vertexSet[i];
+	}
 	return NULL;
 }
 
@@ -537,7 +596,7 @@ void Graph<T>::bellmanFordShortestPath(const T &s) {
 
 template<class T>
 void Graph<T>::dijkstraShortestPath(const T &s) {
-
+	cout << "dist: " << vertexSet[11]->dist << endl;
 	for (unsigned int i = 0; i < vertexSet.size(); i++) {
 		vertexSet[i]->path = NULL;
 		vertexSet[i]->dist = INT_INFINITY;
@@ -576,6 +635,7 @@ void Graph<T>::dijkstraShortestPath(const T &s) {
 			}
 		}
 	}
+	cout << "dist: " << vertexSet[11]->dist << endl;
 
 }
 

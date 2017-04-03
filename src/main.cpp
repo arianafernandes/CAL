@@ -9,11 +9,11 @@
 #include "Company.h"
 
 int main() {
-
-	Company comp = Company();
+	Company comp = Company(137309415);
 	comp.readMaps();
 	comp.createGraphViewer();
-	//readUsers(super);
+	comp.readUsers();
+	comp.distribution();
 	getchar();
 	return 0;
 }

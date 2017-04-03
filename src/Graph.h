@@ -37,11 +37,12 @@ class Vertex {
 	int indegree;
 	double dist;
 	vector<Edge<T> > adj;
+
 public:
 	Vertex(T in);
 	friend class Graph<T>;
 
-	void addEdge(Vertex<T> *dest, double w);
+	void addEdge(Vertex<T> *dest, double w,int id);
 	bool removeEdgeTo(Vertex<T> *d);
 	T getInfo() const;
 	void setInfo(T info);
@@ -51,6 +52,7 @@ public:
 	vector<Edge<T> >& getAdj();
 
 	bool operator<(const Vertex<T> vertex);
+
 
 	Vertex* path;
 };
@@ -64,11 +66,16 @@ class Edge {
 	Vertex<T> * dest;
 	double weight;
 	int ID;
+	int idRua;
 	static int count;
 public:
-	Edge(Vertex<T> *d, double w);
+	Edge();
+	Edge(Vertex<T> *d, double w,int id);
 	Vertex<T>* getDest() const;
 	int getID() const;
+	int getIdRua() const;
+	void setID(int id);
+	void setIdRua(int id);
 	friend class Graph<T>;
 	friend class Vertex<T>;
 };
@@ -90,7 +97,7 @@ class Graph {
 public:
 	static double minLat, minLong, maxLat, maxLong;
 	bool addVertex(const T &in);
-	bool addEdge(const T &sourc, const T &dest, double w);
+	bool addEdge(const T &sourc, const T &dest, double w,int id);
 	bool removeVertex(const T &in);
 	bool removeEdge(const T &sourc, const T &dest);
 	vector<T> dfs() const;
@@ -113,6 +120,9 @@ public:
 	int edgeCost(int vOrigIndex, int vDestIndex);
 	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
 	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
+	T getInfoVertexId(int id) const;
+	Vertex<T>* getVertexId(int id) const;
+	Edge<T> getEdge(const T &source, const T &dest);
 };
 
 #endif /* GRAPH_H_ */

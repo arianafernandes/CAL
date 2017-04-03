@@ -22,15 +22,19 @@ class Company {
 private:
 	Graph<Info> graph;
 	GraphViewer *gv;
+	int supermarket;
+	Supermarket super;
 public:
+	Company(int id);
 	double calcX(double lat, double lon);
 	double calcY(double lat, double lon);
 	bool checkIfRejected(vector<int> NoRejected, int no);
 	double calcDist(Info f1, Info f2);
 	bool Bidirection(vector<Estrada> estradas, int id);
 	void readMaps();
-	void readUsers(Supermarket super);
+	void readUsers();
 	void createGraphViewer();
+	void distribution();
 };
 
 
