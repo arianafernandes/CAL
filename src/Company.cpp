@@ -356,13 +356,22 @@ void Company::readUsers() {
 void Company::distribution(){
 //	for(int i = 0; i < super.getTrucks()[23].getOrders().size(); i++){
 	Info no = Info();
-	no.setId(154803158);
+	no.setId(1154796515);
 	graph.dijkstraShortestPath(graph.getVertexId(this->supermarket)->getInfo());
+	gv->setVertexColor(this->supermarket,"red");
+	gv->setVertexColor(no.getId(),"red");
+
+	vector<Info> temp = graph.getPath(graph.getVertexId(this->supermarket)->getInfo(),no);
+	for(unsigned int i=0; i < temp.size();i++){
+		cout << "id " << i<< " " << temp[i].getId() << endl;
+		gv->setVertexColor(temp[i].getId(),"red");
+	}
+
 
 	//	gv->setEdgeColor(,"red");
-		gv->setVertexColor(this->supermarket,"red");
+		/*gv->setVertexColor(this->supermarket,"red");
 		gv->setVertexColor(no.getId(),"red");
 		gv->setVertexColor(graph.getVertex(no)->path->getInfo().getId(),"red");
-		cout<< "caminho:" << graph.getVertex(no)->path->getInfo().getId()<<endl;
+		cout<< "caminho:" << graph.getVertex(no)->path->getInfo().getId()<<endl;*/
 	//}
 }

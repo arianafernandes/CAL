@@ -65,4 +65,8 @@ bool Info::operator ==(const Info &i2) const {
 	return (id == i2.id);
 }
 
+bool Info::operator !=(const Info &i2) const{
+return !(id == i2.id);
+}
+
 

@@ -465,7 +465,7 @@ vector<T> Graph<T>::topologicalOrder() {
 	return res;
 }
 
-/*
+
 template<class T>
 vector<T> Graph<T>::getPath(const T &origin, const T &dest) {
 
@@ -486,7 +486,7 @@ vector<T> Graph<T>::getPath(const T &origin, const T &dest) {
 		buffer.pop_front();
 	}
 	return res;
-}*/
+}
 
 template<class T>
 vector<T> Graph<T>::getfloydWarshallPath(const T &origin, const T &dest) {

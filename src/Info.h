@@ -31,6 +31,7 @@ public:
 	double getRlon() const;
 	void setRlon(double rlon);
 	bool operator ==(const Info &i2) const;
+	bool operator !=(const Info &i2) const;
 };
 
 
