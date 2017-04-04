@@ -1,4 +1,5 @@
 #include "Graph.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -60,6 +61,12 @@ template<class T>
 int Vertex<T>::getIndegree() const {
 	return this->indegree;
 }
+/*
+template<class T>
+Vertex<T>& Vertex<T>::operator=(Vertex<T> v2) {
+	swap(*this,*v2);
+	return *this;
+}*/
 
 template<class T>
 Edge<T>::Edge(Vertex<T> *d, double w,int id) :
@@ -356,10 +363,14 @@ T Graph<T>::getInfoVertexId(int id) const{
 }
 
 template<class T>
-Vertex<T> * Graph<T>::getVertexId(int id) const{
-	for (unsigned int i = 0; i < vertexSet.size(); i++){
-		if(vertexSet[i]->info.getId() == id)
-			return vertexSet[i];
+Vertex<T>* Graph<T>::getVertexId(int id) const{
+	typename vector<Vertex<T>*>::const_iterator it = vertexSet.begin();
+	typename vector<Vertex<T>*>::const_iterator ite = vertexSet.end();
+	for (it; it!=ite; it++){
+		if((*it)->getInfo().getId() == id){
+			//cout << (*it)->getInfo().getId() << endl << id;
+			return (*it);
+		}
 	}
 	return NULL;
 }
@@ -712,3 +723,5 @@ void Graph<T>::floydWarshallShortestPath() {
 template class Graph<Info>;
 template class Vertex<Info>;
 template class Edge<Info>;
+
+

@@ -50,6 +50,7 @@ public:
 	int getDist() const;
 	int getIndegree() const;
 	vector<Edge<T> >& getAdj();
+	Vertex<T>& operator=(Vertex<T> v2);
 
 	bool operator<(const Vertex<T> vertex);
 

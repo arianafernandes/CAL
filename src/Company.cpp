@@ -16,8 +16,8 @@ using namespace std;
 
 #define M_PI 3.14159265359
 
-Company::Company(int id){
-	this->supermarket =id;
+Company::Company(int id) {
+	this->supermarket = id;
 }
 
 double Company::calcX(double lat, double lon) {
@@ -44,7 +44,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-									+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+			+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -184,12 +184,12 @@ void Company::readMaps() {
 		Info dest = graph.findInfo(idNoDestino);
 		double w = calcDist(source, dest);
 
-		graph.addEdge(source, dest, w,idAresta);
+		graph.addEdge(source, dest, w, idAresta);
 		//gv->addEdge(idAresta, idNoOrigem, idNoDestino, EdgeType::DIRECTED);
 
 		if (Bidirection(estradas, idRua) == true) {
 			idAresta++;
-			graph.addEdge(dest, source, w,idAresta);
+			graph.addEdge(dest, source, w, idAresta);
 		}
 
 		/*cout << "source: " << source.getId() << "| " << source.getDlat()
@@ -205,6 +205,7 @@ void Company::readMaps() {
 
 	maps.close();
 
+	graph.dijkstraShortestPath(graph.getVertexSet().at(0)->getInfo());
 	//supermarket.floydWarshallShortestPath();
 	//gv->rearrange();
 }
@@ -242,7 +243,8 @@ void Company::createGraphViewer() {
 		double longt = (*itv)->getInfo().getRlon() - 2 * M_PI;
 		double latt = (*itv)->getInfo().getRlat() - 2 * M_PI;
 		int y = -((longt / M_PI) * r - (ymax + ymin) / 2);
-		int x = (log((1 + sin(latt)) / (1 - sin(latt))) / (4 * M_PI)) * r - (xmin + xmax) / 2;
+		int x = (log((1 + sin(latt)) / (1 - sin(latt))) / (4 * M_PI)) * r
+				- (xmin + xmax) / 2;
 
 		gv->addNode(id, x, y);
 	}
@@ -262,10 +264,9 @@ void Company::createGraphViewer() {
 			gv->addEdge(id, idOrigem, idDestino, EdgeType::DIRECTED);
 			stringstream ss;
 			ss << id;
-			gv->setEdgeLabel(id,ss.str());
+			gv->setEdgeLabel(id, ss.str());
 		}
 	}
-
 
 	gv->rearrange();
 
@@ -317,52 +318,123 @@ void Company::readUsers() {
 
 	}
 
-/*
-	for (unsigned int i = 0; i < super.getUsers().size(); i++) {
-		cout << " User Name: " << super.getUsers().at(i).getName()
-							 << " User Nif: " << super.getUsers().at(i).getNif()
-							 << " User Order Id: " << super.getUsers().at(i).getOrderId()
-							 << " User Capacity: " << super.getUsers().at(i).getCapacity()
-							 << " User Date: " << super.getUsers().at(i).getDate() << endl;
-	}
-	for (unsigned int i = 0; i < super.getOrders().size(); i++) {
+	/*
+	 for (unsigned int i = 0; i < super.getUsers().size(); i++) {
+	 cout << " User Name: " << super.getUsers().at(i).getName()
+	 << " User Nif: " << super.getUsers().at(i).getNif()
+	 << " User Order Id: " << super.getUsers().at(i).getOrderId()
+	 << " User Capacity: " << super.getUsers().at(i).getCapacity()
+	 << " User Date: " << super.getUsers().at(i).getDate() << endl;
+	 }
+	 for (unsigned int i = 0; i < super.getOrders().size(); i++) {
 
-		cout << " Order ID: " << super.getOrders().at(i).getId()
-							 << " Order Weight: " << super.getOrders().at(i).getWeight()
-							 << endl;
+	 cout << " Order ID: " << super.getOrders().at(i).getId()
+	 << " Order Weight: " << super.getOrders().at(i).getWeight()
+	 << endl;
 
-	}
-	for (unsigned int i = 0; i < super.getTrucks().size(); i++) {
-		cout << "id Truck " << i << endl;
-		for (unsigned int j = 0; j < super.getTrucks().at(i).getOrders().size(); j++) {
-			cout << "truck order id: "
-					<< super.getTrucks().at(i).getOrders().at(j).getId() << endl
-					<< " truck order weight : "
-					<< super.getTrucks().at(i).getOrders().at(j).getWeight()
-					<< endl << " truck order date: "
-					<< super.getTrucks().at(i).getOrders().at(j).getDate()
-					<< endl << " truck date: "
-					<< super.getTrucks().at(i).getDate() << endl
-					<< " truck weight : " << super.getTrucks().at(i).getWeight()
-					<< endl;
-		}
-	}*/
+	 }
+	 for (unsigned int i = 0; i < super.getTrucks().size(); i++) {
+	 cout << "id Truck " << i << endl;
+	 for (unsigned int j = 0; j < super.getTrucks().at(i).getOrders().size(); j++) {
+	 cout << "truck order id: "
+	 << super.getTrucks().at(i).getOrders().at(j).getId() << endl
+	 << " truck order weight : "
+	 << super.getTrucks().at(i).getOrders().at(j).getWeight()
+	 << endl << " truck order date: "
+	 << super.getTrucks().at(i).getOrders().at(j).getDate()
+	 << endl << " truck date: "
+	 << super.getTrucks().at(i).getDate() << endl
+	 << " truck weight : " << super.getTrucks().at(i).getWeight()
+	 << endl;
+	 }
+	 }*/
 
 	maps.close();
 
 }
 
+void Company::distribution() {
 
-void Company::distribution(){
-//	for(int i = 0; i < super.getTrucks()[23].getOrders().size(); i++){
-	Info no = Info();
-	no.setId(154803158);
-	graph.dijkstraShortestPath(graph.getVertexId(this->supermarket)->getInfo());
+	vector<Vertex<Info>*> v;
 
-	//	gv->setEdgeColor(,"red");
-		gv->setVertexColor(this->supermarket,"red");
-		gv->setVertexColor(no.getId(),"red");
-		gv->setVertexColor(graph.getVertex(no)->path->getInfo().getId(),"red");
-		cout<< "caminho:" << graph.getVertex(no)->path->getInfo().getId()<<endl;
-	//}
+	Info no1 = Info();
+	no1.setId(1154801373);
+	Vertex<Info>* v1;
+	v1->setInfo(no1);
+	v.push_back(v1);
+
+
+	Info no2 = Info();
+	no2.setId(1154803560);
+	Vertex<Info>* v2;
+	v2->setInfo(no2);
+	v.push_back(v2);
+
+	 Info no3 = Info();
+	 no3.setId(137319915);
+	 Vertex<Info> * v3;
+	 v3->setInfo(no3);
+	 v.push_back(v3);
+
+	cout << v.size();
+	/*
+	vector<Vertex<Info>*>::iterator it = v.begin();
+	for (; it != v.end(); it++) {
+		cout << (*it)->getInfo().getId();
+
+		gv->setVertexColor((*it)->getInfo().getId(), "green");
+	}*/
+
 }
+/*//	for(int i = 0; i < super.getTrucks()[23].getOrders().size(); i++){
+ vector<Vertex <Info> * > n;
+ Info no1 = Info();
+ no1.setId(137382464);
+ Info no2 = Info();
+ no2.setId(137319910);
+ Info no3 = Info();
+ no3.setId(137332260);
+ Vertex<Info>* v1;
+ Vertex<Info>* v2;
+ Vertex<Info>* v3;
+ v1->setInfo(no1);
+ v2->setInfo(no2);
+ v3->setInfo(no3);
+ n.push_back(v1);
+ n.push_back(v2);
+ n.push_back(v3);
+ graph.dijkstraShortestPath(graph.getVertexId(this->supermarket)->getInfo());
+ cout << "dijkstra done" << endl;
+
+ //gv->setEdgeColor(,"red");
+ //gv->setVertexColor(this->supermarket, "red");
+ //gv->setVertexColor(no.getId(), "red");
+ cout << " set colors done" << endl;
+
+ //cout << "temp " << endl;
+ //cout << temp->getInfo().getId() << endl;
+
+ Vertex<Info>* superm = graph.getVertexId(this->supermarket);
+
+ //	cout << "id temp" << temp->getInfo().getId() << endl;
+ //cout << "id super " << superm->getInfo().getId() << endl;
+ for (int i = 0; i < n.size(); i++) {
+ Vertex<Info>* temp = n.at(i);
+ if	(temp->getInfo().getId() != this->supermarket) {
+ cout << "temp" << temp->getInfo().getId() << endl;
+ cout << "id super " << this->supermarket << endl;
+ int novoId = graph.getVertexId(temp->getInfo().getId())->path->getInfo().getId();
+ temp = graph.getVertexId(novoId);
+ gv->setVertexColor(
+ graph.getVertexId(temp->getInfo().getId())->path->getInfo().getId(),
+ "green");
+ cout << "caminho:"
+ << graph.getVertexId(temp->getInfo().getId())->path->getInfo().getId()
+ << endl;
+ cout << " fim do primeiro while" << endl;
+ }
+
+ }
+ cout << "Final distribution" << endl;
+ }*/
+
