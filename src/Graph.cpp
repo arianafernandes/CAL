@@ -30,7 +30,7 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 //atualizado pelo exercício 5
 template<class T>
 Vertex<T>::Vertex(T in) :
-		info(in), visited(false), processing(false), indegree(0), dist(0){
+info(in), visited(false), processing(false), indegree(0), dist(0){
 	path = NULL;
 }
 
@@ -63,7 +63,7 @@ int Vertex<T>::getIndegree() const {
 
 template<class T>
 Edge<T>::Edge(Vertex<T> *d, double w,int id) :
-		dest(d), weight(w), ID(id) {}
+dest(d), weight(w), ID(id) {}
 
 template<class T>
 Edge<T>::Edge(){
@@ -206,14 +206,15 @@ Edge<T> Graph<T>::getEdge(const T &source, const T &dest){
 	vector<Edge<T>> adjs;
 	typename vector<Vertex<T>*>::iterator it = vertexSet.begin();
 	typename vector<Vertex<T>*>::iterator ite = vertexSet.end();
-
 	int found = 0;
 	while (found != 1 && it != ite) {
-		if ((*it)->info == source) {
+		if ((*it)->info.getId() == source.getId()) {
 			adjs = (*it)->getAdj();
-			found =1;
+			cout <<"equals" <<endl;
+			found = 1;
 		}
 	}
+	cout << "inside edge "<<endl;
 	typename vector<Edge<T>>::iterator itadj = adjs.begin();
 	typename vector<Edge<T>>::iterator iteadj = adjs.end();
 	Edge<T> temp;
@@ -225,6 +226,18 @@ Edge<T> Graph<T>::getEdge(const T &source, const T &dest){
 	return temp;
 
 }
+
+template<class T>
+Edge<T> Graph<T>::getEdgeFromVertex(Vertex<T>* source, Vertex<T>* dest){
+	Edge<T> temp;
+	for(unsigned int i = 0; i < source->getAdj().size(); i++){
+		if(source->getAdj()[i].getDest()->getInfo().getId() == dest->getInfo().getId())
+			return source->getAdj()[i];
+	}
+	return temp;
+}
+
+
 
 template<class T>
 bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
@@ -482,8 +495,8 @@ vector<T> Graph<T>::getPath(const T &origin, const T &dest) {
 
 	vector<T> res;
 	while (!buffer.empty()) {
-		res.push_back(buffer.front());
-		buffer.pop_front();
+		res.push_back(buffer.back());
+		buffer.pop_back();
 	}
 	return res;
 }

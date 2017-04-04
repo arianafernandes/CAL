@@ -123,6 +123,7 @@ public:
 	T getInfoVertexId(int id) const;
 	Vertex<T>* getVertexId(int id) const;
 	Edge<T> getEdge(const T &source, const T &dest);
+	Edge<T> getEdgeFromVertex(Vertex<T>* source, Vertex<T>* dest);
 };
 
 #endif /* GRAPH_H_ */

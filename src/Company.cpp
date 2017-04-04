@@ -44,7 +44,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-									+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+											+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -317,7 +317,7 @@ void Company::readUsers() {
 
 	}
 
-/*
+	/*
 	for (unsigned int i = 0; i < super.getUsers().size(); i++) {
 		cout << " User Name: " << super.getUsers().at(i).getName()
 							 << " User Nif: " << super.getUsers().at(i).getNif()
@@ -352,9 +352,7 @@ void Company::readUsers() {
 
 }
 
-
 void Company::distribution(){
-//	for(int i = 0; i < super.getTrucks()[23].getOrders().size(); i++){
 	Info no = Info();
 	no.setId(1154796515);
 	graph.dijkstraShortestPath(graph.getVertexId(this->supermarket)->getInfo());
@@ -366,12 +364,12 @@ void Company::distribution(){
 		cout << "id " << i<< " " << temp[i].getId() << endl;
 		gv->setVertexColor(temp[i].getId(),"red");
 	}
-
-
-	//	gv->setEdgeColor(,"red");
-		/*gv->setVertexColor(this->supermarket,"red");
-		gv->setVertexColor(no.getId(),"red");
-		gv->setVertexColor(graph.getVertex(no)->path->getInfo().getId(),"red");
-		cout<< "caminho:" << graph.getVertex(no)->path->getInfo().getId()<<endl;*/
-	//}
+	cout << "NEXT FOR" << endl;
+	for(unsigned int i=0; i < temp.size()-1;i++){
+		Info no1 = temp[i];
+		Info no2 = temp[i+1];
+		Edge<Info> edge = graph.getEdgeFromVertex(graph.getVertexId(no1.getId()),graph.getVertexId(no2.getId()));
+		cout << "edge id " << edge.getID() << endl;
+		gv->setEdgeColor(edge.getID(),"red");
+	}
 }
