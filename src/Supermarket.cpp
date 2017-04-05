@@ -5,24 +5,19 @@
 Supermarket::Supermarket() {
 }
 
-vector<User> Supermarket::getUsers() {
+vector<User> Supermarket::getUsers() const {
 	return users;
 }
 
-vector<Truck> Supermarket::getTrucks() {
+vector<Truck> Supermarket::getTrucks() const {
 	return trucks;
 }
-vector<Order> Supermarket::getOrders() {
-	return orders;
-}
+
 
 void Supermarket::addUser(User u1) {
 	users.push_back(u1);
 }
 
-void Supermarket::addOrder(Order o) {
-	orders.push_back(o);
-}
 
 void Supermarket::addTruck(Truck t) {
 	trucks.push_back(t);

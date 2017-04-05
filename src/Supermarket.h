@@ -28,15 +28,12 @@ class Supermarket {
 private:
 	vector<User> users;
 	vector<Truck> trucks;
-	vector<Order> orders;
 
 public:
 	Supermarket();
-	vector<User> getUsers();
-	vector<Truck> getTrucks();
-	vector<Order> getOrders();
+	vector<User> getUsers() const;
+	vector<Truck> getTrucks() const;
 	void addUser(User u);
-	void addOrder(Order o);
 	void addTruck(Truck t);
 	bool addOrderToTruck(Order o);
 

@@ -48,6 +48,7 @@ public:
 	void setInfo(T info);
 
 	int getDist() const;
+	void setDist(int d);
 	int getIndegree() const;
 	vector<Edge<T> >& getAdj();
 

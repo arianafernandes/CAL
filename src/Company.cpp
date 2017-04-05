@@ -18,6 +18,13 @@ using namespace std;
 
 Company::Company(int id){
 	this->supermarket =id;
+	this->colorDelivery = "green";
+}
+string Company::getColorDelivery() const{
+	return this->colorDelivery;
+}
+void Company::setColorDelivery(string color){
+	this->colorDelivery = color;
 }
 
 double Company::calcX(double lat, double lon) {
@@ -44,7 +51,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-											+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+																																																	+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -312,7 +319,6 @@ void Company::readUsers() {
 		tempOrder.setId(orderId);
 		tempOrder.setWeight(capacity);
 		tempOrder.setDate(date);
-		super.addOrder(tempOrder);
 		super.addOrderToTruck(tempOrder);
 
 	}
@@ -352,24 +358,108 @@ void Company::readUsers() {
 
 }
 
-void Company::distribution(){
-	Info no = Info();
-	no.setId(1154796515);
-	graph.dijkstraShortestPath(graph.getVertexId(this->supermarket)->getInfo());
-	gv->setVertexColor(this->supermarket,"red");
-	gv->setVertexColor(no.getId(),"red");
-
-	vector<Info> temp = graph.getPath(graph.getVertexId(this->supermarket)->getInfo(),no);
-	for(unsigned int i=0; i < temp.size();i++){
-		cout << "id " << i<< " " << temp[i].getId() << endl;
+void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest){
+	vector<Info> temp = graph.getPath(source->getInfo(),dest->getInfo());
+	for(unsigned int i = 0; i < temp.size()-1; i++){
 		gv->setVertexColor(temp[i].getId(),"red");
-	}
-	cout << "NEXT FOR" << endl;
-	for(unsigned int i=0; i < temp.size()-1;i++){
-		Info no1 = temp[i];
-		Info no2 = temp[i+1];
-		Edge<Info> edge = graph.getEdgeFromVertex(graph.getVertexId(no1.getId()),graph.getVertexId(no2.getId()));
-		cout << "edge id " << edge.getID() << endl;
+		Vertex<Info>* no1 = graph.getVertexId(temp[i].getId());
+		int tempi = i;
+		tempi++;
+		gv->setVertexColor(temp[tempi].getId(),"red");
+		Vertex<Info>* no2 = graph.getVertexId(temp[tempi].getId());
+		Edge<Info> edge = graph.getEdgeFromVertex(no1,no2);
 		gv->setEdgeColor(edge.getID(),"red");
 	}
 }
+
+void Company::paintDeliveries(vector<Order> orders){
+	for(unsigned int j = 0; j < orders.size(); j++){
+		Vertex<Info>* no = graph.getVertexId(orders[j].getId());
+		gv->setVertexColor(no->getInfo().getId(),"green");
+	}
+}
+
+
+int Company::getNextDelivery(vector<Order> orders,int currentPosition){
+	Vertex<Info>* currentNo = graph.getVertexId(currentPosition);
+	graph.dijkstraShortestPath(currentNo->getInfo());
+	int distance = INT_INFINITY;
+	int id;
+	for(unsigned int j = 0; j < orders.size(); j++){
+		Vertex<Info> *no = graph.getVertexId(orders[j].getId());
+		if(no->getDist() < distance){
+			distance = no->getDist();
+			id = orders[j].getId();
+		}
+	}
+	return id;
+}
+
+vector<Order> Company::eliminateFromOrders(vector<Order> orders, int currentPosition){
+	vector<Order> temp;
+	if(currentPosition != this->supermarket){
+		for(unsigned int i = 0; i < orders.size(); i++){
+			if(orders[i].getId()!=currentPosition)
+				temp.push_back(orders[i]);
+		}
+	}
+	else{
+		return orders;
+	}
+	return temp;
+}
+
+void Company::printOrders(vector<Order>orders){
+	Vertex<Info> *superm = graph.getVertexId(this->supermarket);
+	graph.dijkstraShortestPath(superm->getInfo());
+	for(unsigned int i=0; i < orders.size();i++){
+		cout << "id " << orders[i].getId() << endl;
+		cout << "data " << orders[i].getDate() << endl;
+		Vertex<Info> *no = graph.getVertexId(orders[i].getId());
+		cout << "dist " << no->getDist() << endl;
+	}
+}
+
+void Company::returnToSupermarket(int currentPosition,int idSupermarket){
+	Vertex<Info>* source = graph.getVertexId(currentPosition);
+	Vertex<Info>* dest = graph.getVertexId(idSupermarket);
+	graph.dijkstraShortestPath(source->getInfo());
+
+
+	vector<Info> temp = graph.getPath(source->getInfo(),dest->getInfo());
+	for(unsigned int i = 0; i < temp.size()-1; i++){
+		Vertex<Info>* no1 = graph.getVertexId(temp[i].getId());
+		int tempi = i;
+		tempi++;
+		Vertex<Info>* no2 = graph.getVertexId(temp[tempi].getId());
+		Edge<Info> edge = graph.getEdgeFromVertex(no1,no2);
+		gv->setEdgeColor(edge.getID(),"cyan");
+	}
+}
+
+void Company::distribution(){
+
+	int nextPosition;
+	Vertex<Info>* source;
+	Vertex<Info>* dest;
+	int currentPosition;
+	for(unsigned int i = 0; i < super.getTrucks().size(); i++){
+		currentPosition = this->supermarket;
+		vector<Order> orders = super.getTrucks()[i].getOrders();
+		for(unsigned int i = 0; i < orders.size(); i++){
+			source = graph.getVertexId(currentPosition);
+			nextPosition = getNextDelivery(orders,currentPosition);
+			dest = graph.getVertexId(nextPosition);
+			paintRoad(source,dest);
+			orders = eliminateFromOrders(orders, currentPosition);
+			i--;
+			currentPosition = nextPosition;
+		}
+		returnToSupermarket(currentPosition,this->supermarket);
+		paintDeliveries(super.getTrucks()[i].getOrders());
+	}
+
+	gv->setVertexColor(this->supermarket,"red");
+
+}
+

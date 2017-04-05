@@ -210,11 +210,9 @@ Edge<T> Graph<T>::getEdge(const T &source, const T &dest){
 	while (found != 1 && it != ite) {
 		if ((*it)->info.getId() == source.getId()) {
 			adjs = (*it)->getAdj();
-			cout <<"equals" <<endl;
 			found = 1;
 		}
 	}
-	cout << "inside edge "<<endl;
 	typename vector<Edge<T>>::iterator itadj = adjs.begin();
 	typename vector<Edge<T>>::iterator iteadj = adjs.end();
 	Edge<T> temp;
@@ -495,8 +493,8 @@ vector<T> Graph<T>::getPath(const T &origin, const T &dest) {
 
 	vector<T> res;
 	while (!buffer.empty()) {
-		res.push_back(buffer.back());
-		buffer.pop_back();
+		res.push_back(buffer.front());
+		buffer.pop_front();
 	}
 	return res;
 }
@@ -609,7 +607,6 @@ void Graph<T>::bellmanFordShortestPath(const T &s) {
 
 template<class T>
 void Graph<T>::dijkstraShortestPath(const T &s) {
-	cout << "dist: " << vertexSet[11]->dist << endl;
 	for (unsigned int i = 0; i < vertexSet.size(); i++) {
 		vertexSet[i]->path = NULL;
 		vertexSet[i]->dist = INT_INFINITY;
@@ -648,8 +645,6 @@ void Graph<T>::dijkstraShortestPath(const T &s) {
 			}
 		}
 	}
-	cout << "dist: " << vertexSet[11]->dist << endl;
-
 }
 
 template<class T>
@@ -720,6 +715,11 @@ void Graph<T>::floydWarshallShortestPath() {
 				}
 			}
 
+}
+
+template<class T>
+void Vertex<T>::setDist(int d){
+	this->dist = d;
 }
 
 template class Graph<Info>;

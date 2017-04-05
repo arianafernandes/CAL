@@ -24,6 +24,7 @@ private:
 	GraphViewer *gv;
 	int supermarket;
 	Supermarket super;
+	string colorDelivery;
 public:
 	Company(int id);
 	double calcX(double lat, double lon);
@@ -35,6 +36,14 @@ public:
 	void readUsers();
 	void createGraphViewer();
 	void distribution();
+	void paintRoad(Vertex<Info>* source, Vertex<Info>* dest);
+	void paintDeliveries(vector<Order> orders);
+	int getNextDelivery(vector<Order> orders,int currentPosition);
+	vector<Order> eliminateFromOrders(vector<Order> orders, int currentPosition);
+	void returnToSupermarket(int currentPosition,int idSupermarket);
+	string getColorDelivery() const;
+	void setColorDelivery(string color);
+	void printOrders(vector<Order>orders);
 };
 
 
