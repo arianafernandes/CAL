@@ -24,11 +24,6 @@ const int BEING_VISITED = 1;
 const int DONE_VISITED = 2;
 const int INT_INFINITY = INT_MAX;
 
-/*
- * ================================================================================================
- * Class Vertex
- * ================================================================================================
- */
 template<class T>
 class Vertex {
 	T info;
@@ -39,29 +34,58 @@ class Vertex {
 	vector<Edge<T> > adj;
 
 public:
-	Vertex(T in);
-	friend class Graph<T>;
 
-	void addEdge(Vertex<T> *dest, double w,int id);
+	/**
+	 * Vertex constructor.
+	 * @param in Class to represent the vertex info.
+	 */
+	Vertex(T in);
+
+	friend class Graph<T> ;
+	void addEdge(Vertex<T> *dest, double w, int id);
 	bool removeEdgeTo(Vertex<T> *d);
+
+	/**
+	 *
+	 * @return The object of the class representing the vertex info.
+	 */
 	T getInfo() const;
+
+	/**
+	 *
+	 * @param info Object of the class that represents the vertex info.
+	 */
 	void setInfo(T info);
 
+	/**
+	 *
+	 * @return The distance of the vertex.
+	 */
 	int getDist() const;
+
+	/**
+	 *
+	 * @param d Set d as distance of the Vertex.
+	 */
 	void setDist(int d);
+
+	/**
+	 *
+	 * @return The indegree of the vertex.
+	 */
 	int getIndegree() const;
+
+	/**
+	 *
+	 * @return The vector with the adjacent edges.
+	 */
 	vector<Edge<T> >& getAdj();
 
 	bool operator<(const Vertex<T> vertex);
 
-
 	Vertex* path;
 };
 
-/* ================================================================================================
- * Class Edge
- * ================================================================================================
- */
 template<class T>
 class Edge {
 	Vertex<T> * dest;
@@ -70,21 +94,55 @@ class Edge {
 	int idRua;
 	static int count;
 public:
+
+	/**
+	 *
+	 * Edge default constructor.
+	 *
+	 */
 	Edge();
-	Edge(Vertex<T> *d, double w,int id);
+
+	/**
+	 * Edge constructor.
+	 * @param d Destination node.
+	 * @param w Edge weight.
+	 * @param id Edge id.
+	 */
+	Edge(Vertex<T> *d, double w, int id);
+
+	/**
+	 *
+	 * @return The destination node.
+	 */
 	Vertex<T>* getDest() const;
+
+	/**
+	 *
+	 * @return The edge id.
+	 */
 	int getID() const;
+
+	/**
+	 *
+	 * @return The id of the Street of the edge.
+	 */
 	int getIdRua() const;
+
+	/**
+	 *
+	 * @param id Edge ID.
+	 */
 	void setID(int id);
+
+	/**
+	 *
+	 * @param id Street ID.
+	 */
 	void setIdRua(int id);
-	friend class Graph<T>;
-	friend class Vertex<T>;
+	friend class Graph<T> ;
+	friend class Vertex<T> ;
 };
 
-/* ================================================================================================
- * Class Graph
- * ================================================================================================
- */
 template<class T>
 class Graph {
 	vector<Vertex<T> *> vertexSet;
@@ -97,33 +155,149 @@ class Graph {
 	int ** P;   //path
 public:
 	static double minLat, minLong, maxLat, maxLong;
+
+	/**
+	 * Adds a vertex to the graph.
+	 * @param in Object of the class representing the vertex info.
+	 *
+	 * @return True if the vertex was successfully added or false otherwise.
+	 */
 	bool addVertex(const T &in);
-	bool addEdge(const T &sourc, const T &dest, double w,int id);
-	bool removeVertex(const T &in);
-	bool removeEdge(const T &sourc, const T &dest);
-	vector<T> dfs() const;
-	vector<T> bfs(Vertex<T> *v) const;
-	int maxNewChildren(Vertex<T> *v, T &inf) const;
-	vector<Vertex<T> *> getVertexSet() const;
-	int getNumVertex() const;
-	T findInfo(double id);
-	Vertex<T>* getVertex(const T &v) const;
-	void resetIndegrees();
-	vector<Vertex<T>*> getSources() const;
-	int getNumCycles();
-	vector<T> topologicalOrder();
-	vector<T> getPath(const T &origin, const T &dest);
-	void unweightedShortestPath(const T &v);
-	bool isDAG();
-	void bellmanFordShortestPath(const T &s);
-	void dijkstraShortestPath(const T &s);
-	void floydWarshallShortestPath();
-	int edgeCost(int vOrigIndex, int vDestIndex);
-	vector<T> getfloydWarshallPath(const T &origin, const T &dest);
-	void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
-	T getInfoVertexId(int id) const;
-	Vertex<T>* getVertexId(int id) const;
+
+	/**
+	 * Adds an edge to the graph.
+	 * @param sourc Source vertex.
+	 * @param dest Destination vertex.
+	 * @param w Weight of the edge.
+	 * @param id Id of the edge.
+	 * @return True of the edge was successfully added or false otherwise.
+	 */
+	bool addEdge(const T &sourc, const T &dest, double w, int id);
+
+	/**
+	 *
+	 * @param sourc Source vertex.
+	 * @param dest Destination vertex.
+	 * @return Returns the edge connecting the to vertexes passed as arguments.
+	 */
+
+	/**
+	 *
+	 * @param sourc Source vertex.
+	 * @param dest Destination vertex.
+	 * @return Returns the edge connecting the to vertexes passed as arguments.
+	 */
+
 	Edge<T> getEdge(const T &source, const T &dest);
+
+	/**
+	 * Removes a vertex from the graph.
+	 * @param in Info of the vertex.
+	 * @return True if the vertex was successfully removed or false otherwise.
+	 */
+	bool removeVertex(const T &in);
+
+	/**
+	 * Removes an edge from the graph.
+	 * @param sourc Source vertex.
+	 * @param dest Destination source.
+	 * @return True if the edge was successfully removed or false otherwise.
+	 */
+	bool removeEdge(const T &sourc, const T &dest);
+
+	/**
+	 *
+	 * @return A vector with the information of the vertexes in the same order as they were visited using a dfs algorithm.
+	 */
+	vector<T> dfs() const;
+
+	vector<T> bfs(Vertex<T> *v) const;
+
+	int maxNewChildren(Vertex<T> *v, T &inf) const;
+
+	/**
+	 *
+	 * @return The vector of the exisiting vertexes of the graph.
+	 */
+	vector<Vertex<T> *> getVertexSet() const;
+
+	/**
+	 *
+	 * @return The number of exisiting vertexes.
+	 */
+	int getNumVertex() const;
+
+	/**
+	 * @param id Id of the vertex.
+	 *
+	 * @return The class Info of the vertex with that id.
+	 */
+	T findInfo(double id);
+
+	/**
+	 * @param T class Info.
+	 *
+	 * @return The Vertex with that Info .
+	 */
+	Vertex<T>* getVertex(const T &v) const;
+
+	/**
+	 * Reset indegrees of the edge.
+	 *
+	 */
+	void resetIndegrees();
+
+	/**
+	 *
+	 *@return The vector of vertexs that are de sources of the edge.
+	 */
+	vector<Vertex<T>*> getSources() const;
+
+	/**
+	 * @param origin Origin of the edge
+	 * @param dest Destination of the edge
+	 * @return The vector with Info's of the path from the edge.
+	 */
+	vector<T> getPath(const T &origin, const T &dest);
+
+	/**
+	 * Dijkstra Shortest Path algorithm
+	 * @param T Info class
+	 *
+	 */
+	void dijkstraShortestPath(const T &s);
+
+	/**
+	 *
+	 * @param vOrigIndex Source vertex.
+	 * @param vDestIndex Destination vertex.
+	 * @return The weight of the edge connecting the two vertexes passed as arguments.
+	 */
+	int edgeCost(int vOrigIndex, int vDestIndex);
+
+	/**
+	 *
+	 * @param id Id do Vertex.
+	 *
+	 * @return Return the Info class of the Vertex with that Id.
+	 */
+	T getInfoVertexId(int id) const;
+
+	/**
+	 *
+	 * @param id Id do Vertex.
+	 *
+	 * @return Return the Vertex with that Id.
+	 */
+	Vertex<T>* getVertexId(int id) const;
+
+	/**
+	 *
+	 * @param source Vertex source.
+	 * @param dest Vertex destination.
+	 *
+	 * @return Returns the edge connecting the to vertexes passed as arguments.
+	 */
 	Edge<T> getEdgeFromVertex(Vertex<T>* source, Vertex<T>* dest);
 };
 

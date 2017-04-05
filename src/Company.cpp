@@ -39,13 +39,6 @@ double Company::calcY(double lat, double lon) {
 	return Y;
 }
 
-bool Company::checkIfRejected(vector<int> NoRejected, int no) {
-	for (unsigned int i = 0; i < NoRejected.size(); i++) {
-		if (NoRejected[i] == no)
-			return true;
-	}
-	return false;
-}
 
 double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
