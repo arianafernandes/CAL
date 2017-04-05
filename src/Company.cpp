@@ -220,6 +220,8 @@ void Company::createGraphViewer() {
 	gv->defineEdgeColor("blue");
 	gv->defineVertexColor("yellow");
 
+	//gv->setBackground("background.png");
+
 	double minLong = Graph<Info>::minLong - 2 * M_PI;
 	double minLat = Graph<Info>::minLat - 2 * M_PI;
 	double maxLat = Graph<Info>::maxLat - 2 * M_PI;
@@ -368,6 +370,7 @@ void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest){
 void Company::paintDeliveries(vector<Order> orders){
 	for(unsigned int j = 0; j < orders.size(); j++){
 		Vertex<Info>* no = graph.getVertexId(orders[j].getId());
+		gv->setVertexIcon(no->getInfo().getId(),"home.png");
 		gv->setVertexColor(no->getInfo().getId(),"green");
 	}
 }
@@ -453,6 +456,7 @@ void Company::distribution(){
 	}
 
 	gv->setVertexColor(this->supermarket,"red");
+	gv->setVertexIcon(this->supermarket,"super2.png");
 
 }
 
