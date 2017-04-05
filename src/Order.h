@@ -18,12 +18,46 @@ private:
 	string date;
 
 public:
+
+	/**
+	 * @brief Default constructor.
+	 */
 	Order();
+
+	/**
+	 *
+	 * @return Order ID.
+	 */
 	int getId() const;
+
+	/**
+	 *
+	 * @param id Order ID.
+	 */
 	void setId(int id);
+
+	/**
+	 *
+	 * @return Order weight.
+	 */
 	int getWeight() const;
+
+	/**
+	 *
+	 * @param w Order weight.
+	 */
 	void setWeight(int w);
+
+	/**
+	 *
+	 * @return Order date.
+	 */
 	string getDate() const;
+
+	/**
+	 *
+	 * @param d Order date.
+	 */
 	void setDate(string d);
 
 };

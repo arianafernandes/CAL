@@ -30,11 +30,44 @@ private:
 	vector<Truck> trucks;
 
 public:
+	/**
+	 * @brief Default constructor.
+	 */
 	Supermarket();
+
+	/**
+	 *
+	 * @return Users of the supermarket.
+	 */
 	vector<User> getUsers() const;
+
+	/**
+	 *
+	 * @return Trucks of the supermarket.
+	 */
 	vector<Truck> getTrucks() const;
+
+	/**
+	 * @brief Add a user to the suepermarket.
+	 *
+	 * @param u User.
+	 */
 	void addUser(User u);
+
+	/**
+	 * @brief Add a truck to the suepermarket.
+	 *
+	 * @param t Truck.
+	 */
 	void addTruck(Truck t);
+
+	/**
+	 * @brief Add a order to the respective truck of the supermarket.
+	 *
+	 * @param o Order.
+	 *
+	 * @return true if it is possible to add the order, otherwise return false.
+	 */
 	bool addOrderToTruck(Order o);
 
 };

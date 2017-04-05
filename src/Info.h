@@ -19,20 +19,73 @@ private:
 	double dlat, dlon, rlat, rlon;
 public:
 
+	/**
+	 * @brief Default constructor.
+	 */
 	Info();
+
+	/**
+	 *
+	 * @return Info Latitude in degrees.
+	 */
 	double getDlat() const;
+
+	/**
+	 *
+	 * @param dlat Latitude in degrees.
+	 */
 	void setDlat(double dlat);
+
+	/**
+	 *
+	 * @return Info Longitude in degrees.
+	 */
 	double getDlon() const;
+
+	/**
+	 *
+	 * @param dlon Longitude in degrees.
+	 */
 	void setDlon(double dlon);
+
+	/**
+	 *
+	 * @return Info ID.
+	 */
 	int getId() const;
+
+	/**
+	 *
+	 * @param id Info ID.
+	 */
 	void setId(int id);
+
+	/**
+	 *
+	 * @return Info latitude in radians.
+	 */
 	double getRlat() const;
+
+	/**
+	 *
+	 * @param rlat Latitude in radians.
+	 */
 	void setRlat(double rlat);
+
+	/**
+	 *
+	 * @return Info longitude in radians.
+	 */
 	double getRlon() const;
+
+	/**
+	 *
+	 * @param rlon Longitude in radians.
+	 */
 	void setRlon(double rlon);
+
 	bool operator ==(const Info &i2) const;
 	bool operator !=(const Info &i2) const;
 };
-
 
 #endif /* SRC_INFO_H_ */
