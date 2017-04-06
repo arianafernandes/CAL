@@ -8,14 +8,15 @@
 #include "Truck.h"
 
 Truck::Truck() {
-	weight = 0;
-	capacity = 500;
-	maxdist = 1000;
-	isFull = false;
+	this->weight = 0;
+	this->capacity = 500;
+	this->maxdist = DBL_MAX;
+	this->isFull = false;
+	this->travelledDist=0;
 }
 
 int Truck::getWeight() const {
-	return weight;
+	return this->weight;
 }
 
 int Truck::getTotalWeightOrders() {
@@ -30,7 +31,7 @@ void Truck::setWeight(int w) {
 }
 
 int Truck::getCapacity() const {
-	return capacity;
+	return this->capacity;
 }
 
 void Truck::setCapacity(int capacity) {
@@ -38,7 +39,7 @@ void Truck::setCapacity(int capacity) {
 }
 
 double Truck::getMaxdist() const {
-	return maxdist;
+	return this->maxdist;
 }
 
 void Truck::setMaxdist(double maxdist) {
@@ -46,26 +47,26 @@ void Truck::setMaxdist(double maxdist) {
 }
 
 bool Truck::getIsFull() const {
-	return isFull;
+	return this->isFull;
 }
 
 void Truck::setIsFull() {
-	if (weight == capacity) {
-		isFull = true;
+	if (this->weight == this->capacity) {
+		this->isFull = true;
 	}
-	isFull = false;
+	this->isFull = false;
 }
 
 string Truck::getDate() const {
-	return date;
+	return this->date;
 }
 
 void Truck::setDate(string d) {
-	date = d;
+	this->date = d;
 }
 
 const vector<Order>& Truck::getOrders() const {
-	return orders;
+	return this->orders;
 }
 
 void Truck::setOrders(const vector<Order>& orders) {
@@ -93,4 +94,12 @@ bool Truck::addOrder(Order o) {
 	}
 
 	return false;
+}
+
+
+void Truck::setTravelledDist(double dist){
+	this->travelledDist = dist;
+}
+double Truck::getTravelledDist() const{
+	return this->travelledDist;
 }

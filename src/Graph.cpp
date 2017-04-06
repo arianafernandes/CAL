@@ -460,7 +460,6 @@ void Graph<T>::dijkstraShortestPath(const T &s) {
 
 		for (unsigned int i = 0; i < v->adj.size(); i++) {
 			Vertex<T>* w = v->adj[i].dest;
-
 			if (v->dist + v->adj[i].weight < w->dist) {
 
 				w->dist = v->dist + v->adj[i].weight;
@@ -494,6 +493,10 @@ int Graph<T>::edgeCost(int vOrigIndex, int vDestIndex) {
 template<class T>
 void Vertex<T>::setDist(int d){
 	this->dist = d;
+}
+template<class T>
+double Edge<T>::getWeight() const{
+return this->weight;
 }
 
 template class Graph<Info>;

@@ -141,6 +141,8 @@ public:
 	void setIdRua(int id);
 	friend class Graph<T> ;
 	friend class Vertex<T> ;
+
+	double getWeight() const;
 };
 
 template<class T>

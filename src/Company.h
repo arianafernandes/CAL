@@ -18,6 +18,7 @@ using namespace std;
 #include "GraphViewer.h"
 #include "Supermarket.h"
 
+
 class Company {
 private:
 	Graph<Info> graph;
@@ -154,6 +155,9 @@ public:
 	 *
 	 */
 	void printOrders(vector<Order> orders);
+
+
+	boolean checkDistToSupermarket(Vertex<Info>* dest, Truck truck);
 };
 
 #endif /* SRC_COMPANY_H_ */

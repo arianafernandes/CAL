@@ -380,7 +380,7 @@ int Company::getNextDelivery(vector<Order> orders,int currentPosition){
 	Vertex<Info>* currentNo = graph.getVertexId(currentPosition);
 	graph.dijkstraShortestPath(currentNo->getInfo());
 	int distance = INT_INFINITY;
-	int id;
+	int id =-1;
 	for(unsigned int j = 0; j < orders.size(); j++){
 		Vertex<Info> *no = graph.getVertexId(orders[j].getId());
 		if(no->getDist() < distance){
@@ -390,7 +390,13 @@ int Company::getNextDelivery(vector<Order> orders,int currentPosition){
 	}
 	return id;
 }
-
+/*
+void printAjs(Vertex<Info>* no){
+	for(unsigned int i = 0; i < no->getAdj().size(); i++){
+		cout << "weight "
+	no->getAdj()[i].getWeight()
+	}
+}*/
 vector<Order> Company::eliminateFromOrders(vector<Order> orders, int currentPosition){
 	vector<Order> temp;
 	if(currentPosition != this->supermarket){
@@ -403,6 +409,18 @@ vector<Order> Company::eliminateFromOrders(vector<Order> orders, int currentPosi
 		return orders;
 	}
 	return temp;
+}
+
+boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck){
+	double dist = source->getDist();
+	int id = source->getInfo().getId();
+	Vertex<Info> *superm = graph.getVertexId(this->supermarket);
+	graph.dijkstraShortestPath(superm->getInfo());
+	Vertex<Info>* dest = graph.getVertexId(id);
+	if(truck.getTravelledDist() + dist + dest->getDist() > truck.getMaxdist())
+		return false;
+
+	return true;
 }
 
 void Company::printOrders(vector<Order>orders){
@@ -439,23 +457,32 @@ void Company::distribution(){
 	Vertex<Info>* source;
 	Vertex<Info>* dest;
 	int currentPosition;
-	for(unsigned int i = 0; i < super.getTrucks().size(); i++){
+	//for(unsigned int i = 0; i < super.getTrucks().size(); i++){
 		currentPosition = this->supermarket;
-		vector<Order> orders = super.getTrucks()[i].getOrders();
+		Truck truck = super.getTrucks()[0];
+		vector<Order> orders = truck.getOrders();
 		for(unsigned int i = 0; i < orders.size(); i++){
 			source = graph.getVertexId(currentPosition);
 			nextPosition = getNextDelivery(orders,currentPosition);
+			if(nextPosition == -1){
+				cout << "NEXTPOSITION -1" << endl;
+				exit(1);
+			}
 			dest = graph.getVertexId(nextPosition);
+			//calcula a distancia total do caminho e se é possivel voltar para o supermercado
+			if(checkDistToSupermarket(dest,truck) == false)
+				break;
+			double dist = truck.getTravelledDist() + dest->getDist();
+			truck.setTravelledDist(dist);
 			paintRoad(source,dest);
 			orders = eliminateFromOrders(orders, currentPosition);
 			i--;
 			currentPosition = nextPosition;
 		}
 		returnToSupermarket(currentPosition,this->supermarket);
-		paintDeliveries(super.getTrucks()[i].getOrders());
-	}
+		paintDeliveries(super.getTrucks()[0].getOrders());
+//	}
 
-	gv->setVertexColor(this->supermarket,"red");
 	gv->setVertexIcon(this->supermarket,"super2.png");
 
 }

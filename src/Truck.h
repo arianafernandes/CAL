@@ -15,6 +15,7 @@
 #include <vector>
 #include <cmath>
 #include "Order.h"
+#include <cfloat>
 
 class Truck {
 private:
@@ -22,6 +23,7 @@ private:
 	int weight;
 	int capacity;
 	double maxdist;
+	double travelledDist;
 	bool isFull;
 	string date;
 public:
@@ -124,6 +126,9 @@ public:
 	 * @return true if possible to add the order, otherwise return false.
 	 */
 	bool addOrder(Order o);
+
+	void setTravelledDist(double dist);
+	double getTravelledDist() const;
 };
 
 #endif /* SRC_TRUCK_H_ */
