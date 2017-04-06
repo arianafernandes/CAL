@@ -44,7 +44,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-																																																	+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+																																																					+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -376,18 +376,24 @@ void Company::paintDeliveries(vector<Order> orders){
 }
 
 
-int Company::getNextDelivery(vector<Order> orders,int currentPosition){
+int Company::getNextDelivery(vector<Order> &orders,int currentPosition){
 	Vertex<Info>* currentNo = graph.getVertexId(currentPosition);
 	graph.dijkstraShortestPath(currentNo->getInfo());
 	int distance = INT_INFINITY;
 	int id =-1;
+	int min = -1;
 	for(unsigned int j = 0; j < orders.size(); j++){
-		Vertex<Info> *no = graph.getVertexId(orders[j].getId());
-		if(no->getDist() < distance){
-			distance = no->getDist();
-			id = orders[j].getId();
+		if(!orders[j].getDelivery()){
+			Vertex<Info> *no = graph.getVertexId(orders[j].getId());
+			if(no->getDist() < distance){
+				distance = no->getDist();
+				id = orders[j].getId();
+				min = j;
+			}
 		}
 	}
+	if(min >= 0)
+		orders[min].setDelivery(true);
 	return id;
 }
 /*
@@ -458,30 +464,30 @@ void Company::distribution(){
 	Vertex<Info>* dest;
 	int currentPosition;
 	//for(unsigned int i = 0; i < super.getTrucks().size(); i++){
-		currentPosition = this->supermarket;
-		Truck truck = super.getTrucks()[0];
-		vector<Order> orders = truck.getOrders();
-		for(unsigned int i = 0; i < orders.size(); i++){
-			source = graph.getVertexId(currentPosition);
-			nextPosition = getNextDelivery(orders,currentPosition);
-			if(nextPosition == -1){
-				cout << "NEXTPOSITION -1" << endl;
-				exit(1);
-			}
-			dest = graph.getVertexId(nextPosition);
-			//calcula a distancia total do caminho e se é possivel voltar para o supermercado
-			if(checkDistToSupermarket(dest,truck) == false)
-				break;
-			double dist = truck.getTravelledDist() + dest->getDist();
-			truck.setTravelledDist(dist);
-			paintRoad(source,dest);
-			orders = eliminateFromOrders(orders, currentPosition);
-			i--;
-			currentPosition = nextPosition;
+	currentPosition = this->supermarket;
+	Truck truck = super.getTrucks()[0];
+	vector<Order> orders = truck.getOrders();
+	cout << "max dist " << truck.getMaxdist() << endl;
+	while(true){
+		source = graph.getVertexId(currentPosition);
+		nextPosition = getNextDelivery(orders,currentPosition);
+		if(nextPosition == -1){
+			cout << "NEXTPOSITION -1" << endl;
+			break;
 		}
-		returnToSupermarket(currentPosition,this->supermarket);
-		paintDeliveries(super.getTrucks()[0].getOrders());
-//	}
+		dest = graph.getVertexId(nextPosition);
+		//calcula a distancia total do caminho e se é possivel voltar para o supermercado
+		if(checkDistToSupermarket(dest,truck) == false)
+				break;
+		truck.incDist(dest->getDist());
+		cout << "distance " << truck.getTravelledDist() << endl;
+		paintRoad(source,dest);
+		//orders = eliminateFromOrders(orders, currentPosition);
+		currentPosition = nextPosition;
+	}
+	returnToSupermarket(currentPosition,this->supermarket);
+	paintDeliveries(super.getTrucks()[0].getOrders());
+	//	}
 
 	gv->setVertexIcon(this->supermarket,"super2.png");
 

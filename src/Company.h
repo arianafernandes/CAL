@@ -113,7 +113,7 @@ public:
 	 * @return Returns the next position of order.
 	 *
 	 */
-	int getNextDelivery(vector<Order> orders, int currentPosition);
+	int getNextDelivery(vector<Order> &orders, int currentPosition);
 
 	/**
 	 * @param orders Vector of orders.

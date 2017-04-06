@@ -10,7 +10,7 @@
 Truck::Truck() {
 	this->weight = 0;
 	this->capacity = 500;
-	this->maxdist = DBL_MAX;
+	this->maxdist = 1.93622e+006;
 	this->isFull = false;
 	this->travelledDist=0;
 }
@@ -102,4 +102,8 @@ void Truck::setTravelledDist(double dist){
 }
 double Truck::getTravelledDist() const{
 	return this->travelledDist;
+}
+
+void Truck::incDist(double d){
+	this->travelledDist += d;
 }

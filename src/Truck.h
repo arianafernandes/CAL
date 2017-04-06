@@ -129,6 +129,8 @@ public:
 
 	void setTravelledDist(double dist);
 	double getTravelledDist() const;
+
+	void incDist(double d);
 };
 
 #endif /* SRC_TRUCK_H_ */

@@ -16,6 +16,7 @@ private:
 	int id;
 	int weight;
 	string date;
+	bool delivery;
 
 public:
 
@@ -60,6 +61,9 @@ public:
 	 */
 	void setDate(string d);
 
+
+	void setDelivery(bool d);
+	bool getDelivery() const;
 };
 
 #endif /* SRC_ORDER_H_ */

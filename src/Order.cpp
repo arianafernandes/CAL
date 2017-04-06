@@ -9,6 +9,7 @@ Order::Order() {
 	id = 0;
 	weight = 0;
 	date = "";
+	this->delivery = false;
 }
 
 int Order::getWeight() const {
@@ -33,4 +34,11 @@ string Order::getDate() const {
 
 void Order::setDate(string d) {
 	date = d;
+}
+
+void Order::setDelivery(bool d){
+	this->delivery = d;
+}
+bool Order::getDelivery() const{
+	return this->delivery;
 }
