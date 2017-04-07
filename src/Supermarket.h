@@ -70,7 +70,7 @@ public:
 	 */
 	bool addOrderToTruck(Order o);
 
-	User findUserFromNif(int nif);
+	bool findUserFromNif(int nif);
 
 };
 

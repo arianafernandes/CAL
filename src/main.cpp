@@ -42,36 +42,36 @@ void changeAddress(Company& comp){
 
 void changeAccount(Company& comp){
 	int option = 0;
-		string ss;
-		while (option != 3) {
-			cout << "Modificar conta de Cliente" << endl;
+	string ss;
+	while (option != 3) {
+		cout << "Modificar conta de Cliente" << endl;
 
-			cout << "1 - Modificar o Nome da conta" << endl
-					<<"2 - Modificar a Morada" << endl
-					<<"3 - Sair" << endl;
+		cout << "1 - Modificar o Nome da conta" << endl
+				<<"2 - Modificar a Morada" << endl
+				<<"3 - Sair" << endl;
 
-			getline(cin,ss);
-			option = stoi(ss);
+		getline(cin,ss);
+		option = stoi(ss);
 
-			switch (option) {
-				case 1:
-					changeName(comp);
-					break;
-				case 2:
-					changeAddress(comp);
-					break;
-				default:
-					break;
-				}
-				system("cls");
-			}
+		switch (option) {
+		case 1:
+			changeName(comp);
+			break;
+		case 2:
+			changeAddress(comp);
+			break;
+		default:
+			break;
+		}
+		system("cls");
+	}
 
 }
 
 void eliminateAccount(Company comp){
-/*
- * Eliminar User from User and File
- */
+	/*
+	 * Eliminar User from User and File
+	 */
 }
 
 void areaCliente(Company& comp){
@@ -137,21 +137,21 @@ void newCliente(Company &comp) {
 	getline(cin,temp);
 	id = stoi(temp);
 
-	User user = comp.getSupermarket().findUserFromNif(nif);
+	bool exists = comp.getSupermarket().findUserFromNif(nif);
 
-	if(user.getAddressId() != 0){
-	ofstream usersFile;
-	usersFile.open("users.txt");
-	usersFile << name << ";" << nif << ";" << id<< ";";
+
+
+	if(!exists){
+		ofstream usersFile;
+		usersFile.open("users.txt");
+		usersFile << name << ";" << nif << ";" << id<< ";";
 		/**
-	 * ADICIONAR O CLIENTE AO FILE
-	 */
+		 * ADICIONAR O CLIENTE AO FILE
+		 */
+		usersFile.close();
 	}else{
 		cout << "This user already exists!" << endl;
 	}
-
-	cout << "Obrigado! A sua encomenda está a ser processada." << endl;
-	cout << "name " << name << " nif "  << nif << " id " << id << endl;
 	//Adicionar a order a company.
 }
 void Clientes(Company& comp){
@@ -212,41 +212,41 @@ void changeNameSuper(Company &comp){
 }
 void changeAddressSuper(Company &comp){
 	string name;
-		cout << "Indique a nova morada(id) do Supermercado" << endl;
-		getline(cin, name);
-		/**
-		 * Modificar o id do Supermercado
-		 */
+	cout << "Indique a nova morada(id) do Supermercado" << endl;
+	getline(cin, name);
+	/**
+	 * Modificar o id do Supermercado
+	 */
 }
 
 void changeTrucks(Company &comp){
-/**
- * Visualizar todos os trucks e dele escolher um para depois modificar as dist e cap
- */
+	/**
+	 * Visualizar todos os trucks e dele escolher um para depois modificar as dist e cap
+	 */
 
 
 	int option = 0;
-			string ss;
-			while (option != 3) {
-				cout << "1 - Modificar a capacidade maxima do camiao " << endl
-						<< "2 - Modificar a distancia maxima percorrida pelo camiao"
-						<< endl << "3 - Sair."
-						<< endl;
-				cout << "Insira o número da sua escolha. Obrigado." << endl;
-				getline(cin, ss);
-				option = stoi(ss);
-				switch (option) {
-				case 1:
-					//Mudar capacidade
-					break;
-				case 2:
-				//Mudar distancia maxima
-					break;
-				default:
-					break;
-				}
-				system("cls");
-			}
+	string ss;
+	while (option != 3) {
+		cout << "1 - Modificar a capacidade maxima do camiao " << endl
+				<< "2 - Modificar a distancia maxima percorrida pelo camiao"
+				<< endl << "3 - Sair."
+				<< endl;
+		cout << "Insira o número da sua escolha. Obrigado." << endl;
+		getline(cin, ss);
+		option = stoi(ss);
+		switch (option) {
+		case 1:
+			//Mudar capacidade
+			break;
+		case 2:
+			//Mudar distancia maxima
+			break;
+		default:
+			break;
+		}
+		system("cls");
+	}
 
 
 }
@@ -254,31 +254,31 @@ void changeTrucks(Company &comp){
 void adminSuper(Company& comp){
 
 	int option = 0;
-		string ss;
-		while (option != 4) {
-			cout << "Bem-vindo ao tab de administracao do Super Preços Baixos!!" << endl;
-			cout << "1 - Mudar o Nome do Supermercado " << endl << "2 - Modificar o local do Supermercado"
-					<< endl << "3 - Modificar Camioes" << endl << "4 - Sair."
-					<< endl;
-			cout << "Insira o número da sua escolha. Obrigado." << endl;
-			getline(cin, ss);
-			option = stoi(ss);
-			switch (option) {
-			case 1:
-				//Mudar nome do super
-				changeNameSuper(comp);
-				break;
-			case 2:
+	string ss;
+	while (option != 4) {
+		cout << "Bem-vindo ao tab de administracao do Super Preços Baixos!!" << endl;
+		cout << "1 - Mudar o Nome do Supermercado " << endl << "2 - Modificar o local do Supermercado"
+				<< endl << "3 - Modificar Camioes" << endl << "4 - Sair."
+				<< endl;
+		cout << "Insira o número da sua escolha. Obrigado." << endl;
+		getline(cin, ss);
+		option = stoi(ss);
+		switch (option) {
+		case 1:
+			//Mudar nome do super
+			changeNameSuper(comp);
+			break;
+		case 2:
 			changeAddressSuper(comp);
-				break;
-			case 3:
+			break;
+		case 3:
 			changeTrucks(comp);
-				break;
-			default:
-				break;
-			}
-			system("cls");
+			break;
+		default:
+			break;
 		}
+		system("cls");
+	}
 }
 
 void interfUser(Company& comp) {
@@ -324,7 +324,7 @@ int main() {
 	//cout << "Read users done" << endl;
 	//comp.distribution();
 	//cout << "Distribuition of orders done" << endl;
-	//interfUser(comp);
+	interfUser(comp);
 	getchar();
 	return 0;
 }
