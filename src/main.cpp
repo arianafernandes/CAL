@@ -136,11 +136,19 @@ void newCliente(Company &comp) {
 	cout << "O id da sua morada:" << endl;
 	getline(cin,temp);
 	id = stoi(temp);
-	//VERIFICAR SE EXISTE
 
-	/**
+	User user = comp.getSupermarket().findUserFromNif(nif);
+
+	if(user.getAddressId() != 0){
+	ofstream usersFile;
+	usersFile.open("users.txt");
+	usersFile << name << ";" << nif << ";" << id<< ";";
+		/**
 	 * ADICIONAR O CLIENTE AO FILE
 	 */
+	}else{
+		cout << "This user already exists!" << endl;
+	}
 
 	cout << "Obrigado! A sua encomenda está a ser processada." << endl;
 	cout << "name " << name << " nif "  << nif << " id " << id << endl;

@@ -37,3 +37,4 @@ int User::getAddressId() const {
 void User::setAddressId(int addressId) {
 	this->addressId = addressId;
 }
+

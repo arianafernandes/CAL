@@ -63,6 +63,7 @@ public:
 	 * @param orderId User order Id.
 	 */
 	void setAddressId(int addressId);
+
 };
 
 #endif /* SRC_USER_H_ */
