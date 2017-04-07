@@ -42,7 +42,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-																																																									+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+																																																															+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -289,6 +289,7 @@ void Company::readDeliveries() {
 		int capacity;
 		string date;
 
+
 		stringstream linestream(line);
 		string data;
 		linestream >> orderId;
@@ -355,14 +356,13 @@ void Company::readUsers(){
 		int orderId;
 
 		stringstream linestream(line);
-		string data;
-		getline(linestream, data, ';');
-		linestream >> name;
-		getline(linestream, data, ';');
+		string data,lastname;
+
+		getline(linestream, name, ';');
 		linestream >> nif;
 		getline(linestream, data, ';');
 		linestream >> orderId;
-
+		getline(linestream, data, ';');
 		User tempUser = User(name,nif,orderId);
 		super.addUser(tempUser);
 
