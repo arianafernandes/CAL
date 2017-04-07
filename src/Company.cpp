@@ -272,10 +272,10 @@ void Company::createGraphViewer() {
 	gv->rearrange();
 
 }
-void Company::readUsers() {
+void Company::readDeliveries() {
 	ifstream maps;
 
-	maps.open("users.txt");
+	maps.open("delivery.txt");
 
 	if (!maps) {
 		cerr << "Unable to open file users.txt";
@@ -293,22 +293,11 @@ void Company::readUsers() {
 
 		stringstream linestream(line);
 		string data;
-		getline(linestream, name, ';');
-		linestream >> nif;
-		getline(linestream, data, ';');
 		linestream >> orderId;
 		getline(linestream, data, ';');
 		linestream >> capacity;
 		getline(linestream, data, ';');
 		linestream >> date;
-
-		User tempUser = User();
-		tempUser.setName(name);
-		tempUser.setNif(nif);
-		tempUser.setOrderId(orderId);
-		tempUser.setCapacity(capacity);
-		tempUser.setDate(date);
-		super.addUser(tempUser);
 
 		Order tempOrder = Order();
 		tempOrder.setId(orderId);

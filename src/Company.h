@@ -73,10 +73,10 @@ public:
 	void readMaps();
 
 	/**
-	 * @brief Read the user file.
+	 * @brief Read the delivery file.
 	 *
 	 */
-	void readUsers();
+	void readDeliveries();
 
 	/**
 	 * @brief Creates the graph viewer.
