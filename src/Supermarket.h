@@ -39,7 +39,7 @@ public:
 	 *
 	 * @return Users of the supermarket.
 	 */
-	vector<User> getUsers() const;
+	vector<User>& getUsers();
 
 	/**
 	 *
@@ -70,7 +70,7 @@ public:
 	 */
 	bool addOrderToTruck(Order o);
 
-	bool findUserFromNif(int nif);
+	User& findUserFromNif(int nif);
 
 };
 

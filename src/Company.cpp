@@ -363,6 +363,7 @@ void Company::readUsers(){
 		getline(linestream, data, ';');
 		linestream >> orderId;
 		getline(linestream, data, ';');
+
 		User tempUser = User(name,nif,orderId);
 		super.addUser(tempUser);
 
@@ -511,7 +512,7 @@ void Company::distribution(){
 }
 
 
-Supermarket Company::getSupermarket() const{
+Supermarket& Company::getSupermarket(){
 	return this->super;
 }
 

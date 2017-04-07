@@ -7,40 +7,56 @@
 
 #include "Company.h"
 
-void newDelivery(Company &comp){
-	string temp,data;
-	double weight;
+void newDelivery(Company &comp, User& user){
+	string temp,date;
+	int weight;
 
 	cout << "Indique o peso da sua encomenda!" << endl;
 	getline(cin,temp);
 	weight = stoi(temp);
 
 	cout << "Indique a data de entrega da encomenda!" << endl;
-	getline(cin,data);
+	getline(cin,date);
+
+	Order order= Order(user.getAddressId(), weight, date);
 
 	/*
 	 * Adicionar a Order a um truck e ao File das delivery
+	 *
 	 */
+	ofstream delfile;
+	delfile.open("delivery.txt", ios::app);
+	delfile << user.getAddressId() << ";" << weight << ";" << date << ";" << endl;
+	delfile.close();
+
+	comp.getSupermarket().addOrderToTruck(order);
+	vector<Truck> trucks = comp.getSupermarket().getTrucks();
 }
 
-void changeName(Company& comp){
+void changeName(Company& comp,User & user){
 	string name;
 	cout << "Indique o novo Nome para a conta" << endl;
 	getline(cin, name);
+
+	user.setName(name);
 	/**
 	 * Modificar o nome do cliente no User e no FIle
 	 */
 }
-void changeAddress(Company& comp){
+void changeAddress(Company& comp, User& user){
 	string name;
 	cout << "Indique a nova Morada(id) para a conta" << endl;
 	getline(cin, name);
+
+	user.setAddressId(stoi(name));
+
 	/**
 	 * Modificar a morado do cliente e no File E VERIFICAR SE E VALIDA
 	 */
+
 }
 
-void changeAccount(Company& comp){
+void changeAccount(Company& comp,User & user){
 	int option = 0;
 	string ss;
 	while (option != 3) {
@@ -55,10 +71,10 @@ void changeAccount(Company& comp){
 
 		switch (option) {
 		case 1:
-			changeName(comp);
+			changeName(comp,user);
 			break;
 		case 2:
-			changeAddress(comp);
+			changeAddress(comp,user);
 			break;
 		default:
 			break;
@@ -68,13 +84,27 @@ void changeAccount(Company& comp){
 
 }
 
-void eliminateAccount(Company comp){
+void eliminateAccount(Company comp, User u){
 	/*
 	 * Eliminar User from User and File
 	 */
+	vector<User>& users =comp.getSupermarket().getUsers();
+	for (unsigned int i =0; i<users.size(); i++){
+			cout << "name " << users[i].getName() << " nif "  << users[i].getNif() << endl;
+		}
+
+	for (unsigned int i =0; i<users.size(); i++){
+		if (users[i].getNif()==u.getNif()){
+			users.erase(users.begin()+i);
+		}
+	}
+
+	for (unsigned int i =0; i<users.size(); i++){
+		cout << "name " << users[i].getName() << " nif "  << users[i].getNif() << endl;
+	}
 }
 
-void areaCliente(Company& comp){
+void areaCliente(Company& comp, User& user){
 	int option = 0;
 	string ss;
 	while (option != 4) {
@@ -91,13 +121,13 @@ void areaCliente(Company& comp){
 
 		switch (option) {
 		case 1:
-			newDelivery(comp);
+			newDelivery(comp,user);
 			break;
 		case 2:
-			changeAccount(comp);
+			changeAccount(comp,user);
 			break;
 		case 3:
-			eliminateAccount(comp);
+			eliminateAccount(comp,user);
 			break;
 		default:
 			break;
@@ -109,6 +139,7 @@ void areaCliente(Company& comp){
 
 void Login(Company &comp){
 	int option = 0;
+	bool existe = false;
 	int nif;
 	string ss;
 	cout << "Bem-vindo a tab do Login!" << endl;
@@ -117,12 +148,24 @@ void Login(Company &comp){
 	getline(cin,ss);
 	nif = stoi(ss);
 
+	User user = comp.getSupermarket().findUserFromNif(nif);
+
+	if (user.getNif()==0){
+		cout<<" Não se encontra registado! Por favor, efetue o registo!"<< endl;
+	}
+	else
+	{
+		areaCliente(comp,user);
+	}
+
+
+
 	/*
 	 * PROCURAR CLIENTE NO FILE DE CLIENTES
 	 */
 	system("cls");
 
-	areaCliente(comp);
+
 }
 void newCliente(Company &comp) {
 	string name, date,temp;
@@ -137,22 +180,22 @@ void newCliente(Company &comp) {
 	getline(cin,temp);
 	id = stoi(temp);
 
-	bool exists = comp.getSupermarket().findUserFromNif(nif);
-
+	bool exists =false;
+	User user = comp.getSupermarket().findUserFromNif(nif);
+	if(user.getNif() != 0)
+		exists = true;
 
 
 	if(!exists){
 		ofstream usersFile;
-		usersFile.open("users.txt");
-		usersFile << name << ";" << nif << ";" << id<< ";";
-		/**
-		 * ADICIONAR O CLIENTE AO FILE
-		 */
+		usersFile.open("users.txt", ios::app);
+		usersFile << name << ";" << nif << ";" << id<< ";" << endl;
 		usersFile.close();
+		User user = User(name,nif,id);
+		comp.getSupermarket().addUser(user);
 	}else{
 		cout << "This user already exists!" << endl;
 	}
-	//Adicionar a order a company.
 }
 void Clientes(Company& comp){
 	int option = 0;
@@ -325,6 +368,8 @@ int main() {
 	//comp.distribution();
 	//cout << "Distribuition of orders done" << endl;
 	interfUser(comp);
+
+	//Save To file
 	getchar();
 	return 0;
 }

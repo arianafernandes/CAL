@@ -5,7 +5,7 @@
 Supermarket::Supermarket() {
 }
 
-vector<User> Supermarket::getUsers() const {
+vector<User>& Supermarket::getUsers() {
 	return users;
 }
 
@@ -51,11 +51,12 @@ bool Supermarket::addOrderToTruck(Order o) {
 
 }
 
-bool Supermarket::findUserFromNif(int nif){
+User& Supermarket::findUserFromNif(int nif){
+	User u = User(" ", 0, 0);
 	for(unsigned int i=0; i < this->users.size();i++){
 		if(nif == this->users[i].getNif())
-			return true;
+			return this->users[i];
 	}
-	return false;
+	return u;
 }
 
