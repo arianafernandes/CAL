@@ -305,6 +305,11 @@ void interfUser(Company& comp) {
 	}
 }
 
+void printUsers(vector<User> users){
+	for(unsigned int i = 0; i < users.size(); i++){
+		cout << "name "  << users[i].getName()  << " nif " << users[i].getNif() << " address " << users[i].getAddressId() << endl;
+	}
+}
 int main() {
 	Company comp = Company(137309415);
 	comp.readMaps();
@@ -316,7 +321,8 @@ int main() {
 	//cout << "Read users done" << endl;
 	//comp.distribution();
 	//cout << "Distribuition of orders done" << endl;
-	interfUser(comp);
+	//interfUser(comp);
+	printUsers(comp.getSupermarket().getUsers());
 	getchar();
 	return 0;
 }

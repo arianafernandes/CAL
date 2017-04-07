@@ -160,6 +160,8 @@ public:
 
 
 	boolean checkDistToSupermarket(Vertex<Info>* dest, Truck truck);
+
+	Supermarket getSupermarket() const;
 };
 
 #endif /* SRC_COMPANY_H_ */

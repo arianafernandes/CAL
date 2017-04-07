@@ -26,7 +26,7 @@ public:
 	/**
 	 * @brief Default constructor.
 	 */
-	User();
+	User(string name,int nif,int orderId);
 
 	/**
 	 *

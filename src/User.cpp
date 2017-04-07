@@ -8,12 +8,10 @@
 #include "User.h"
 using namespace std;
 
-User::User() {
-	string name = "";
-	int nif = 0;
-	int orderId = 0;
-	int capacity = 0;
-	string date = "";
+User::User(string name,int nif,int addressId) {
+	this->name = name;
+	this->nif = nif;
+	this->addressId = addressId;
 }
 
 const string& User::getName() const {
@@ -32,10 +30,10 @@ void User::setNif(int nif) {
 	this->nif = nif;
 }
 
-int User::getOrderId() const {
-	return orderId;
+int User::getAddressId() const {
+	return this->addressId;
 }
 
-void User::setOrderId(int orderId) {
-	this->orderId = orderId;
+void User::setAddressId(int addressId) {
+	this->addressId = addressId;
 }

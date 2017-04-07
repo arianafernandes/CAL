@@ -356,6 +356,7 @@ void Company::readUsers(){
 
 		stringstream linestream(line);
 		string data;
+		getline(linestream, data, ';');
 		linestream >> name;
 		getline(linestream, data, ';');
 		linestream >> nif;
@@ -367,6 +368,7 @@ void Company::readUsers(){
 
 	}
 }
+
 
 void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest){
 	vector<Info> temp = graph.getPath(source->getInfo(),dest->getInfo());
@@ -506,5 +508,10 @@ void Company::distribution(){
 
 	gv->setVertexIcon(this->supermarket,"super2.png");
 
+}
+
+
+Supermarket Company::getSupermarket() const{
+	return this->super;
 }
 
