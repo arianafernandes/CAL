@@ -20,10 +20,7 @@ private:
 
 public:
 
-	/**
-	 * @brief Default constructor.
-	 */
-	Order();
+	Order(int id,int weight,string date);
 
 	/**
 	 *

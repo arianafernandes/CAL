@@ -5,10 +5,10 @@
 
 #include "Order.h"
 
-Order::Order() {
-	id = 0;
-	weight = 0;
-	date = "";
+Order::Order(int id,int weight,string date) {
+	this->id = id;
+	this->weight = weight;
+	this->date = date;
 	this->delivery = false;
 }
 

@@ -70,6 +70,8 @@ public:
 	 */
 	bool addOrderToTruck(Order o);
 
+	User findUserFromNif(int nif);
+
 };
 
 #endif /* SRC_SUPERMARKET_H_ */

@@ -19,40 +19,14 @@ using namespace std;
 class User {
 private:
 	string name;
-	double nif;
-	double orderId;
-	double capacity;
-	string date;
+	int nif;
+	int addressId;
 public:
 
 	/**
 	 * @brief Default constructor.
 	 */
 	User();
-
-	/**
-	 *
-	 * @return User order capacity
-	 */
-	int getCapacity() const;
-
-	/**
-	 *
-	 * @param capacity User capacity
-	 */
-	void setCapacity(int capacity);
-
-	/**
-	 *
-	 * @return User order date.
-	 */
-	const string& getDate() const;
-
-	/**
-	 *
-	 * @param date User order date.
-	 */
-	void setDate(const string& date);
 
 	/**
 	 *
@@ -80,15 +54,15 @@ public:
 
 	/**
 	 *
-	 * @return User order id.
+	 * @return User address id.
 	 */
-	int getOrderId() const;
+	int getAddressId() const;
 
 	/**
 	 *
 	 * @param orderId User order Id.
 	 */
-	void setOrderId(int orderId);
+	void setAddressId(int addressId);
 };
 
 #endif /* SRC_USER_H_ */

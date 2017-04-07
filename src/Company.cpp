@@ -1,8 +1,6 @@
 /*
  * Files.cpp
  *
- *  Created on: 01/04/2017
- *      Author: Asus
  */
 
 #include "Company.h"
@@ -44,7 +42,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-																																																					+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+																																																									+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -299,10 +297,7 @@ void Company::readDeliveries() {
 		getline(linestream, data, ';');
 		linestream >> date;
 
-		Order tempOrder = Order();
-		tempOrder.setId(orderId);
-		tempOrder.setWeight(capacity);
-		tempOrder.setDate(date);
+		Order tempOrder = Order(orderId,capacity,date);
 		super.addOrderToTruck(tempOrder);
 
 	}
@@ -340,6 +335,37 @@ void Company::readDeliveries() {
 
 	maps.close();
 
+}
+
+void Company::readUsers(){
+	ifstream maps;
+
+	maps.open("users.txt");
+
+	if (!maps) {
+		cerr << "Unable to open file users.txt";
+		return;
+	}
+
+	string line;
+
+	while (getline(maps, line)) {
+		string name;
+		int nif;
+		int orderId;
+
+		stringstream linestream(line);
+		string data;
+		linestream >> name;
+		getline(linestream, data, ';');
+		linestream >> nif;
+		getline(linestream, data, ';');
+		linestream >> orderId;
+
+		User tempUser = User(name,nif,orderId);
+		super.addUser(tempUser);
+
+	}
 }
 
 void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest){
@@ -467,7 +493,7 @@ void Company::distribution(){
 		dest = graph.getVertexId(nextPosition);
 		//calcula a distancia total do caminho e se é possivel voltar para o supermercado
 		if(checkDistToSupermarket(dest,truck) == false)
-				break;
+			break;
 		truck.incDist(dest->getDist());
 		cout << "distance " << truck.getTravelledDist() << endl;
 		paintRoad(source,dest);

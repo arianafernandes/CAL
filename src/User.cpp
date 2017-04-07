@@ -15,21 +15,6 @@ User::User() {
 	int capacity = 0;
 	string date = "";
 }
-int User::getCapacity() const {
-	return capacity;
-}
-
-void User::setCapacity(int capacity) {
-	this->capacity = capacity;
-}
-
-const string& User::getDate() const {
-	return date;
-}
-
-void User::setDate(const string& date) {
-	this->date = date;
-}
 
 const string& User::getName() const {
 	return name;

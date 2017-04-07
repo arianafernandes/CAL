@@ -78,6 +78,8 @@ public:
 	 */
 	void readDeliveries();
 
+	void readUsers();
+
 	/**
 	 * @brief Creates the graph viewer.
 	 *

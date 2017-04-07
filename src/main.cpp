@@ -36,7 +36,7 @@ void changeAddress(Company& comp){
 	cout << "Indique a nova Morada(id) para a conta" << endl;
 	getline(cin, name);
 	/**
-	 * Modificar a morado do cliente e no File
+	 * Modificar a morado do cliente e no File E VERIFICAR SE E VALIDA
 	 */
 }
 
@@ -136,6 +136,7 @@ void newCliente(Company &comp) {
 	cout << "O id da sua morada:" << endl;
 	getline(cin,temp);
 	id = stoi(temp);
+	//VERIFICAR SE EXISTE
 
 	/**
 	 * ADICIONAR O CLIENTE AO FILE
@@ -308,9 +309,10 @@ int main() {
 	Company comp = Company(137309415);
 	comp.readMaps();
 	//cout << "Read maps done" << endl;
-	comp.createGraphViewer();
+	//comp.createGraphViewer();
 	//cout << "Create graphviewer done" << endl;
 	comp.readDeliveries();
+	comp.readUsers();
 	//cout << "Read users done" << endl;
 	//comp.distribution();
 	//cout << "Distribuition of orders done" << endl;
