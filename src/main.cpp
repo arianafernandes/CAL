@@ -6,6 +6,15 @@
 #include <cmath>
 
 #include "Company.h"
+#include "Auxi.h"
+
+bool testInputNif(Company &comp, string nif){
+	if(nif.size()==0)
+		return false;
+	if(!isNOTNumber(nif))
+		return false;
+	return true;
+}
 
 void newDelivery(Company &comp, User& user){
 	string temp,date;
@@ -145,7 +154,9 @@ void Login(Company &comp){
 	do{
 		cout << "Introduza o seu nif" << endl;
 		getline(cin,ss);
-	}while(ss.size()==0);
+		cout << "nif: "<< nif;                            ////////////////////////////
+	}while(testInputNif(comp,ss));
+
 	nif = stoi(ss);
 
 	User user = comp.getSupermarket().findUserFromNif(nif);
@@ -163,26 +174,37 @@ void Login(Company &comp){
 	/*
 	 * PROCURAR CLIENTE NO FILE DE CLIENTES
 	 */
-
-
 }
+
+bool testInputName(Company &comp, string name){
+	if(name.size()==0)
+		return false;
+	if(!isNumber(name))
+		return false;
+	return true;
+}
+
+
+
 bool newCliente(Company &comp) {
 	string name,temp;
 	int nif,id;
 	cout << "Indique por favor:" << endl;
-	cout << "O seu nome" << endl;
+
 	do{
+		cout << "O seu nome" << endl;
 		getline(cin,name);
-	}while(name.size()==0);
+	}while(testInputName(comp, name));
+
 	do{
 		cout << "O seu nif:" << endl;
 		getline(cin,temp);
-	}while(temp.size()==0);
+	}while(testInputNif(comp,temp));
 	nif = stoi(temp);
 	do{
 		cout << "O id da sua morada:" << endl;
 		getline(cin,temp);
-	}while(temp.size()==0);
+	}while(testInputNif(comp,temp));
 	id = stoi(temp);
 
 	if(comp.getSupermarket().userExists(nif)){
