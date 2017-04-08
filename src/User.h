@@ -64,6 +64,8 @@ public:
 	 */
 	void setAddressId(int addressId);
 
+	void viewProfile();
+
 };
 
 #endif /* SRC_USER_H_ */

@@ -98,13 +98,14 @@ void eliminateAccount(Company comp, User u){
 void areaCliente(Company& comp, User& user){
 	int option = 0;
 	string ss;
-	while (option != 4) {
-		cout << "Bem-vindo a tab dos Clientes!" << endl;
+	while (option != 5) {
+		cout << "Bem-vindo a tab dos Clientes, "<<user.getNif()<< "!" << endl;
 
 		cout << "1 - Realizar uma encomenda" << endl
 				<< "2 - Modificar Conta" << endl
 				<< "3- Eliminar Conta" << endl
-				<< "4- Sair" << endl;
+				<< "4 - Ver perfil" << endl
+				<< "5- Sair" << endl;
 
 		getline(cin,ss);
 		option = stoi(ss);
@@ -120,6 +121,8 @@ void areaCliente(Company& comp, User& user){
 		case 3:
 			eliminateAccount(comp,user);
 			break;
+		case 4:
+			user.viewProfile();
 		default:
 			break;
 		}
@@ -129,8 +132,6 @@ void areaCliente(Company& comp, User& user){
 }
 
 void Login(Company &comp){
-	int option = 0;
-	bool existe = false;
 	int nif;
 	string ss;
 	cout << "Bem-vindo a tab do Login!" << endl;
@@ -158,9 +159,9 @@ void Login(Company &comp){
 
 
 }
-void newCliente(Company &comp) {
-	string name, date,temp;
-	int nif, id, weight;
+bool newCliente(Company &comp) {
+	string name,temp;
+	int nif,id;
 	cout << "Indique por favor:" << endl;
 	cout << "O seu nome" << endl;
 	getline(cin,name);
@@ -171,16 +172,13 @@ void newCliente(Company &comp) {
 	getline(cin,temp);
 	id = stoi(temp);
 
-	bool exists =false;
-	User user = comp.getSupermarket().findUserFromNif(nif);
-	if(user.getNif() != 0)
-		exists = true;
-
-
-	if(!exists){
+	if(comp.getSupermarket().userExists(nif)){
+		cout << "Ja se encontra registado!" << endl;
+		return false;
+	} else{
+		User user = User(name,nif,id);
 		comp.getSupermarket().addUser(user);
-	}else{
-		cout << "This user already exists!" << endl;
+		return true;
 	}
 }
 void Clientes(Company& comp){
@@ -221,14 +219,11 @@ void watchDistribuition(Company &comp){
 	string id;
 
 	comp.getSupermarket().printAllTrucks();
-	cout << "Indique, por favor, o id do camiao!"<< endl;
-	getline(cin,id);
+	do{
+		cout << "Indique, por favor, o id do camiao!"<< endl;
+		getline(cin,id);
+	}while((unsigned int) stoi(id) >= comp.getSupermarket().getTrucks().size() && (unsigned int)stoi(id) >= 0);
 
-	/**
-	 * Mostrar todos os camioes
-	 * Selecionar um camiao
-	 * E depois mostrar as datas e escolher uma data
-	 */
 
 	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
 	comp.createGraphViewer();
@@ -260,7 +255,7 @@ void changeCapacity(Company& comp){
 		getline(cin,id);
 		cout << "Indique a capacidade maxima" << endl;
 		getline(cin,cap);
-	}while(!comp.getSupermarket().setCapacityToTruck(stoi(cap),stoi(id)));
+	}while(!comp.getSupermarket().setCapacityToTruck(stoi(cap),stoi(id)) && (unsigned int)stoi(id) >= comp.getSupermarket().getTrucks().size() && (unsigned int)stoi(id) >= 0);
 }
 
 void changeMaxDist(Company& comp){
@@ -271,7 +266,7 @@ void changeMaxDist(Company& comp){
 		getline(cin,id);
 		cout << "Indique a distancia maxima" << endl;
 		getline(cin,cap);
-	}while(!comp.getSupermarket().setDistanceToTruck(stoi(cap),stoi(id)));
+	}while(!comp.getSupermarket().setCapacityToTruck(stoi(cap),stoi(id)) && (unsigned int)stoi(id) >= comp.getSupermarket().getTrucks().size() && (unsigned int)stoi(id) >= 0);
 }
 
 void changeTrucks(Company &comp){

@@ -230,8 +230,6 @@ void Company::createGraphViewer() {
 	int xmin = (log((1 + sin(minLat)) / (1 - sin(minLat))) / (4 * M_PI)) * r;
 	int ymax = (maxLong / M_PI) * r;
 	int xmax = (log((1 + sin(maxLat)) / (1 - sin(maxLat))) / (4 * M_PI)) * r;
-	cout << "xmin: " << xmin << " xmax: " << xmax << " ymin: " << ymin
-			<< " ymax: " << ymax << endl;
 
 	int id;
 
@@ -283,7 +281,6 @@ void Company::readDeliveries() {
 
 	while (getline(maps, line)) {
 		string name;
-		int nif;
 		int orderId;
 		int capacity;
 		string date;
@@ -480,25 +477,20 @@ void Company::distribution(int id){
 	Vertex<Info>* dest;
 	int currentPosition;
 	int supermarket = this->getSupermarket().getIdSuper();
-	cout << "nextPosition " << supermarket << endl;
 	currentPosition = supermarket;
 	Truck truck = super.getTrucks()[id];
 	vector<Order> orders = truck.getOrders();
 	while(true){
 		source = graph.getVertexId(currentPosition);
 		nextPosition = getNextDelivery(orders,currentPosition);
-		cout << "nextPosition " << nextPosition << endl;
 		if(nextPosition == -1){
-			cout << "NEXTPOSITION -1" << endl;
 			break;
 		}
-		cout << "nextPosition " << nextPosition << endl;
 		dest = graph.getVertexId(nextPosition);
 		//calcula a distancia total do caminho e se é possivel voltar para o supermercado
 		if(checkDistToSupermarket(dest,truck) == false)
 			break;
 		truck.incDist(dest->getDist());
-		cout << "distance " << truck.getTravelledDist() << endl;
 		paintRoad(source,dest);
 		currentPosition = nextPosition;
 	}

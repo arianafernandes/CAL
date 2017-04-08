@@ -53,12 +53,20 @@ bool Supermarket::addOrderToTruck(Order o) {
 }
 
 User& Supermarket::findUserFromNif(int nif){
-	User u = User(" ", 0, 0);
 	for(unsigned int i=0; i < this->users.size();i++){
 		if(nif == this->users[i].getNif())
 			return this->users[i];
 	}
-	return u;
+	User user =  User(" ",0,0);
+	return user;
+}
+
+bool Supermarket::userExists(int nif){
+	for(unsigned int i=0; i < this->users.size();i++){
+			if(nif == this->users[i].getNif())
+				return true;
+		}
+	return false;
 }
 
 void Supermarket::setName(string name){
@@ -87,7 +95,7 @@ void Supermarket::printAllTrucks() const{
 
 
 bool Supermarket::setCapacityToTruck(int capacity,int id){
-	if(id >= this->trucks.size()){
+	if((unsigned int)id >= this->trucks.size()){
 		cout << "O camiao não existe" << endl;
 		return false;
 	}
@@ -95,7 +103,7 @@ bool Supermarket::setCapacityToTruck(int capacity,int id){
 	return true;
 }
 bool Supermarket::setDistanceToTruck(int dist,int id){
-	if(id >= this->trucks.size()){
+	if((unsigned int)id >= this->trucks.size()){
 		cout << "O camiao não existe" << endl;
 		return false;
 	}

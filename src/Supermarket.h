@@ -86,6 +86,7 @@ public:
 	bool setDistanceToTruck(int dist,int id);
 
 	void displayOrdersFromTruck(int id) const;
+	bool userExists(int nif);
 };
 
 #endif /* SRC_SUPERMARKET_H_ */
