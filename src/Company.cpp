@@ -190,21 +190,10 @@ void Company::readMaps() {
 			graph.addEdge(dest, source, w,idAresta);
 		}
 
-		/*cout << "source: " << source.getId() << "| " << source.getDlat()
-		 << "| " << source.getDlon() << "| " << source.getRlon()
-		 << "| " << source.getRlat() << endl;
-		 cout << "dest: " << dest.getId() << "| " << dest.getDlat() << "| "
-		 << dest.getDlon() << "| " << dest.getRlon() << "| "
-		 << dest.getRlat() << endl;
-		 cout << "weight: " << w << endl;*/
-
 		idAresta++;
 	}
 
 	maps.close();
-
-	//supermarket.floydWarshallShortestPath();
-	//gv->rearrange();
 }
 
 void Company::createGraphViewer() {
@@ -218,7 +207,6 @@ void Company::createGraphViewer() {
 	gv->defineEdgeColor("blue");
 	gv->defineVertexColor("yellow");
 
-	//gv->setBackground("background.png");
 
 	double minLong = Graph<Info>::minLong - 2 * M_PI;
 	double minLat = Graph<Info>::minLat - 2 * M_PI;
@@ -298,37 +286,6 @@ void Company::readDeliveries() {
 		super.addOrderToTruck(tempOrder);
 
 	}
-
-	/*
-	for (unsigned int i = 0; i < super.getUsers().size(); i++) {
-		cout << " User Name: " << super.getUsers().at(i).getName()
-							 << " User Nif: " << super.getUsers().at(i).getNif()
-							 << " User Order Id: " << super.getUsers().at(i).getOrderId()
-							 << " User Capacity: " << super.getUsers().at(i).getCapacity()
-							 << " User Date: " << super.getUsers().at(i).getDate() << endl;
-	}
-	for (unsigned int i = 0; i < super.getOrders().size(); i++) {
-
-		cout << " Order ID: " << super.getOrders().at(i).getId()
-							 << " Order Weight: " << super.getOrders().at(i).getWeight()
-							 << endl;
-
-	}
-	for (unsigned int i = 0; i < super.getTrucks().size(); i++) {
-		cout << "id Truck " << i << endl;
-		for (unsigned int j = 0; j < super.getTrucks().at(i).getOrders().size(); j++) {
-			cout << "truck order id: "
-					<< super.getTrucks().at(i).getOrders().at(j).getId() << endl
-					<< " truck order weight : "
-					<< super.getTrucks().at(i).getOrders().at(j).getWeight()
-					<< endl << " truck order date: "
-					<< super.getTrucks().at(i).getOrders().at(j).getDate()
-					<< endl << " truck date: "
-					<< super.getTrucks().at(i).getDate() << endl
-					<< " truck weight : " << super.getTrucks().at(i).getWeight()
-					<< endl;
-		}
-	}*/
 
 	maps.close();
 
@@ -410,13 +367,8 @@ int Company::getNextDelivery(vector<Order> &orders,int currentPosition){
 		orders[min].setDelivery(true);
 	return id;
 }
-/*
-void printAjs(Vertex<Info>* no){
-	for(unsigned int i = 0; i < no->getAdj().size(); i++){
-		cout << "weight "
-	no->getAdj()[i].getWeight()
-	}
-}*/
+
+
 vector<Order> Company::eliminateFromOrders(vector<Order> orders, int currentPosition){
 	vector<Order> temp;
 	if(currentPosition != this->getSupermarket().getIdSuper()){
@@ -458,7 +410,6 @@ void Company::returnToSupermarket(int currentPosition,int idSupermarket){
 	Vertex<Info>* source = graph.getVertexId(currentPosition);
 	Vertex<Info>* dest = graph.getVertexId(idSupermarket);
 	graph.dijkstraShortestPath(source->getInfo());
-
 
 	vector<Info> temp = graph.getPath(source->getInfo(),dest->getInfo());
 	for(unsigned int i = 0; i < temp.size()-1; i++){

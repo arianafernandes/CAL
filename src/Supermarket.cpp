@@ -32,14 +32,9 @@ bool Supermarket::addOrderToTruck(Order o) {
 		Supermarket::addTruck(t);
 		return true;
 	}
-	//cout << "trucks size: " << trucks.size() << endl;
 	for (unsigned int i = 0; i < trucks.size(); i++) {
-		//cout << "Truck date: " << trucks.at(i).getDate() << endl;
-		//cout << "Order date: " << o.getDate() << endl;
 		if (trucks.at(i).getDate() == o.getDate()) {
-			//cout << "cheguei aqui1" << endl;
 			if (trucks.at(i).addOrder(o) == true) {
-				//cout << "cheguei aqui2" << endl;
 				return true;
 			}
 		}
