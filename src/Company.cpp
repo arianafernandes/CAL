@@ -15,6 +15,7 @@ using namespace std;
 #define M_PI 3.14159265359
 
 Company::Company(int id){
+	this->super.setIdSuper(id);
 	this->colorDelivery = "green";
 }
 string Company::getColorDelivery() const{
@@ -41,7 +42,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-																																																															+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+																																																																	+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -265,7 +266,6 @@ void Company::createGraphViewer() {
 		}
 	}
 
-
 	gv->rearrange();
 
 }
@@ -474,25 +474,25 @@ void Company::returnToSupermarket(int currentPosition,int idSupermarket){
 	}
 }
 
-void Company::distribution(){
-
+void Company::distribution(int id){
 	int nextPosition;
 	Vertex<Info>* source;
 	Vertex<Info>* dest;
 	int currentPosition;
 	int supermarket = this->getSupermarket().getIdSuper();
-	//for(unsigned int i = 0; i < super.getTrucks().size(); i++){
+	cout << "nextPosition " << supermarket << endl;
 	currentPosition = supermarket;
-	Truck truck = super.getTrucks()[0];
+	Truck truck = super.getTrucks()[id];
 	vector<Order> orders = truck.getOrders();
-	cout << "max dist " << truck.getMaxdist() << endl;
 	while(true){
 		source = graph.getVertexId(currentPosition);
 		nextPosition = getNextDelivery(orders,currentPosition);
+		cout << "nextPosition " << nextPosition << endl;
 		if(nextPosition == -1){
 			cout << "NEXTPOSITION -1" << endl;
 			break;
 		}
+		cout << "nextPosition " << nextPosition << endl;
 		dest = graph.getVertexId(nextPosition);
 		//calcula a distancia total do caminho e se é possivel voltar para o supermercado
 		if(checkDistToSupermarket(dest,truck) == false)
@@ -500,12 +500,10 @@ void Company::distribution(){
 		truck.incDist(dest->getDist());
 		cout << "distance " << truck.getTravelledDist() << endl;
 		paintRoad(source,dest);
-		//orders = eliminateFromOrders(orders, currentPosition);
 		currentPosition = nextPosition;
 	}
 	returnToSupermarket(currentPosition,supermarket);
-	paintDeliveries(super.getTrucks()[0].getOrders());
-	//	}
+	paintDeliveries(super.getTrucks()[id].getOrders());
 
 	gv->setVertexIcon(supermarket,"super2.png");
 

@@ -245,6 +245,8 @@ void watchDistribuition(Company &comp){
 	 */
 
 	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
+	comp.createGraphViewer();
+	comp.distribution(stoi(id));
 
 }
 
@@ -379,12 +381,10 @@ int main() {
 	Company comp = Company(137309415);
 	comp.readMaps();
 	//cout << "Read maps done" << endl;
-	//comp.createGraphViewer();
 	//cout << "Create graphviewer done" << endl;
 	comp.readDeliveries();
 	comp.readUsers();
 	//cout << "Read users done" << endl;
-	//comp.distribution();
 	//cout << "Distribuition of orders done" << endl;
 	interfUser(comp);
 

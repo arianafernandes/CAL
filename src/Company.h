@@ -89,7 +89,7 @@ public:
 	 * @brief Distribution and shipping of the orders to the trucks and users.
 	 *
 	 */
-	void distribution();
+	void distribution(int id);
 
 	/**
 	 * @brief Coloring the edge(road) from vertex source to vertex dest.
