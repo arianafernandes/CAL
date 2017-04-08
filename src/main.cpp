@@ -224,7 +224,6 @@ void watchDistribuition(Company &comp){
 		getline(cin,id);
 	}while((unsigned int) stoi(id) >= comp.getSupermarket().getTrucks().size() && (unsigned int)stoi(id) >= 0);
 
-
 	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
 	comp.createGraphViewer();
 	comp.distribution(stoi(id));
@@ -297,7 +296,6 @@ void changeTrucks(Company &comp){
 }
 
 void adminSuper(Company& comp){
-
 	int option = 0;
 	string ss;
 	while (option != 4) {
@@ -327,9 +325,6 @@ void adminSuper(Company& comp){
 }
 
 void interfUser(Company& comp) {
-	//cout << "Read users done" << endl;
-	//comp.distribution();
-	//cout << "Distribuition of orders done" << endl;
 	int option = 0;
 	string ss;
 	while (option != 4) {
@@ -396,3 +391,6 @@ int main() {
 	getchar();
 	return 0;
 }
+/*
+ * verificar se os ficheiros sao abertos
+ */
