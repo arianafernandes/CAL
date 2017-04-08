@@ -228,6 +228,15 @@ void Clientes(Company& comp){
 	}
 }
 
+bool checkDistribution(string id,Company comp){
+	if(id.size()==0)
+		return false;
+	if((unsigned int) stoi(id) < comp.getSupermarket().getTrucks().size())
+		if((unsigned int)stoi(id) >= 0)
+			return true;
+
+	return false;
+}
 
 
 void watchDistribuition(Company &comp){
@@ -238,7 +247,7 @@ void watchDistribuition(Company &comp){
 	do{
 		cout << "Indique, por favor, o id do camiao!"<< endl;
 		getline(cin,id);
-	}while(((unsigned int) stoi(id) >= comp.getSupermarket().getTrucks().size() && (unsigned int)stoi(id) >= 0));
+	}while(!checkDistribution(id,comp));
 
 	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
 	comp.createGraphViewer();
