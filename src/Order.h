@@ -8,6 +8,7 @@
 #ifndef SRC_ORDER_H_
 #define SRC_ORDER_H_
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -61,6 +62,7 @@ public:
 
 	void setDelivery(bool d);
 	bool getDelivery() const;
+	friend ostream & operator<<(ostream &os, const Order& order);
 };
 
 #endif /* SRC_ORDER_H_ */

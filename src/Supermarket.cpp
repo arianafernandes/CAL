@@ -3,6 +3,7 @@
 #define RTerra 6371
 
 Supermarket::Supermarket() {
+	this->name = "Super Preços Baixos";
 }
 
 vector<User>& Supermarket::getUsers() {
@@ -60,3 +61,49 @@ User& Supermarket::findUserFromNif(int nif){
 	return u;
 }
 
+void Supermarket::setName(string name){
+	this->name=name;
+}
+string Supermarket::getName() const{
+	return this->name;
+}
+
+void Supermarket::setIdSuper(int id){
+	this->idSuper=id;
+}
+int Supermarket::getIdSuper() const{
+	return this->idSuper;
+}
+
+void Supermarket::printAllTrucks() const{
+	for (unsigned int i = 0; i < trucks.size(); i++) {
+		cout << "id Truck " << i << endl;
+		cout << " truck date: " << trucks.at(i).getDate() << endl
+				<< " truck capacity max: " << trucks.at(i).getCapacity()<< endl
+				<< " truck max distance: " << trucks.at(i).getMaxdist()
+				<< endl<<endl;
+	}
+}
+
+
+bool Supermarket::setCapacityToTruck(int capacity,int id){
+	if(id >= this->trucks.size()){
+		cout << "O camiao não existe" << endl;
+		return false;
+	}
+	this->trucks[id].setCapacity(capacity);
+	return true;
+}
+bool Supermarket::setDistanceToTruck(int dist,int id){
+	if(id >= this->trucks.size()){
+		cout << "O camiao não existe" << endl;
+		return false;
+	}
+	this->trucks[id].setMaxdist(dist);
+	return true;
+}
+void Supermarket::displayAllTrucks() const{
+	for(unsigned int i = 0; i < this->trucks.size();i++){
+		cout << this->trucks[i];
+	}
+}

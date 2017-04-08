@@ -15,7 +15,6 @@ using namespace std;
 #define M_PI 3.14159265359
 
 Company::Company(int id){
-	this->supermarket =id;
 	this->colorDelivery = "green";
 }
 string Company::getColorDelivery() const{
@@ -423,7 +422,7 @@ void printAjs(Vertex<Info>* no){
 }*/
 vector<Order> Company::eliminateFromOrders(vector<Order> orders, int currentPosition){
 	vector<Order> temp;
-	if(currentPosition != this->supermarket){
+	if(currentPosition != this->getSupermarket().getIdSuper()){
 		for(unsigned int i = 0; i < orders.size(); i++){
 			if(orders[i].getId()!=currentPosition)
 				temp.push_back(orders[i]);
@@ -438,7 +437,7 @@ vector<Order> Company::eliminateFromOrders(vector<Order> orders, int currentPosi
 boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck){
 	double dist = source->getDist();
 	int id = source->getInfo().getId();
-	Vertex<Info> *superm = graph.getVertexId(this->supermarket);
+	Vertex<Info> *superm = graph.getVertexId(this->getSupermarket().getIdSuper());
 	graph.dijkstraShortestPath(superm->getInfo());
 	Vertex<Info>* dest = graph.getVertexId(id);
 	if(truck.getTravelledDist() + dist + dest->getDist() > truck.getMaxdist())
@@ -448,7 +447,7 @@ boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck){
 }
 
 void Company::printOrders(vector<Order>orders){
-	Vertex<Info> *superm = graph.getVertexId(this->supermarket);
+	Vertex<Info> *superm = graph.getVertexId(this->getSupermarket().getIdSuper());
 	graph.dijkstraShortestPath(superm->getInfo());
 	for(unsigned int i=0; i < orders.size();i++){
 		cout << "id " << orders[i].getId() << endl;
@@ -481,8 +480,9 @@ void Company::distribution(){
 	Vertex<Info>* source;
 	Vertex<Info>* dest;
 	int currentPosition;
+	int supermarket = this->getSupermarket().getIdSuper();
 	//for(unsigned int i = 0; i < super.getTrucks().size(); i++){
-	currentPosition = this->supermarket;
+	currentPosition = supermarket;
 	Truck truck = super.getTrucks()[0];
 	vector<Order> orders = truck.getOrders();
 	cout << "max dist " << truck.getMaxdist() << endl;
@@ -503,11 +503,11 @@ void Company::distribution(){
 		//orders = eliminateFromOrders(orders, currentPosition);
 		currentPosition = nextPosition;
 	}
-	returnToSupermarket(currentPosition,this->supermarket);
+	returnToSupermarket(currentPosition,supermarket);
 	paintDeliveries(super.getTrucks()[0].getOrders());
 	//	}
 
-	gv->setVertexIcon(this->supermarket,"super2.png");
+	gv->setVertexIcon(supermarket,"super2.png");
 
 }
 
@@ -515,4 +515,5 @@ void Company::distribution(){
 Supermarket& Company::getSupermarket(){
 	return this->super;
 }
+
 

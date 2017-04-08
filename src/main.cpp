@@ -90,8 +90,8 @@ void eliminateAccount(Company comp, User u){
 	 */
 	vector<User>& users =comp.getSupermarket().getUsers();
 	for (unsigned int i =0; i<users.size(); i++){
-			cout << "name " << users[i].getName() << " nif "  << users[i].getNif() << endl;
-		}
+		cout << "name " << users[i].getName() << " nif "  << users[i].getNif() << endl;
+	}
 
 	for (unsigned int i =0; i<users.size(); i++){
 		if (users[i].getNif()==u.getNif()){
@@ -235,6 +235,7 @@ void watchDistribuition(Company &comp){
 	int id;
 	string data;
 
+	comp.getSupermarket().displayAllTrucks();
 	/**
 	 * Mostrar todos os camioes
 	 * Selecionar um camiao
@@ -249,25 +250,40 @@ void changeNameSuper(Company &comp){
 	cout << "Indique o novo nome do Supermercado" << endl;
 	getline(cin, name);
 
-	/**
-	 * Modificar o nome do supermercado
-	 */
+	comp.getSupermarket().setName(name);
 }
 void changeAddressSuper(Company &comp){
 	string name;
 	cout << "Indique a nova morada(id) do Supermercado" << endl;
 	getline(cin, name);
-	/**
-	 * Modificar o id do Supermercado
-	 */
+	comp.getSupermarket().setIdSuper(stoi(name));
+	//Verificar se o id existe
+	cout << "id super " << comp.getSupermarket().getIdSuper() << endl;
+}
+
+void changeCapacity(Company& comp){
+	string id,cap;
+	comp.getSupermarket().printAllTrucks();
+	do{
+		cout << "Indique, por favor, o id do camiao a modificar!"<< endl;
+		getline(cin,id);
+		cout << "Indique a capacidade maxima" << endl;
+		getline(cin,cap);
+	}while(!comp.getSupermarket().setCapacityToTruck(stoi(cap),stoi(id)));
+}
+
+void changeMaxDist(Company& comp){
+	string id,cap;
+	comp.getSupermarket().printAllTrucks();
+	do{
+	cout << "Indique, por favor, o id do camiao a modificar!"<< endl;
+	getline(cin,id);
+	cout << "Indique a distancia maxima" << endl;
+	getline(cin,cap);
+	}while(!comp.getSupermarket().setDistanceToTruck(stoi(cap),stoi(id)));
 }
 
 void changeTrucks(Company &comp){
-	/**
-	 * Visualizar todos os trucks e dele escolher um para depois modificar as dist e cap
-	 */
-
-
 	int option = 0;
 	string ss;
 	while (option != 3) {
@@ -281,17 +297,17 @@ void changeTrucks(Company &comp){
 		switch (option) {
 		case 1:
 			//Mudar capacidade
+			changeCapacity(comp);
 			break;
 		case 2:
 			//Mudar distancia maxima
+			changeMaxDist(comp);
 			break;
 		default:
 			break;
 		}
 		system("cls");
 	}
-
-
 }
 
 void adminSuper(Company& comp){
@@ -299,7 +315,7 @@ void adminSuper(Company& comp){
 	int option = 0;
 	string ss;
 	while (option != 4) {
-		cout << "Bem-vindo ao tab de administracao do Super Preços Baixos!!" << endl;
+		cout << "Bem-vindo ao tab de administracao do " <<comp.getSupermarket().getName() << endl;
 		cout << "1 - Mudar o Nome do Supermercado " << endl << "2 - Modificar o local do Supermercado"
 				<< endl << "3 - Modificar Camioes" << endl << "4 - Sair."
 				<< endl;

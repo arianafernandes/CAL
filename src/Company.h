@@ -23,7 +23,6 @@ class Company {
 private:
 	Graph<Info> graph;
 	GraphViewer *gv;
-	int supermarket;
 	Supermarket super;
 	string colorDelivery;
 public:

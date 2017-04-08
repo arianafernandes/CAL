@@ -96,6 +96,13 @@ bool Truck::addOrder(Order o) {
 	return false;
 }
 
+void Truck::setId(int id){
+	this->id = id;
+}
+int Truck::getId() const{
+	return this->id;
+}
+
 
 void Truck::setTravelledDist(double dist){
 	this->travelledDist = dist;
@@ -106,4 +113,12 @@ double Truck::getTravelledDist() const{
 
 void Truck::incDist(double d){
 	this->travelledDist += d;
+}
+
+
+ostream & operator<<(ostream &os, const Truck& truck){
+	for(unsigned int i= 0; i < truck.getOrders().size(); i++){
+		os << truck.getOrders()[i];
+	}
+	return os;
 }

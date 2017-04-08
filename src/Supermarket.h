@@ -28,6 +28,8 @@ class Supermarket {
 private:
 	vector<User> users;
 	vector<Truck> trucks;
+	string name;
+	int idSuper;
 
 public:
 	/**
@@ -72,6 +74,18 @@ public:
 
 	User& findUserFromNif(int nif);
 
+	void setName(string name);
+	string getName() const;
+
+	void setIdSuper(int id);
+	int getIdSuper() const;
+
+	void printAllTrucks() const;
+
+	bool setCapacityToTruck(int capacity,int id);
+	bool setDistanceToTruck(int dist,int id);
+
+	void displayAllTrucks() const;
 };
 
 #endif /* SRC_SUPERMARKET_H_ */

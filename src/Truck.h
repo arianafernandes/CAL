@@ -26,6 +26,7 @@ private:
 	double travelledDist;
 	bool isFull;
 	string date;
+	int id;
 public:
 
 	/**
@@ -127,10 +128,15 @@ public:
 	 */
 	bool addOrder(Order o);
 
+	void setId(int id);
+	int getId() const;
+
 	void setTravelledDist(double dist);
 	double getTravelledDist() const;
 
 	void incDist(double d);
+
+	friend ostream & operator<<(ostream &os, const Truck& truck);
 };
 
 #endif /* SRC_TRUCK_H_ */

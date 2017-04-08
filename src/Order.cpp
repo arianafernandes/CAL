@@ -42,3 +42,6 @@ void Order::setDelivery(bool d){
 bool Order::getDelivery() const{
 	return this->delivery;
 }
+ostream & operator<<(ostream &os, const Order& order){
+return (os << "Order id " << order.getId() << endl << "Peso da entrega " << order.getWeight() <<endl <<  "Data da entrega " << order.getDate() << endl<< endl);
+}
