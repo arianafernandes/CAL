@@ -47,10 +47,10 @@ bool Supermarket::addOrderToTruck(Order o) {
 
 }
 
-User& Supermarket::findUserFromNif(int nif){
+User Supermarket::findUserFromNif(int nif){
 	for(unsigned int i=0; i < this->users.size();i++){
 		if(nif == this->users[i].getNif())
-			return this->users[i];
+			return users[i];
 	}
 	User user =  User(" ",0,0);
 	return user;

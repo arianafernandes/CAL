@@ -72,7 +72,7 @@ public:
 	 */
 	bool addOrderToTruck(Order o);
 
-	User& findUserFromNif(int nif);
+	User findUserFromNif(int nif);
 
 	void setName(string name);
 	string getName() const;

@@ -16,6 +16,26 @@ bool testInputNif(Company &comp, string nif){
 	return true;
 }
 
+bool testInputName(Company &comp, string name){
+	if(name.size()==0)
+		return false;
+	if(!isNumber(name))
+		return false;
+	return true;
+}
+
+
+bool testDateFormat(Company comp, string data){
+	if(data.size()!=10)
+		return false;
+	if (data[2] != '/' || data[5]!=  '/')
+		return false;
+	if(!isdigit(data[0])||!isdigit(data[1]) || !isdigit(data[3]) || !isdigit(data[4]) || !isdigit(data[6]) || !isdigit(data[7]) || !isdigit(data[8]) || !isdigit(data[9]))
+		return false;
+	return true;
+
+}
+
 void newDelivery(Company &comp, User& user){
 	string temp,date;
 	int weight;
@@ -23,13 +43,13 @@ void newDelivery(Company &comp, User& user){
 	do{
 		cout << "Indique o peso da sua encomenda!" << endl;
 		getline(cin,temp);
-	}while(temp.size()==0);
+	}while(testInputNif(comp,temp));
 	weight = stoi(temp);
 
 	do{
 		cout << "Indique a data de entrega da encomenda!" << endl;
 		getline(cin,date);
-	}while(date.size()==0);
+	}while(!testDateFormat(comp, date));
 
 
 	Order order= Order(user.getAddressId(), weight, date);
@@ -43,7 +63,7 @@ void changeName(Company& comp,User & user){
 	do{
 		cout << "Indique o novo Nome para a conta" << endl;
 		getline(cin, name);
-	}while(name.size()==0);
+	}while(testInputName(comp, name));
 
 	user.setName(name);
 	/**
@@ -55,10 +75,9 @@ void changeAddress(Company& comp, User& user){
 	do{
 		cout << "Indique a nova Morada(id) para a conta" << endl;
 		getline(cin, name);
-	}while(name.size()==0);
+	}while(testInputNif(comp, name));
 
 	user.setAddressId(stoi(name));
-
 	/**
 	 * Modificar a morado do cliente e no File E VERIFICAR SE E VALIDA
 	 */
@@ -112,8 +131,6 @@ void areaCliente(Company& comp, User& user){
 	string ss;
 	while (option != 5) {
 		do{
-
-
 			cout << "Bem-vindo a tab dos Clientes, "<<user.getNif()<< "!" << endl;
 
 			cout << "1 - Realizar uma encomenda" << endl
@@ -139,6 +156,7 @@ void areaCliente(Company& comp, User& user){
 			break;
 		case 4:
 			user.viewProfile();
+			break;
 		default:
 			break;
 		}
@@ -146,7 +164,7 @@ void areaCliente(Company& comp, User& user){
 
 }
 
-void Login(Company &comp){
+void Login(Company comp){
 	int nif;
 	string ss;
 	cout << "Bem-vindo a tab do Login!" << endl;
@@ -154,7 +172,6 @@ void Login(Company &comp){
 	do{
 		cout << "Introduza o seu nif" << endl;
 		getline(cin,ss);
-		cout << "nif: "<< nif;                            ////////////////////////////
 	}while(testInputNif(comp,ss));
 
 	nif = stoi(ss);
@@ -171,17 +188,8 @@ void Login(Company &comp){
 
 
 
-	/*
-	 * PROCURAR CLIENTE NO FILE DE CLIENTES
-	 */
-}
+	 // PROCURAR CLIENTE NO FILE DE CLIENTES
 
-bool testInputName(Company &comp, string name){
-	if(name.size()==0)
-		return false;
-	if(!isNumber(name))
-		return false;
-	return true;
 }
 
 
@@ -238,7 +246,6 @@ void Clientes(Company& comp){
 			break;
 		case 2:
 			Login(comp);
-			//Fazer login
 			break;
 		default:
 			break;
@@ -278,7 +285,7 @@ void changeNameSuper(Company &comp){
 	do{
 		cout << "Indique o novo nome do Supermercado" << endl;
 		getline(cin, name);
-	}while(name.size()==0);
+	}while(testInputName(comp, name));
 
 	comp.getSupermarket().setName(name);
 }
@@ -325,14 +332,14 @@ void changeCapacity(Company& comp){
 	comp.getSupermarket().printAllTrucks();
 	do{
 		do{
-		cout << "Indique, por favor, o id do camiao a modificar!"<< endl;
-		getline(cin,id);
-		}while(id.size()==0);
+			cout << "Indique, por favor, o id do camiao a modificar!"<< endl;
+			getline(cin,id);
+		}while(!checkDistribution(id,comp));
 
 		do{
-		cout << "Indique a capacidade maxima" << endl;
-		getline(cin,cap);
-		}while(cap.size()==0);
+			cout << "Indique a capacidade maxima" << endl;
+			getline(cin,cap);
+		}while(testInputNif(comp,cap));
 	}while(checkSetCapacity(comp, id, cap));
 }
 
@@ -373,7 +380,7 @@ void changeTrucks(Company &comp){
 					<< endl;
 			cout << "Insira o número da sua escolha. Obrigado." << endl;
 			getline(cin, ss);
-		}while((ss.size()==0));
+		}while(!checkDistribution(ss, comp));
 		option = stoi(ss);
 		switch (option) {
 		case 1:
