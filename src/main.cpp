@@ -11,12 +11,17 @@ void newDelivery(Company &comp, User& user){
 	string temp,date;
 	int weight;
 
+	do{
 	cout << "Indique o peso da sua encomenda!" << endl;
 	getline(cin,temp);
+	}while(temp.size()==0);
 	weight = stoi(temp);
 
+	do{
 	cout << "Indique a data de entrega da encomenda!" << endl;
 	getline(cin,date);
+	}while(date.size()==0);
+
 
 	Order order= Order(user.getAddressId(), weight, date);
 
@@ -26,8 +31,10 @@ void newDelivery(Company &comp, User& user){
 
 void changeName(Company& comp,User & user){
 	string name;
+	do{
 	cout << "Indique o novo Nome para a conta" << endl;
 	getline(cin, name);
+	}while(name.size()==0);
 
 	user.setName(name);
 	/**
@@ -36,8 +43,10 @@ void changeName(Company& comp,User & user){
 }
 void changeAddress(Company& comp, User& user){
 	string name;
+	do{
 	cout << "Indique a nova Morada(id) para a conta" << endl;
 	getline(cin, name);
+	}while(name.size()==0);
 
 	user.setAddressId(stoi(name));
 
@@ -51,6 +60,7 @@ void changeAccount(Company& comp,User & user){
 	int option = 0;
 	string ss;
 	while (option != 3) {
+		do{
 		cout << "Modificar conta de Cliente" << endl;
 
 		cout << "1 - Modificar o Nome da conta" << endl
@@ -58,6 +68,7 @@ void changeAccount(Company& comp,User & user){
 				<<"3 - Sair" << endl;
 
 		getline(cin,ss);
+		}while((ss.size()==0));
 		option = stoi(ss);
 
 		switch (option) {
@@ -80,18 +91,11 @@ void eliminateAccount(Company comp, User u){
 	 * Eliminar User from User and File
 	 */
 	vector<User>& users =comp.getSupermarket().getUsers();
-	for (unsigned int i =0; i<users.size(); i++){
-		cout << "name " << users[i].getName() << " nif "  << users[i].getNif() << endl;
-	}
 
 	for (unsigned int i =0; i<users.size(); i++){
 		if (users[i].getNif()==u.getNif()){
 			users.erase(users.begin()+i);
 		}
-	}
-
-	for (unsigned int i =0; i<users.size(); i++){
-		cout << "name " << users[i].getName() << " nif "  << users[i].getNif() << endl;
 	}
 }
 
@@ -99,6 +103,9 @@ void areaCliente(Company& comp, User& user){
 	int option = 0;
 	string ss;
 	while (option != 5) {
+		do{
+
+
 		cout << "Bem-vindo a tab dos Clientes, "<<user.getNif()<< "!" << endl;
 
 		cout << "1 - Realizar uma encomenda" << endl
@@ -108,6 +115,7 @@ void areaCliente(Company& comp, User& user){
 				<< "5- Sair" << endl;
 
 		getline(cin,ss);
+		} while((ss.size()==0));
 		option = stoi(ss);
 
 
@@ -136,8 +144,10 @@ void Login(Company &comp){
 	string ss;
 	cout << "Bem-vindo a tab do Login!" << endl;
 
+	do{
 	cout << "Introduza o seu nif" << endl;
 	getline(cin,ss);
+	}while(ss.size()==0);
 	nif = stoi(ss);
 
 	User user = comp.getSupermarket().findUserFromNif(nif);
@@ -164,12 +174,18 @@ bool newCliente(Company &comp) {
 	int nif,id;
 	cout << "Indique por favor:" << endl;
 	cout << "O seu nome" << endl;
+	do{
 	getline(cin,name);
+	}while(name.size()==0);
+	do{
 	cout << "O seu nif:" << endl;
 	getline(cin,temp);
+	}while(temp.size()==0);
 	nif = stoi(temp);
+	do{
 	cout << "O id da sua morada:" << endl;
 	getline(cin,temp);
+	}while(temp.size()==0);
 	id = stoi(temp);
 
 	if(comp.getSupermarket().userExists(nif)){
@@ -222,7 +238,7 @@ void watchDistribuition(Company &comp){
 	do{
 		cout << "Indique, por favor, o id do camiao!"<< endl;
 		getline(cin,id);
-	}while((unsigned int) stoi(id) >= comp.getSupermarket().getTrucks().size() && (unsigned int)stoi(id) >= 0);
+	}while(((unsigned int) stoi(id) >= comp.getSupermarket().getTrucks().size() && (unsigned int)stoi(id) >= 0));
 
 	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
 	comp.createGraphViewer();
@@ -272,12 +288,15 @@ void changeTrucks(Company &comp){
 	int option = 0;
 	string ss;
 	while (option != 3) {
+		do{
+
 		cout << "1 - Modificar a capacidade maxima do camiao " << endl
 				<< "2 - Modificar a distancia maxima percorrida pelo camiao"
 				<< endl << "3 - Sair."
 				<< endl;
 		cout << "Insira o número da sua escolha. Obrigado." << endl;
 		getline(cin, ss);
+		}while((ss.size()==0));
 		option = stoi(ss);
 		switch (option) {
 		case 1:
@@ -299,12 +318,15 @@ void adminSuper(Company& comp){
 	int option = 0;
 	string ss;
 	while (option != 4) {
+		do{
+
 		cout << "Bem-vindo ao tab de administracao do " <<comp.getSupermarket().getName() << endl;
 		cout << "1 - Mudar o Nome do Supermercado " << endl << "2 - Modificar o local do Supermercado"
 				<< endl << "3 - Modificar Camioes" << endl << "4 - Sair."
 				<< endl;
 		cout << "Insira o número da sua escolha. Obrigado." << endl;
 		getline(cin, ss);
+		}while((ss.size()==0));
 		option = stoi(ss);
 		switch (option) {
 		case 1:
@@ -328,12 +350,14 @@ void interfUser(Company& comp) {
 	int option = 0;
 	string ss;
 	while (option != 4) {
+		do{
 		cout << "Bem-vindo ao Super Preços Baixos!!" << endl;
 		cout << "1 - Clientes " << endl << "2 - Distribuição de entregas"
 				<< endl << "3 - Administrar Supermercado" << endl << "4 - Sair."
 				<< endl;
 		cout << "Insira o número da sua escolha. Obrigado." << endl;
 		getline(cin, ss);
+		}while(ss.size()==0);
 		option = stoi(ss);
 		switch (option) {
 		case 1:
