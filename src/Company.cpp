@@ -63,7 +63,7 @@ void Company::readMaps() {
 
 	ifstream maps;
 
-	maps.open("nos1.txt");
+	maps.open("vertex.txt");
 
 	if (!maps) {
 		cerr << "Unable to open file datafile.txt";
@@ -120,7 +120,7 @@ void Company::readMaps() {
 	}
 	maps.close();
 
-	maps.open("estradas.txt");
+	maps.open("roads.txt");
 	if (!maps) {
 		cerr << "Unable to open file datafile.txt";
 		exit(1);   // call system to stop
@@ -155,7 +155,7 @@ void Company::readMaps() {
 	}
 	maps.close();
 
-	maps.open("arestas1.txt");
+	maps.open("edges.txt");
 
 	if (!maps) {
 		cerr << "Unable to open file datafile.txt";
