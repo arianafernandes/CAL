@@ -356,6 +356,11 @@ void interfUser(Company& comp) {
 void saveUsers(Company comp){
 	ofstream users;
 	users.open ("users.txt");
+	if (!users) {
+		cerr << "Unable to open file users.txt";
+		return;
+	}
+
 	vector<User> vecUsers = comp.getSupermarket().getUsers();
 	for(unsigned int i = 0; i< vecUsers.size(); i++){
 		users << vecUsers[i].getName() << ";" << vecUsers[i].getNif() << ";" << vecUsers[i].getAddressId() << ";"<< endl;
@@ -366,6 +371,11 @@ void saveUsers(Company comp){
 void saveDeliveries(Company comp){
 	ofstream file;
 	file.open ("delivery.txt");
+	if (!file) {
+		cerr << "Unable to open file delivery.txt";
+		return;
+	}
+
 	vector<Truck> trucks = comp.getSupermarket().getTrucks();
 	for(unsigned int i = 0; i< trucks.size(); i++){
 		vector<Order> orders = trucks[i].getOrders();
