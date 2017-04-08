@@ -20,15 +20,6 @@ void newDelivery(Company &comp, User& user){
 
 	Order order= Order(user.getAddressId(), weight, date);
 
-	/*
-	 * Adicionar a Order a um truck e ao File das delivery
-	 *
-	 */
-	ofstream delfile;
-	delfile.open("delivery.txt", ios::app);
-	delfile << user.getAddressId() << ";" << weight << ";" << date << ";" << endl;
-	delfile.close();
-
 	comp.getSupermarket().addOrderToTruck(order);
 	vector<Truck> trucks = comp.getSupermarket().getTrucks();
 }
@@ -187,11 +178,6 @@ void newCliente(Company &comp) {
 
 
 	if(!exists){
-		ofstream usersFile;
-		usersFile.open("users.txt", ios::app);
-		usersFile << name << ";" << nif << ";" << id<< ";" << endl;
-		usersFile.close();
-		User user = User(name,nif,id);
 		comp.getSupermarket().addUser(user);
 	}else{
 		cout << "This user already exists!" << endl;
@@ -377,18 +363,41 @@ void interfUser(Company& comp) {
 	}
 }
 
+void saveUsers(Company comp){
+	ofstream users;
+	users.open ("users.txt");
+	vector<User> vecUsers = comp.getSupermarket().getUsers();
+	for(unsigned int i = 0; i< vecUsers.size(); i++){
+		users << vecUsers[i].getName() << ";" << vecUsers[i].getNif() << ";" << vecUsers[i].getAddressId() << ";"<< endl;
+	}
+	users.close();
+}
+
+void saveDeliveries(Company comp){
+	ofstream file;
+	file.open ("delivery.txt");
+	vector<Truck> trucks = comp.getSupermarket().getTrucks();
+	for(unsigned int i = 0; i< trucks.size(); i++){
+		vector<Order> orders = trucks[i].getOrders();
+		for(unsigned int j = 0; j< orders.size();j++){
+			file << orders[j].getId() << ";" << orders[j].getWeight() << ";" << orders[j].getDate() << ";"<< endl;
+		}
+	}
+	file.close();
+}
+
+void saveFiles(Company& comp){
+	saveUsers(comp);
+	saveDeliveries(comp);
+}
+
 int main() {
 	Company comp = Company(137309415);
 	comp.readMaps();
-	//cout << "Read maps done" << endl;
-	//cout << "Create graphviewer done" << endl;
 	comp.readDeliveries();
 	comp.readUsers();
-	//cout << "Read users done" << endl;
-	//cout << "Distribuition of orders done" << endl;
 	interfUser(comp);
-
-	//Save To file
+	saveFiles(comp);
 	getchar();
 	return 0;
 }
