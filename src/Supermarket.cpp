@@ -102,8 +102,6 @@ bool Supermarket::setDistanceToTruck(int dist,int id){
 	this->trucks[id].setMaxdist(dist);
 	return true;
 }
-void Supermarket::displayAllTrucks() const{
-	for(unsigned int i = 0; i < this->trucks.size();i++){
-		cout << this->trucks[i];
-	}
+void Supermarket::displayOrdersFromTruck(int id) const{
+		cout << this->trucks[id];
 }

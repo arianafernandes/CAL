@@ -85,7 +85,7 @@ public:
 	bool setCapacityToTruck(int capacity,int id);
 	bool setDistanceToTruck(int dist,int id);
 
-	void displayAllTrucks() const;
+	void displayOrdersFromTruck(int id) const;
 };
 
 #endif /* SRC_SUPERMARKET_H_ */

@@ -232,16 +232,19 @@ void Clientes(Company& comp){
 
 void watchDistribuition(Company &comp){
 
-	int id;
-	string data;
+	string id;
 
-	comp.getSupermarket().displayAllTrucks();
+	comp.getSupermarket().printAllTrucks();
+	cout << "Indique, por favor, o id do camiao!"<< endl;
+	getline(cin,id);
+
 	/**
 	 * Mostrar todos os camioes
 	 * Selecionar um camiao
 	 * E depois mostrar as datas e escolher uma data
 	 */
 
+	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
 
 }
 
@@ -276,10 +279,10 @@ void changeMaxDist(Company& comp){
 	string id,cap;
 	comp.getSupermarket().printAllTrucks();
 	do{
-	cout << "Indique, por favor, o id do camiao a modificar!"<< endl;
-	getline(cin,id);
-	cout << "Indique a distancia maxima" << endl;
-	getline(cin,cap);
+		cout << "Indique, por favor, o id do camiao a modificar!"<< endl;
+		getline(cin,id);
+		cout << "Indique a distancia maxima" << endl;
+		getline(cin,cap);
 	}while(!comp.getSupermarket().setDistanceToTruck(stoi(cap),stoi(id)));
 }
 

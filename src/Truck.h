@@ -128,8 +128,6 @@ public:
 	 */
 	bool addOrder(Order o);
 
-	void setId(int id);
-	int getId() const;
 
 	void setTravelledDist(double dist);
 	double getTravelledDist() const;

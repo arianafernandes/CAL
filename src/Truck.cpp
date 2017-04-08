@@ -96,13 +96,6 @@ bool Truck::addOrder(Order o) {
 	return false;
 }
 
-void Truck::setId(int id){
-	this->id = id;
-}
-int Truck::getId() const{
-	return this->id;
-}
-
 
 void Truck::setTravelledDist(double dist){
 	this->travelledDist = dist;
