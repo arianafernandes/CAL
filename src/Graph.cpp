@@ -354,7 +354,7 @@ T Graph<T>::getInfoVertexId(int id) const{
 }
 
 template<class T>
-Vertex<T> * Graph<T>::getVertexId(int id) const{
+Vertex<T> * Graph<T>::getVertexFromId(int id) const{
 	for (unsigned int i = 0; i < vertexSet.size(); i++){
 		if(vertexSet[i]->info.getId() == id)
 			return vertexSet[i];

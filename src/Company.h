@@ -175,6 +175,8 @@ public:
 	 * @return Supermarket.
 	 */
 	Supermarket& getSupermarket();
+
+	bool checkIfNodeExist(int id);
 };
 
 #endif /* SRC_COMPANY_H_ */

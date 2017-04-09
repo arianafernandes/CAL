@@ -290,15 +290,6 @@ void changeNameSuper(Company &comp){
 	comp.getSupermarket().setName(name);
 }
 
-bool checkIfExistId(Company &comp, int id){
-	vector <User> users;
-	for (unsigned int i=0; i<users.size();i++){
-		if(users[i].getAddressId()==id){
-			return true;
-		}
-	}
-	return false;
-}
 
 void changeAddressSuper(Company &comp){
 	string name;
@@ -307,13 +298,12 @@ void changeAddressSuper(Company &comp){
 		getline(cin, name);
 	}while(name.size()==0);
 
-	if(!checkIfExistId){
+	if(comp.checkIfNodeExist(stoi(name))){
 		comp.getSupermarket().setIdSuper(stoi(name));
 	}else {
 		cout << "A morada não se encontra no mapa!" << endl;
 		return;
 	}
-	cout << "id super " << comp.getSupermarket().getIdSuper() << endl;
 }
 
 bool checkSetCapacity(Company &comp, string id, string cap){

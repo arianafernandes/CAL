@@ -295,7 +295,7 @@ public:
 	 *
 	 * @return Return the Vertex with that Id.
 	 */
-	Vertex<T>* getVertexId(int id) const;
+	Vertex<T>* getVertexFromId(int id) const;
 
 	/**
 	 *

@@ -327,11 +327,11 @@ void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest){
 	vector<Info> temp = graph.getPath(source->getInfo(),dest->getInfo());
 	for(unsigned int i = 0; i < temp.size()-1; i++){
 		gv->setVertexColor(temp[i].getId(),"red");
-		Vertex<Info>* no1 = graph.getVertexId(temp[i].getId());
+		Vertex<Info>* no1 = graph.getVertexFromId(temp[i].getId());
 		int tempi = i;
 		tempi++;
 		gv->setVertexColor(temp[tempi].getId(),"red");
-		Vertex<Info>* no2 = graph.getVertexId(temp[tempi].getId());
+		Vertex<Info>* no2 = graph.getVertexFromId(temp[tempi].getId());
 		Edge<Info> edge = graph.getEdgeFromVertex(no1,no2);
 		gv->setEdgeColor(edge.getID(),"red");
 	}
@@ -339,7 +339,7 @@ void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest){
 
 void Company::paintDeliveries(vector<Order> orders){
 	for(unsigned int j = 0; j < orders.size(); j++){
-		Vertex<Info>* no = graph.getVertexId(orders[j].getId());
+		Vertex<Info>* no = graph.getVertexFromId(orders[j].getId());
 		gv->setVertexIcon(no->getInfo().getId(),"home.png");
 		gv->setVertexColor(no->getInfo().getId(),"green");
 	}
@@ -347,14 +347,14 @@ void Company::paintDeliveries(vector<Order> orders){
 
 
 int Company::getNextDelivery(vector<Order> &orders,int currentPosition){
-	Vertex<Info>* currentNo = graph.getVertexId(currentPosition);
+	Vertex<Info>* currentNo = graph.getVertexFromId(currentPosition);
 	graph.dijkstraShortestPath(currentNo->getInfo());
 	int distance = INT_INFINITY;
 	int id =-1;
 	int min = -1;
 	for(unsigned int j = 0; j < orders.size(); j++){
 		if(!orders[j].getDelivery()){
-			Vertex<Info> *no = graph.getVertexId(orders[j].getId());
+			Vertex<Info> *no = graph.getVertexFromId(orders[j].getId());
 			if(no->getDist() < distance){
 				distance = no->getDist();
 				id = orders[j].getId();
@@ -385,9 +385,9 @@ vector<Order> Company::eliminateFromOrders(vector<Order> orders, int currentPosi
 boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck){
 	double dist = source->getDist();
 	int id = source->getInfo().getId();
-	Vertex<Info> *superm = graph.getVertexId(this->getSupermarket().getIdSuper());
+	Vertex<Info> *superm = graph.getVertexFromId(this->getSupermarket().getIdSuper());
 	graph.dijkstraShortestPath(superm->getInfo());
-	Vertex<Info>* dest = graph.getVertexId(id);
+	Vertex<Info>* dest = graph.getVertexFromId(id);
 	if(truck.getTravelledDist() + dist + dest->getDist() > truck.getMaxdist())
 		return false;
 
@@ -395,27 +395,27 @@ boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck){
 }
 
 void Company::printOrders(vector<Order>orders){
-	Vertex<Info> *superm = graph.getVertexId(this->getSupermarket().getIdSuper());
+	Vertex<Info> *superm = graph.getVertexFromId(this->getSupermarket().getIdSuper());
 	graph.dijkstraShortestPath(superm->getInfo());
 	for(unsigned int i=0; i < orders.size();i++){
 		cout << "id " << orders[i].getId() << endl;
 		cout << "data " << orders[i].getDate() << endl;
-		Vertex<Info> *no = graph.getVertexId(orders[i].getId());
+		Vertex<Info> *no = graph.getVertexFromId(orders[i].getId());
 		cout << "dist " << no->getDist() << endl;
 	}
 }
 
 void Company::returnToSupermarket(int currentPosition,int idSupermarket){
-	Vertex<Info>* source = graph.getVertexId(currentPosition);
-	Vertex<Info>* dest = graph.getVertexId(idSupermarket);
+	Vertex<Info>* source = graph.getVertexFromId(currentPosition);
+	Vertex<Info>* dest = graph.getVertexFromId(idSupermarket);
 	graph.dijkstraShortestPath(source->getInfo());
 
 	vector<Info> temp = graph.getPath(source->getInfo(),dest->getInfo());
 	for(unsigned int i = 0; i < temp.size()-1; i++){
-		Vertex<Info>* no1 = graph.getVertexId(temp[i].getId());
+		Vertex<Info>* no1 = graph.getVertexFromId(temp[i].getId());
 		int tempi = i;
 		tempi++;
-		Vertex<Info>* no2 = graph.getVertexId(temp[tempi].getId());
+		Vertex<Info>* no2 = graph.getVertexFromId(temp[tempi].getId());
 		Edge<Info> edge = graph.getEdgeFromVertex(no1,no2);
 		gv->setEdgeColor(edge.getID(),"cyan");
 	}
@@ -431,12 +431,12 @@ void Company::distribution(int id){
 	Truck truck = super.getTrucks()[id];
 	vector<Order> orders = truck.getOrders();
 	while(true){
-		source = graph.getVertexId(currentPosition);
+		source = graph.getVertexFromId(currentPosition);
 		nextPosition = getNextDelivery(orders,currentPosition);
 		if(nextPosition == -1){
 			break;
 		}
-		dest = graph.getVertexId(nextPosition);
+		dest = graph.getVertexFromId(nextPosition);
 		//calcula a distancia total do caminho e se é possivel voltar para o supermercado
 		if(checkDistToSupermarket(dest,truck) == false)
 			break;
@@ -454,6 +454,14 @@ void Company::distribution(int id){
 
 Supermarket& Company::getSupermarket(){
 	return this->super;
+}
+
+bool Company::checkIfNodeExist(int id){
+	for(unsigned int i = 0; i < this->graph.getVertexSet().size(); i++){
+		if(this->graph.getVertexSet()[i]->getInfo().getId() == id)
+			return true;
+	}
+	return false;
 }
 
 
