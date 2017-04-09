@@ -8,6 +8,13 @@
 #include "Company.h"
 #include "Auxi.h"
 
+/**
+ * @brief Test if input is correct number.
+ * @param comp Company.
+ * @param nif Nif.
+ *
+ * @return True if success, otherwise return false.
+ */
 bool testInputNif(Company &comp, string nif){
 	if(nif.size()==0)
 		return false;
@@ -16,6 +23,13 @@ bool testInputNif(Company &comp, string nif){
 	return true;
 }
 
+/**
+ * @brief Test if input is correct name.
+ * @param comp Company.
+ * @param name Name.
+ *
+ * @return True if success, otherwise return false.
+ */
 bool testInputName(Company &comp, string name){
 	if(name.size()==0)
 		return false;
@@ -25,6 +39,13 @@ bool testInputName(Company &comp, string name){
 }
 
 
+/**
+ * @brief Test if input is correct date format.
+ * @param comp Company.
+ * @param data Date
+ *
+ * @return True if success, otherwise return false.
+ */
 bool testDateFormat(Company comp, string data){
 	if(data.size()!=10)
 		return false;
@@ -35,11 +56,24 @@ bool testDateFormat(Company comp, string data){
 	return true;
 
 }
+
+/**
+ * @brief Print all orders of the supermarket.
+ *
+ * @param orders Supermarket orders.
+ */
 void printOrders(vector<Order> orders){
 	for(unsigned int i = 0; i < orders.size(); i++){
 		cout << orders[i];
 	}
 }
+
+/**
+ * @brief Create a new delivery.
+ *
+ * @param comp Company.
+ * @param user User.
+ */
 void newDelivery(Company &comp, User& user){
 	string temp,date;
 	int weight;
@@ -66,6 +100,13 @@ comp.getSupermarket().printAllTrucks();
 	}
 }
 
+
+/**
+ * @brief Change User name.
+ *
+ * @param comp Company.
+ * @param user User.
+ */
 void changeName(Company& comp,User & user){
 	string name;
 	do{
@@ -74,10 +115,14 @@ void changeName(Company& comp,User & user){
 	}while(testInputName(comp, name));
 
 	user.setName(name);
-	/**
-	 * Modificar o nome do cliente no User e no FIle
-	 */
 }
+
+/**
+ * @brief Change User address.
+ *
+ * @param comp Company.
+ * @param user User.
+ */
 void changeAddress(Company& comp, User& user){
 	string name;
 	do{
@@ -86,12 +131,14 @@ void changeAddress(Company& comp, User& user){
 	}while(testInputNif(comp, name));
 
 	user.setAddressId(stoi(name));
-	/**
-	 * Modificar a morado do cliente e no File E VERIFICAR SE E VALIDA
-	 */
-
 }
 
+/**
+ * @brief Change User account.
+ *
+ * @param comp Company.
+ * @param user User.
+ */
 void changeAccount(Company& comp,User & user){
 	int option = 0;
 	string ss;
@@ -121,10 +168,13 @@ void changeAccount(Company& comp,User & user){
 
 }
 
+/**
+ * @brief Delete User account.
+ *
+ * @param comp Company.
+ * @param user User.
+ */
 void eliminateAccount(Company comp, User u){
-	/*
-	 * Eliminar User from User and File
-	 */
 	vector<User>& users =comp.getSupermarket().getUsers();
 
 	for (unsigned int i =0; i<users.size(); i++){
@@ -134,6 +184,12 @@ void eliminateAccount(Company comp, User u){
 	}
 }
 
+/**
+ * @brief Gets the User menu.
+ *
+ * @param comp Company.
+ * @param user User.
+ */
 void areaCliente(Company& comp, User& user){
 	int option = 0;
 	string ss;
@@ -172,6 +228,12 @@ void areaCliente(Company& comp, User& user){
 
 }
 
+/**
+ * @brief Login User.
+ *
+ * @param comp Company.
+ *
+ */
 void Login(Company comp){
 	int nif;
 	string ss;
@@ -187,7 +249,7 @@ void Login(Company comp){
 	User user = comp.getSupermarket().findUserFromNif(nif);
 
 	if (user.getNif()==0){
-		cout<<" Não se encontra registado! Por favor, efetue o registo!"<< endl;
+		cout<<" NÃ£o se encontra registado! Por favor, efetue o registo!"<< endl;
 	}
 	else
 	{
@@ -201,7 +263,12 @@ void Login(Company comp){
 }
 
 
-
+/**
+ * @brief Add a new cliet to the company.
+ *
+ * @param comp Company.
+ * @return True if success, otherwise return false.
+ */
 bool newCliente(Company &comp) {
 	string name,temp;
 	int nif,id;
@@ -232,6 +299,12 @@ bool newCliente(Company &comp) {
 		return true;
 	}
 }
+
+/**
+ * @brief Clients Menu.
+ *
+ * @param comp Company.
+ */
 void Clientes(Company& comp){
 	int option = 0;
 	string ss;
@@ -242,7 +315,7 @@ void Clientes(Company& comp){
 				<< "2 - Login" << endl
 				<< "3 - Sair." << endl;
 
-		cout << "Insira o número da sua escolha. Obrigado." << endl;
+		cout << "Insira o nÃºmero da sua escolha. Obrigado." << endl;
 
 		getline(cin,ss);
 		option = stoi(ss);
@@ -261,6 +334,13 @@ void Clientes(Company& comp){
 	}
 }
 
+/**
+ * @brief Check distribuition.
+ *
+ * @param comp Company.
+ * @param id Id.
+ * @return True if success, otherwise return false.
+ */
 bool checkDistribution(string id,Company comp){
 	if(id.size()==0)
 		return false;
@@ -271,7 +351,12 @@ bool checkDistribution(string id,Company comp){
 	return false;
 }
 
-
+/**
+ * @brief Watch distribuition.
+ *
+ * @param comp Company.
+ *
+ */
 void watchDistribuition(Company &comp){
 	string id;
 	comp.getSupermarket().printAllTrucks();
@@ -291,6 +376,12 @@ void watchDistribuition(Company &comp){
 	}
 }
 
+/**
+ * @brief Change Sueprmarket name.
+ *
+ * @param comp Company.
+ *
+ */
 void changeNameSuper(Company &comp){
 	string name;
 	do{
@@ -301,7 +392,12 @@ void changeNameSuper(Company &comp){
 	comp.getSupermarket().setName(name);
 }
 
-
+/**
+ * @brief Change Sueprmarket address.
+ *
+ * @param comp Company.
+ *
+ */
 void changeAddressSuper(Company &comp){
 	string name;
 	do{
@@ -312,11 +408,20 @@ void changeAddressSuper(Company &comp){
 	if(comp.checkIfNodeExist(stoi(name))){
 		comp.getSupermarket().setIdSuper(stoi(name));
 	}else {
-		cout << "A morada não se encontra no mapa!" << endl;
+		cout << "A morada nÃ£o se encontra no mapa!" << endl;
 		return;
 	}
 }
 
+/**
+ * @brief Check set capacity.
+ *
+ * @param comp Company.
+ * @param id Id.
+ * @param cap Capacity.
+ *
+ * @return True if success, otherwise return false.
+ */
 bool checkSetCapacity(Company &comp, string id, string cap){
 
 	if(comp.getSupermarket().setCapacityToTruck(stoi(cap),stoi(id)))
@@ -326,8 +431,14 @@ bool checkSetCapacity(Company &comp, string id, string cap){
 			return true;
 
 	return false;
-
 }
+
+/**
+ * @brief Change Truck capacity.
+ *
+ * @param comp Company.
+ *
+ */
 void changeCapacity(Company& comp){
 	string id,cap;
 	comp.getSupermarket().printAllTrucks();
@@ -344,6 +455,15 @@ void changeCapacity(Company& comp){
 	}while(checkSetCapacity(comp, id, cap));
 }
 
+/**
+ * @brief Check maximum.
+ *
+ * @param comp Company.
+ * @param id Id.
+ * @param cap Capacity.
+ *
+ * @return True if success, otherwise return false.
+ */
 bool checkMax(Company & comp, string id, string cap){
 	if(comp.getSupermarket().setCapacityToTruck(stoi(cap),stoi(id)))
 		return true;
@@ -354,6 +474,13 @@ bool checkMax(Company & comp, string id, string cap){
 	return false;
 }
 
+
+/**
+ * @brief Change maximum distance.
+ *
+ * @param comp Company.
+ *
+ */
 void changeMaxDist(Company& comp){
 	string id,cap;
 	comp.getSupermarket().printAllTrucks();
@@ -369,6 +496,12 @@ void changeMaxDist(Company& comp){
 	}while(!checkMax(comp, id, cap));
 }
 
+/**
+ * @brief Change trucks.
+ *
+ * @param comp Company.
+ *
+ */
 void changeTrucks(Company &comp){
 	int option = 0;
 	string ss;
@@ -379,17 +512,15 @@ void changeTrucks(Company &comp){
 					<< "2 - Modificar a distancia maxima percorrida pelo camiao"
 					<< endl << "3 - Sair."
 					<< endl;
-			cout << "Insira o número da sua escolha. Obrigado." << endl;
+			cout << "Insira o nÃºmero da sua escolha. Obrigado." << endl;
 			getline(cin, ss);
 		}while(!checkDistribution(ss, comp));
 		option = stoi(ss);
 		switch (option) {
 		case 1:
-			//Mudar capacidade
 			changeCapacity(comp);
 			break;
 		case 2:
-			//Mudar distancia maxima
 			changeMaxDist(comp);
 			break;
 		default:
@@ -398,6 +529,12 @@ void changeTrucks(Company &comp){
 	}
 }
 
+/**
+ * @brief Admin Menu.
+ *
+ * @param comp Company.
+ *
+ */
 void adminSuper(Company& comp){
 	int option = 0;
 	string ss;
@@ -408,13 +545,12 @@ void adminSuper(Company& comp){
 			cout << "1 - Mudar o Nome do Supermercado " << endl << "2 - Modificar o local do Supermercado"
 					<< endl << "3 - Modificar Camioes" << endl << "4 - Sair."
 					<< endl;
-			cout << "Insira o número da sua escolha. Obrigado." << endl;
+			cout << "Insira o nÃºmero da sua escolha. Obrigado." << endl;
 			getline(cin, ss);
 		}while((ss.size()==0));
 		option = stoi(ss);
 		switch (option) {
 		case 1:
-			//Mudar nome do super
 			changeNameSuper(comp);
 			break;
 		case 2:
@@ -429,16 +565,22 @@ void adminSuper(Company& comp){
 	}
 }
 
+/**
+ * @brief User interface menu.
+ *
+ * @param comp Company.
+ *
+ */
 void interfUser(Company& comp) {
 	int option = 0;
 	string ss;
 	while (option != 4) {
 		do{
-			cout << "Bem-vindo ao Super Preços Baixos!!" << endl;
-			cout << "1 - Clientes " << endl << "2 - Distribuição de entregas"
+			cout << "Bem-vindo ao Super PreÃ§os Baixos!!" << endl;
+			cout << "1 - Clientes " << endl << "2 - DistribuiÃ§Ã£o de entregas"
 					<< endl << "3 - Administrar Supermercado" << endl << "4 - Sair."
 					<< endl;
-			cout << "Insira o número da sua escolha. Obrigado." << endl;
+			cout << "Insira o nÃºmero da sua escolha. Obrigado." << endl;
 			getline(cin, ss);
 		}while(ss.size()==0);
 		option = stoi(ss);
@@ -450,7 +592,6 @@ void interfUser(Company& comp) {
 			watchDistribuition(comp);
 			break;
 		case 3:
-			//Administrar Supermercado
 			adminSuper(comp);
 			break;
 		default:
@@ -459,6 +600,12 @@ void interfUser(Company& comp) {
 	}
 }
 
+/**
+ * @brief Save users informations.
+ *
+ * @param comp Company.
+ *
+ */
 void saveUsers(Company comp){
 	ofstream users;
 	users.open ("users.txt");
@@ -474,6 +621,12 @@ void saveUsers(Company comp){
 	users.close();
 }
 
+/**
+ * @brief Save delieveries informations.
+ *
+ * @param comp Company.
+ *
+ */
 void saveDeliveries(Company comp){
 	ofstream file;
 	file.open ("delivery.txt");
@@ -492,6 +645,12 @@ void saveDeliveries(Company comp){
 	file.close();
 }
 
+/**
+ * @brief Save files.
+ *
+ * @param comp Company.
+ *
+ */
 void saveFiles(Company& comp){
 	saveUsers(comp);
 	saveDeliveries(comp);
@@ -507,6 +666,3 @@ int main() {
 	getchar();
 	return 0;
 }
-/*
- * verificar se os ficheiros sao abertos
- */
