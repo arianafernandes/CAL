@@ -84,7 +84,19 @@ public:
 	 */
 	void setRlon(double rlon);
 
+	/**
+	 *
+	 * @param i2 Info object to compare if is equal.
+	 *
+	 * @return True if success, otherwise return false.
+	 */
 	bool operator ==(const Info &i2) const;
+
+	/**
+	 * @param i2 Info object to compare if is different.
+	 *
+	 * @return True if success, otherwise return false.
+	 */
 	bool operator !=(const Info &i2) const;
 };
 

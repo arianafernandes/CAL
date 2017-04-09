@@ -74,18 +74,73 @@ public:
 
 	User findUserFromNif(int nif);
 
+	/**
+	 *
+	 * @param name Superarket name.
+	 */
 	void setName(string name);
+
+	/**
+	 *
+	 * @return Supermarket name.
+	 */
 	string getName() const;
 
+	/**
+	 *
+	 * @param id Superarket Id.
+	 */
 	void setIdSuper(int id);
+
+	/**
+	 *
+	 * @return Supermarket id.
+	 */
 	int getIdSuper() const;
 
+	/**
+	 * @brief Prints all trucks from the supermarket.
+	 *
+	 */
 	void printAllTrucks() const;
 
-	bool setCapacityToTruck(int capacity,int id);
-	bool setDistanceToTruck(int dist,int id);
+	/**
+	 * @brief Sets a capacity to truck.
+	 *
+	 * @param capacity New capacity.
+	 * @param id Truck id.
+	 *
+	 * @return True if success, otherwise return false.
+	 *
+	 */
+	bool setCapacityToTruck(int capacity, int id);
 
+	/**
+	 * @brief Sets a distance to truck.
+	 *
+	 * @param dist New distance.
+	 * @param id Truck id.
+	 *
+	 * @return True if success, otherwise return false.
+	 *
+	 */
+	bool setDistanceToTruck(int dist, int id);
+
+	/**
+	 * @brief Display orders from truck.
+	 *
+	 * @param id Truck id.
+	 *
+	 */
 	void displayOrdersFromTruck(int id) const;
+
+	/**
+	 *
+	 * @param nif User nif.
+	 *
+	 * @return True if success, otherwise return false.
+	 *
+	 */
 	bool userExists(int nif);
 };
 

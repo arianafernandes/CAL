@@ -26,7 +26,7 @@ public:
 	/**
 	 * @brief Default constructor.
 	 */
-	User(string name,int nif,int orderId);
+	User(string name, int nif, int orderId);
 
 	/**
 	 *
@@ -64,6 +64,9 @@ public:
 	 */
 	void setAddressId(int addressId);
 
+	/**
+	 * @brief View user profile.
+	 */
 	void viewProfile();
 
 };

@@ -128,10 +128,25 @@ public:
 	 */
 	bool addOrder(Order o);
 
-
+	/**
+	 * @param dist Travelled distance of the truck.
+	 *
+	 */
 	void setTravelledDist(double dist);
+
+	/**
+	 *
+	 * @return Travelled distance of the truck.
+	 *
+	 */
 	double getTravelledDist() const;
 
+	/**
+	 * @brief Adds distance to the actual distance of the truck.
+	 *
+	 * @param d distance of the truck.
+	 *
+	 */
 	void incDist(double d);
 
 	friend ostream & operator<<(ostream &os, const Truck& truck);

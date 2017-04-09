@@ -12,8 +12,18 @@
 
 using namespace std;
 
+/**
+ * @param name User name.
+ *
+ * @return True if success, otherwise return false.
+ */
 bool isNumber(string name);
-bool isNOTNumber(string nif);
 
+/**
+ * @param nif User nif.
+ *
+ * @return True if success, otherwise return false.
+ */
+bool isNOTNumber(string nif);
 
 #endif /* SRC_AUXI_H_ */

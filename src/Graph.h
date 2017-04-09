@@ -142,6 +142,10 @@ public:
 	friend class Graph<T> ;
 	friend class Vertex<T> ;
 
+	/**
+	 *
+	 * @return The weight of the edge.
+	 */
 	double getWeight() const;
 };
 

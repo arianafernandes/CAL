@@ -18,7 +18,6 @@ using namespace std;
 #include "GraphViewer.h"
 #include "Supermarket.h"
 
-
 class Company {
 private:
 	Graph<Info> graph;
@@ -77,6 +76,10 @@ public:
 	 */
 	void readDeliveries();
 
+	/**
+	 * @brief Read the users file.
+	 *
+	 */
 	void readUsers();
 
 	/**
@@ -157,9 +160,20 @@ public:
 	 */
 	void printOrders(vector<Order> orders);
 
-
+	/**
+	 * @brief Checks the distance from a truck to the supermarket.
+	 *
+	 * @param dest Vertex destination.
+	 * @param truck Truck
+	 *
+	 * @return True if success, otherwise return false.
+	 */
 	boolean checkDistToSupermarket(Vertex<Info>* dest, Truck truck);
 
+	/**
+	 *
+	 * @return Supermarket.
+	 */
 	Supermarket& getSupermarket();
 };
 

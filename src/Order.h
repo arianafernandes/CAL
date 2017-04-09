@@ -21,7 +21,7 @@ private:
 
 public:
 
-	Order(int id,int weight,string date);
+	Order(int id, int weight, string date);
 
 	/**
 	 *
@@ -59,9 +59,20 @@ public:
 	 */
 	void setDate(string d);
 
-
+	/**
+	 * @brief Set a delivery.
+	 *
+	 * @param b Delivery d.
+	 */
 	void setDelivery(bool d);
+
+	/**
+	 * @brief Get a delivery.
+	 *
+	 * @return True if success, otherwise return false.
+	 */
 	bool getDelivery() const;
+
 	friend ostream & operator<<(ostream &os, const Order& order);
 };
 
