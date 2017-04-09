@@ -1,10 +1,3 @@
-/*
- * User.h
- *
- *  Created on: 01/04/2017
- *      Author: Asus
- */
-
 #ifndef SRC_USER_H_
 #define SRC_USER_H_
 #include <fstream>
