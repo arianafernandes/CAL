@@ -1,11 +1,3 @@
-/*
- * Auxi.cpp
- *
- *  Created on: 08/04/2017
- *      Author: Cristiana Ribeiro
- */
-
-
 #include "Auxi.h"
 
 
