@@ -193,15 +193,14 @@ void eliminateAccount(Company comp, User u){
 void areaCliente(Company& comp, User& user){
 	int option = 0;
 	string ss;
-	while (option != 5) {
+	while (option != 4) {
 		do{
 			cout << "Bem-vindo a tab dos Clientes, "<<user.getNif()<< "!" << endl;
 
-			cout << "1 - Realizar uma encomenda" << endl
-					<< "2 - Modificar Conta" << endl
-					<< "3- Eliminar Conta" << endl
-					<< "4 - Ver perfil" << endl
-					<< "5- Sair" << endl;
+			cout 	<< "1 - Modificar Conta" << endl
+					<< "2- Eliminar Conta" << endl
+					<< "3 - Ver perfil" << endl
+					<< "4- Sair" << endl;
 
 			getline(cin,ss);
 		} while((ss.size()==0));
@@ -210,15 +209,12 @@ void areaCliente(Company& comp, User& user){
 
 		switch (option) {
 		case 1:
-			newDelivery(comp,user);
-			break;
-		case 2:
 			changeAccount(comp,user);
 			break;
-		case 3:
+		case 2:
 			eliminateAccount(comp,user);
 			break;
-		case 4:
+		case 3:
 			user.viewProfile();
 			break;
 		default:
