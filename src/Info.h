@@ -1,10 +1,3 @@
-/*
- * Info.h
- *
- *  Created on: 01/04/2017
- *      Author: Asus
- */
-
 #ifndef SRC_INFO_H_
 #define SRC_INFO_H_
 
