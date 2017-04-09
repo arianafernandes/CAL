@@ -1,10 +1,3 @@
-/*
- * Truck.h
- *
- *  Created on: 01/04/2017
- *      Author: Asus
- */
-
 #ifndef SRC_TRUCK_H_
 #define SRC_TRUCK_H_
 
