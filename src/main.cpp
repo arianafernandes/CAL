@@ -485,7 +485,7 @@ void saveDeliveries(Company comp){
 	for(unsigned int i = 0; i< trucks.size(); i++){
 		vector<Order> orders = trucks[i].getOrders();
 		for(unsigned int j = 0; j< orders.size();j++){
-			file << orders[j].getId() << ";" << orders[j].getWeight() << ";" << orders[j].getDate() << ";"<< endl;
+			file << orders[j].getId() << ";" << orders[j].getWeight() << ";" << orders[j].getDate() << endl;
 		}
 	}
 	file.close();
