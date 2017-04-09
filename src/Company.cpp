@@ -281,7 +281,6 @@ void Company::readDeliveries() {
 		linestream >> capacity;
 		getline(linestream, data, ';');
 		linestream >> date;
-		cout << "data " << date << endl;
 		Order tempOrder = Order(orderId,capacity,date);
 		super.addOrderToTruck(tempOrder);
 
