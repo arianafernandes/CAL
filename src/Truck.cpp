@@ -1,10 +1,3 @@
-/*
- * Truck.cpp
- *
- *  Created on: 01/04/2017
- *      Author: Asus
- */
-
 #include "Truck.h"
 
 Truck::Truck() {
