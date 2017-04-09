@@ -1,10 +1,3 @@
-/*
- * supermarket.h
- *
- *  Created on: 01/04/2017
- *      Author: Asus
- */
-
 #ifndef SRC_SUPERMARKET_H_
 #define SRC_SUPERMARKET_H_
 #include <fstream>
