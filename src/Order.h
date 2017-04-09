@@ -1,10 +1,3 @@
-/*
- * Order.h
- *
- *  Created on: 01/04/2017
- *      Author: Asus
- */
-
 #ifndef SRC_ORDER_H_
 #define SRC_ORDER_H_
 #include <string>
