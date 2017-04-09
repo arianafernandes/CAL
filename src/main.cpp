@@ -35,7 +35,11 @@ bool testDateFormat(Company comp, string data){
 	return true;
 
 }
-
+void printOrders(vector<Order> orders){
+	for(unsigned int i = 0; i < orders.size(); i++){
+		cout << orders[i];
+	}
+}
 void newDelivery(Company &comp, User& user){
 	string temp,date;
 	int weight;
@@ -55,7 +59,11 @@ void newDelivery(Company &comp, User& user){
 	Order order= Order(user.getAddressId(), weight, date);
 
 	comp.getSupermarket().addOrderToTruck(order);
-	vector<Truck> trucks = comp.getSupermarket().getTrucks();
+comp.getSupermarket().printAllTrucks();
+
+	for(unsigned int i = 0; i< comp.getSupermarket().getTrucks().size();i++){
+	printOrders(comp.getSupermarket().getTrucks()[i].getOrders());
+	}
 }
 
 void changeName(Company& comp,User & user){
@@ -265,15 +273,12 @@ bool checkDistribution(string id,Company comp){
 
 
 void watchDistribuition(Company &comp){
-
 	string id;
-
 	comp.getSupermarket().printAllTrucks();
 	do{
 		cout << "Indique, por favor, o id do camiao!"<< endl;
 		getline(cin,id);
 	}while(!checkDistribution(id,comp));
-
 	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
 	comp.createGraphViewer();
 	comp.distribution(stoi(id));
