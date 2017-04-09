@@ -277,7 +277,7 @@ void watchDistribuition(Company &comp){
 	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
 	comp.createGraphViewer();
 	comp.distribution(stoi(id));
-
+//ver quais as encomendas nao foram entregues
 }
 
 void changeNameSuper(Company &comp){
