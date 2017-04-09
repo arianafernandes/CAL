@@ -1,10 +1,3 @@
-/*
- * Files.h
- *
- *  Created on: 01/04/2017
- *      Author: Asus
- */
-
 #ifndef SRC_COMPANY_H_
 #define SRC_COMPANY_H_
 
