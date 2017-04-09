@@ -1,6 +1,3 @@
-/*
- u * Graph.h
- */
 #ifndef GRAPH_H_
 #define GRAPH_H_
 
