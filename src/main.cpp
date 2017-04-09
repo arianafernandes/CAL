@@ -188,7 +188,7 @@ void Login(Company comp){
 
 
 
-	 // PROCURAR CLIENTE NO FILE DE CLIENTES
+	// PROCURAR CLIENTE NO FILE DE CLIENTES
 
 }
 
@@ -277,7 +277,13 @@ void watchDistribuition(Company &comp){
 	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
 	comp.createGraphViewer();
 	comp.distribution(stoi(id));
-//ver quais as encomendas nao foram entregues
+	//ver quais as encomendas nao foram entregues
+	Truck truck = comp.getSupermarket().getTrucks()[stoi(id)];
+	vector<Order> orders = truck.getOrders();
+	for(unsigned int i=0; i <orders.size(); i++){
+		if(!orders[i].getDelivery())
+			cout << orders[i];
+	}
 }
 
 void changeNameSuper(Company &comp){
@@ -348,12 +354,12 @@ void changeMaxDist(Company& comp){
 	comp.getSupermarket().printAllTrucks();
 	do{
 		do{
-		cout << "Indique, por favor, o id do camiao a modificar!"<< endl;
-		getline(cin,id);
+			cout << "Indique, por favor, o id do camiao a modificar!"<< endl;
+			getline(cin,id);
 		}while(id.size()==0);
 		do{
-		cout << "Indique a distancia maxima" << endl;
-		getline(cin,cap);
+			cout << "Indique a distancia maxima" << endl;
+			getline(cin,cap);
 		}while(cap.size()==0);
 	}while(!checkMax(comp, id, cap));
 }
