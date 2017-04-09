@@ -14,6 +14,13 @@ private:
 
 public:
 
+	/**
+	 * @brief Order constructor.
+	 * @param id Id.
+	 * @param weight Weight.
+	 * @param date Date.
+	 *
+	 */
 	Order(int id, int weight, string date);
 
 	/**

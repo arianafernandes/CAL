@@ -245,7 +245,7 @@ void Login(Company comp){
 	User user = comp.getSupermarket().findUserFromNif(nif);
 
 	if (user.getNif()==0){
-		cout<<" Não se encontra registado! Por favor, efetue o registo!"<< endl;
+		cout<<" Nao se encontra registado! Por favor, efetue o registo!"<< endl;
 	}
 	else
 	{
@@ -285,6 +285,10 @@ bool newCliente(Company &comp) {
 		getline(cin,temp);
 	}while(testInputNif(comp,temp));
 	id = stoi(temp);
+	if (!comp.checkIfNodeExist(id)){
+		cout << "O id indicado nao se encontra no mapa!"<< endl;
+		return false;
+	}
 
 	if(comp.getSupermarket().userExists(nif)){
 		cout << "Ja se encontra registado!" << endl;
@@ -311,7 +315,7 @@ void Clientes(Company& comp){
 				<< "2 - Login" << endl
 				<< "3 - Sair." << endl;
 
-		cout << "Insira o número da sua escolha. Obrigado." << endl;
+		cout << "Insira o numero da sua escolha. Obrigado." << endl;
 
 		getline(cin,ss);
 		option = stoi(ss);
@@ -404,7 +408,7 @@ void changeAddressSuper(Company &comp){
 	if(comp.checkIfNodeExist(stoi(name))){
 		comp.getSupermarket().setIdSuper(stoi(name));
 	}else {
-		cout << "A morada não se encontra no mapa!" << endl;
+		cout << "A morada nao se encontra no mapa!" << endl;
 		return;
 	}
 }
@@ -508,7 +512,7 @@ void changeTrucks(Company &comp){
 					<< "2 - Modificar a distancia maxima percorrida pelo camiao"
 					<< endl << "3 - Sair."
 					<< endl;
-			cout << "Insira o número da sua escolha. Obrigado." << endl;
+			cout << "Insira o numero da sua escolha. Obrigado." << endl;
 			getline(cin, ss);
 		}while(!checkDistribution(ss, comp));
 		option = stoi(ss);
@@ -541,7 +545,7 @@ void adminSuper(Company& comp){
 			cout << "1 - Mudar o Nome do Supermercado " << endl << "2 - Modificar o local do Supermercado"
 					<< endl << "3 - Modificar Camioes" << endl << "4 - Sair."
 					<< endl;
-			cout << "Insira o número da sua escolha. Obrigado." << endl;
+			cout << "Insira o numero da sua escolha. Obrigado." << endl;
 			getline(cin, ss);
 		}while((ss.size()==0));
 		option = stoi(ss);
@@ -572,11 +576,11 @@ void interfUser(Company& comp) {
 	string ss;
 	while (option != 4) {
 		do{
-			cout << "Bem-vindo ao Super Preços Baixos!!" << endl;
-			cout << "1 - Clientes " << endl << "2 - Distribuição de entregas"
+			cout << "Bem-vindo ao Super Precos Baixos!!" << endl;
+			cout << "1 - Clientes " << endl << "2 - Distribuicao de entregas"
 					<< endl << "3 - Administrar Supermercado" << endl << "4 - Sair."
 					<< endl;
-			cout << "Insira o número da sua escolha. Obrigado." << endl;
+			cout << "Insira o numero da sua escolha. Obrigado." << endl;
 			getline(cin, ss);
 		}while(ss.size()==0);
 		option = stoi(ss);
