@@ -1,8 +1,3 @@
-/*
- * Files.cpp
- *
- */
-
 #include "Company.h"
 
 #include <string>
@@ -437,7 +432,7 @@ void Company::distribution(int id){
 			break;
 		}
 		dest = graph.getVertexFromId(nextPosition);
-		//calcula a distancia total do caminho e se é possivel voltar para o supermercado
+		//calcula a distancia total do caminho e se Ã© possivel voltar para o supermercado
 		if(checkDistToSupermarket(dest,truck) == false)
 			break;
 		truck.incDist(dest->getDist());
