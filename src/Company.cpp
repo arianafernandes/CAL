@@ -12,6 +12,8 @@ using namespace std;
 Company::Company(int id){
 	this->super.setIdSuper(id);
 	this->colorDelivery = "green";
+	this->idSupers[0]= 96895428;
+	this->idSupers[1] = 1154801453;
 }
 string Company::getColorDelivery() const{
 	return this->colorDelivery;
@@ -125,7 +127,6 @@ void Company::readMaps() {
 	string NomeEstrada = "";
 	string direction = "";
 
-	vector<Estrada> estradas;
 
 	while (getline(maps, line)) {
 		stringstream linestream(line);
@@ -135,18 +136,27 @@ void Company::readMaps() {
 
 		getline(linestream, data, ';'); // read up-to the first ; (discard ;).
 		linestream >> NomeEstrada;
+		cout << "nome "  << NomeEstrada << endl;
 		getline(linestream, data, ';'); // read up-to the first ; (discard ;).
 		linestream >> direction;
 
 		Estrada e;
+
 		e.id = idEstrada;
+		cout << "id " << e.id << endl;
 		e.NomeEstrada = NomeEstrada;
+
 		if (direction == "False") {
 			e.direction = false;
 		} else {
 			e.direction = true;
 		}
+		cout << "nome "  << e.NomeEstrada<<"direction " <<e.direction << endl;
+		cout << "oi" << endl;
+		cout << "hmmmm" <<e.NomeEstrada  << e.id;
 		estradas.push_back(e);
+
+
 	}
 	maps.close();
 
@@ -248,6 +258,8 @@ void Company::createGraphViewer() {
 	}
 
 	gv->rearrange();
+
+	//for()
 
 }
 void Company::readDeliveries() {
@@ -460,3 +472,11 @@ bool Company::checkIfNodeExist(int id){
 }
 
 
+Graph<Info> Company::getGraph(){
+	return this->graph;
+}
+
+
+vector<Estrada> Company::getEstradas(){
+	return this->estradas;
+}

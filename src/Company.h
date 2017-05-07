@@ -11,12 +11,21 @@ using namespace std;
 #include "GraphViewer.h"
 #include "Supermarket.h"
 
+struct Estrada {
+	int id;
+	string NomeEstrada;
+	bool direction;
+};
+
+
 class Company {
 private:
 	Graph<Info> graph;
 	GraphViewer *gv;
 	Supermarket super;
 	string colorDelivery;
+	int idSupers[];
+	vector<Estrada> estradas;
 public:
 
 	/**
@@ -170,6 +179,10 @@ public:
 	Supermarket& getSupermarket();
 
 	bool checkIfNodeExist(int id);
+
+	Graph<Info> getGraph();
+
+	vector<Estrada> getEstradas();
 };
 
 #endif /* SRC_COMPANY_H_ */

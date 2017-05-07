@@ -11,11 +11,6 @@
 
 using namespace std;
 
-struct Estrada {
-	int id;
-	string NomeEstrada;
-	bool direction;
-};
 
 class Supermarket {
 private:

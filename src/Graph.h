@@ -90,6 +90,7 @@ class Edge {
 	int ID;
 	int idRua;
 	static int count;
+	string nomeRua;
 public:
 
 	/**

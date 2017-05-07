@@ -7,6 +7,7 @@
 
 #include "Company.h"
 #include "Auxi.h"
+#include "matcher.h"
 
 /**
  * @brief Test if input is correct number.
@@ -656,13 +657,53 @@ void saveFiles(Company& comp){
 	saveDeliveries(comp);
 }
 
+bool stringInterface(){
+	string name;
+	cout << "Insira o nome de uma rua " << endl;
+	getline(cin,name);
+	int n = numStringMatching("roads.txt",name);
+	cout << "n " << n << endl;
+	int pesqAprox;
+	if(n == 0){//nao existe nenhuma rua com esse nome
+		pesqAprox = numApproximateStringMatching("roads.txt",name);
+		cout << "pesquisa Aprox " << pesqAprox << endl;
+		return true;
+	}else{//existe pelo menos uma rua com esse nome
+
+	}
+return false;
+}
+
+void checkifSupermarket(Company &cmp){
+	//pesquisar nos vertices cujas edges pertencem ao idRua da rua indicada
+	//e ver se corresponde a um idSupermercado ou nao
+	vector<Vertex<Info>*> vertex =cmp.getGraph().getVertexSet();
+
+	/*for(unsigned int i = 0; i< cmp.getEstradas().size();i++){
+		cout << "nome estrada "  << cmp.getEstradas()[i].NomeEstrada << " id Rua " << cmp.getEstradas()[i].id << endl;
+	}
+	/*
+	for(unsigned int i = 0; i < vertex.size();i++{
+			vector<Edge<Info>> adj = vertex[i].getAdj();
+			for(unsigned int j = 0; j < adj.size();j++){
+				//adj[j].getIdRua();
+			}
+
+	}*/
+}
+
+
+
 int main() {
 	Company comp = Company(137309415);
 	comp.readMaps();
 	comp.readDeliveries();
 	comp.readUsers();
-	interfUser(comp);
-	saveFiles(comp);
+	if(stringInterface())
+		checkifSupermarket(comp); //ve se existe um supermercado no cruzamento da rua indicado
+	//interfUser(comp);
+	//saveFiles(comp);
+	//comp.createGraphViewer();
 	getchar();
 	return 0;
 }
