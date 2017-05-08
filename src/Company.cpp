@@ -9,16 +9,16 @@ using namespace std;
 
 #define M_PI 3.14159265359
 
-Company::Company(int id){
+Company::Company(int id) {
 	this->super.setIdSuper(id);
 	this->colorDelivery = "green";
-	this->idSupers[0]= 96895428;
+	this->idSupers[0] = 96895428;
 	this->idSupers[1] = 1154801453;
 }
-string Company::getColorDelivery() const{
+string Company::getColorDelivery() const {
 	return this->colorDelivery;
 }
-void Company::setColorDelivery(string color){
+void Company::setColorDelivery(string color) {
 	this->colorDelivery = color;
 }
 
@@ -34,22 +34,20 @@ double Company::calcY(double lat, double lon) {
 	return Y;
 }
 
-
 double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-																																																																	+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+			+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
 }
 
 bool Company::Bidirection(vector<Estrada> estradas, int id) {
-
 	for (unsigned int i = 0; i < estradas.size(); i++) {
-		if (estradas.at(i).id == id) {
-			if (estradas.at(i).direction == true)
+		if (estradas.at(i).getId() == id) {
+			if (estradas.at(i).getDirection() == true)
 				return true;
 		}
 	}
@@ -123,41 +121,39 @@ void Company::readMaps() {
 		exit(1);   // call system to stop
 	}
 
-	int idEstrada = 0;
-	string NomeEstrada = "";
-	string direction = "";
-
-
+	vector <Estrada> es;
+	int i = 1;
 	while (getline(maps, line)) {
+
+		string id;
+		string name, direction;
+
 		stringstream linestream(line);
 		string data;
 
-		linestream >> idEstrada;
+		cout << i << endl;
+		getline(linestream, id, ';');
+		cout << "id: " << id << endl;
+		getline(linestream, name, ';');
+		cout << "name: " << name << endl;
+		getline(linestream, direction, ';');
+		cout << "direction: " << direction << endl << endl;
 
-		getline(linestream, data, ';'); // read up-to the first ; (discard ;).
-		linestream >> NomeEstrada;
-		cout << "nome "  << NomeEstrada << endl;
-		getline(linestream, data, ';'); // read up-to the first ; (discard ;).
-		linestream >> direction;
 
-		Estrada e;
+		Estrada e = Estrada();
 
-		e.id = idEstrada;
-		cout << "id " << e.id << endl;
-		e.NomeEstrada = NomeEstrada;
-
+		int idE = stoi(id);
+		e.setId(idE);
+		e.setNomeEstrada(name);
 		if (direction == "False") {
-			e.direction = false;
+			e.setDirection(false);
 		} else {
-			e.direction = true;
+			e.setDirection(true);
 		}
-		cout << "nome "  << e.NomeEstrada<<"direction " <<e.direction << endl;
-		cout << "oi" << endl;
-		cout << "hmmmm" <<e.NomeEstrada  << e.id;
-		estradas.push_back(e);
-
-
+		super.addEstrada(e);
+		i++;
 	}
+
 	maps.close();
 
 	maps.open("edges.txt");
@@ -177,7 +173,6 @@ void Company::readMaps() {
 		string data;
 
 		linestream >> idRua;
-
 		getline(linestream, data, ';'); // read up-to the first ; (discard ;).
 		linestream >> idNoOrigem;
 		getline(linestream, data, ';'); // read up-to the first ; (discard ;).
@@ -187,12 +182,13 @@ void Company::readMaps() {
 		Info dest = graph.findInfo(idNoDestino);
 		double w = calcDist(source, dest);
 
-		graph.addEdge(source, dest, w,idAresta);
+		graph.addEdge(source, dest, w, idAresta);
 		//gv->addEdge(idAresta, idNoOrigem, idNoDestino, EdgeType::DIRECTED);
 
-		if (Bidirection(estradas, idRua) == true) {
+
+		if (Bidirection(super.getEstradas(), idRua) == true) {
 			idAresta++;
-			graph.addEdge(dest, source, w,idAresta);
+			graph.addEdge(dest, source, w, idAresta);
 		}
 
 		idAresta++;
@@ -211,7 +207,6 @@ void Company::createGraphViewer() {
 
 	gv->defineEdgeColor("blue");
 	gv->defineVertexColor("yellow");
-
 
 	double minLong = Graph<Info>::minLong - 2 * M_PI;
 	double minLat = Graph<Info>::minLat - 2 * M_PI;
@@ -233,7 +228,8 @@ void Company::createGraphViewer() {
 		double longt = (*itv)->getInfo().getRlon() - 2 * M_PI;
 		double latt = (*itv)->getInfo().getRlat() - 2 * M_PI;
 		int y = -((longt / M_PI) * r - (ymax + ymin) / 2);
-		int x = (log((1 + sin(latt)) / (1 - sin(latt))) / (4 * M_PI)) * r - (xmin + xmax) / 2;
+		int x = (log((1 + sin(latt)) / (1 - sin(latt))) / (4 * M_PI)) * r
+				- (xmin + xmax) / 2;
 
 		gv->addNode(id, x, y);
 	}
@@ -253,13 +249,13 @@ void Company::createGraphViewer() {
 			gv->addEdge(id, idOrigem, idDestino, EdgeType::DIRECTED);
 			stringstream ss;
 			ss << id;
-			gv->setEdgeLabel(id,ss.str());
+			gv->setEdgeLabel(id, ss.str());
 		}
 	}
 
 	gv->rearrange();
 
-	//for()
+//for()
 
 }
 void Company::readDeliveries() {
@@ -280,7 +276,6 @@ void Company::readDeliveries() {
 		int capacity;
 		string date;
 
-
 		stringstream linestream(line);
 		string data;
 		linestream >> orderId;
@@ -288,7 +283,7 @@ void Company::readDeliveries() {
 		linestream >> capacity;
 		getline(linestream, data, ';');
 		linestream >> date;
-		Order tempOrder = Order(orderId,capacity,date);
+		Order tempOrder = Order(orderId, capacity, date);
 		super.addOrderToTruck(tempOrder);
 
 	}
@@ -297,7 +292,7 @@ void Company::readDeliveries() {
 
 }
 
-void Company::readUsers(){
+void Company::readUsers() {
 	ifstream maps;
 
 	maps.open("users.txt");
@@ -315,7 +310,7 @@ void Company::readUsers(){
 		int orderId;
 
 		stringstream linestream(line);
-		string data,lastname;
+		string data, lastname;
 
 		getline(linestream, name, ';');
 		linestream >> nif;
@@ -323,88 +318,87 @@ void Company::readUsers(){
 		linestream >> orderId;
 		getline(linestream, data, ';');
 
-		User tempUser = User(name,nif,orderId);
+		User tempUser = User(name, nif, orderId);
 		super.addUser(tempUser);
 
 	}
 }
 
-
-void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest){
-	vector<Info> temp = graph.getPath(source->getInfo(),dest->getInfo());
-	for(unsigned int i = 0; i < temp.size()-1; i++){
-		gv->setVertexColor(temp[i].getId(),"red");
+void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest) {
+	vector<Info> temp = graph.getPath(source->getInfo(), dest->getInfo());
+	for (unsigned int i = 0; i < temp.size() - 1; i++) {
+		gv->setVertexColor(temp[i].getId(), "red");
 		Vertex<Info>* no1 = graph.getVertexFromId(temp[i].getId());
 		int tempi = i;
 		tempi++;
-		gv->setVertexColor(temp[tempi].getId(),"red");
+		gv->setVertexColor(temp[tempi].getId(), "red");
 		Vertex<Info>* no2 = graph.getVertexFromId(temp[tempi].getId());
-		Edge<Info> edge = graph.getEdgeFromVertex(no1,no2);
-		gv->setEdgeColor(edge.getID(),"red");
+		Edge<Info> edge = graph.getEdgeFromVertex(no1, no2);
+		gv->setEdgeColor(edge.getID(), "red");
 	}
 }
 
-void Company::paintDeliveries(vector<Order> orders){
-	for(unsigned int j = 0; j < orders.size(); j++){
+void Company::paintDeliveries(vector<Order> orders) {
+	for (unsigned int j = 0; j < orders.size(); j++) {
 		Vertex<Info>* no = graph.getVertexFromId(orders[j].getId());
-		gv->setVertexIcon(no->getInfo().getId(),"home.png");
-		gv->setVertexColor(no->getInfo().getId(),"green");
+		gv->setVertexIcon(no->getInfo().getId(), "home.png");
+		gv->setVertexColor(no->getInfo().getId(), "green");
 	}
 }
 
-
-int Company::getNextDelivery(vector<Order> &orders,int currentPosition){
+int Company::getNextDelivery(vector<Order> &orders, int currentPosition) {
 	Vertex<Info>* currentNo = graph.getVertexFromId(currentPosition);
 	graph.dijkstraShortestPath(currentNo->getInfo());
 	int distance = INT_INFINITY;
-	int id =-1;
+	int id = -1;
 	int min = -1;
-	for(unsigned int j = 0; j < orders.size(); j++){
-		if(!orders[j].getDelivery()){
+	for (unsigned int j = 0; j < orders.size(); j++) {
+		if (!orders[j].getDelivery()) {
 			Vertex<Info> *no = graph.getVertexFromId(orders[j].getId());
-			if(no->getDist() < distance){
+			if (no->getDist() < distance) {
 				distance = no->getDist();
 				id = orders[j].getId();
 				min = j;
 			}
 		}
 	}
-	if(min >= 0)
+	if (min >= 0)
 		orders[min].setDelivery(true);
 	return id;
 }
 
-
-vector<Order> Company::eliminateFromOrders(vector<Order> orders, int currentPosition){
+vector<Order> Company::eliminateFromOrders(vector<Order> orders,
+		int currentPosition) {
 	vector<Order> temp;
-	if(currentPosition != this->getSupermarket().getIdSuper()){
-		for(unsigned int i = 0; i < orders.size(); i++){
-			if(orders[i].getId()!=currentPosition)
+	if (currentPosition != this->getSupermarket().getIdSuper()) {
+		for (unsigned int i = 0; i < orders.size(); i++) {
+			if (orders[i].getId() != currentPosition)
 				temp.push_back(orders[i]);
 		}
-	}
-	else{
+	} else {
 		return orders;
 	}
 	return temp;
 }
 
-boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck){
+boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck) {
 	double dist = source->getDist();
 	int id = source->getInfo().getId();
-	Vertex<Info> *superm = graph.getVertexFromId(this->getSupermarket().getIdSuper());
+	Vertex<Info> *superm = graph.getVertexFromId(
+			this->getSupermarket().getIdSuper());
 	graph.dijkstraShortestPath(superm->getInfo());
 	Vertex<Info>* dest = graph.getVertexFromId(id);
-	if(truck.getTravelledDist() + dist + dest->getDist() > truck.getMaxdist())
+	if (truck.getTravelledDist() + dist + dest->getDist() > truck.getMaxdist())
 		return false;
 
 	return true;
 }
 
-void Company::printOrders(vector<Order>orders){
-	Vertex<Info> *superm = graph.getVertexFromId(this->getSupermarket().getIdSuper());
+void Company::printOrders(vector<Order> orders) {
+	Vertex<Info> *superm = graph.getVertexFromId(
+			this->getSupermarket().getIdSuper());
 	graph.dijkstraShortestPath(superm->getInfo());
-	for(unsigned int i=0; i < orders.size();i++){
+	for (unsigned int i = 0; i < orders.size(); i++) {
 		cout << "id " << orders[i].getId() << endl;
 		cout << "data " << orders[i].getDate() << endl;
 		Vertex<Info> *no = graph.getVertexFromId(orders[i].getId());
@@ -412,23 +406,23 @@ void Company::printOrders(vector<Order>orders){
 	}
 }
 
-void Company::returnToSupermarket(int currentPosition,int idSupermarket){
+void Company::returnToSupermarket(int currentPosition, int idSupermarket) {
 	Vertex<Info>* source = graph.getVertexFromId(currentPosition);
 	Vertex<Info>* dest = graph.getVertexFromId(idSupermarket);
 	graph.dijkstraShortestPath(source->getInfo());
 
-	vector<Info> temp = graph.getPath(source->getInfo(),dest->getInfo());
-	for(unsigned int i = 0; i < temp.size()-1; i++){
+	vector<Info> temp = graph.getPath(source->getInfo(), dest->getInfo());
+	for (unsigned int i = 0; i < temp.size() - 1; i++) {
 		Vertex<Info>* no1 = graph.getVertexFromId(temp[i].getId());
 		int tempi = i;
 		tempi++;
 		Vertex<Info>* no2 = graph.getVertexFromId(temp[tempi].getId());
-		Edge<Info> edge = graph.getEdgeFromVertex(no1,no2);
-		gv->setEdgeColor(edge.getID(),"cyan");
+		Edge<Info> edge = graph.getEdgeFromVertex(no1, no2);
+		gv->setEdgeColor(edge.getID(), "cyan");
 	}
 }
 
-void Company::distribution(int id){
+void Company::distribution(int id) {
 	int nextPosition;
 	Vertex<Info>* source;
 	Vertex<Info>* dest;
@@ -437,46 +431,47 @@ void Company::distribution(int id){
 	currentPosition = supermarket;
 	Truck truck = super.getTrucks()[id];
 	vector<Order> orders = truck.getOrders();
-	while(true){
+	while (true) {
 		source = graph.getVertexFromId(currentPosition);
-		nextPosition = getNextDelivery(orders,currentPosition);
-		if(nextPosition == -1){
+		nextPosition = getNextDelivery(orders, currentPosition);
+		if (nextPosition == -1) {
 			break;
 		}
 		dest = graph.getVertexFromId(nextPosition);
-		//calcula a distancia total do caminho e se é possivel voltar para o supermercado
-		if(checkDistToSupermarket(dest,truck) == false)
+//calcula a distancia total do caminho e se é possivel voltar para o supermercado
+		if (checkDistToSupermarket(dest, truck) == false)
 			break;
 		truck.incDist(dest->getDist());
-		paintRoad(source,dest);
+		paintRoad(source, dest);
 		currentPosition = nextPosition;
 	}
-	returnToSupermarket(currentPosition,supermarket);
+	returnToSupermarket(currentPosition, supermarket);
 	paintDeliveries(super.getTrucks()[id].getOrders());
 
-	gv->setVertexIcon(supermarket,"super2.png");
+	gv->setVertexIcon(supermarket, "super2.png");
 
 }
 
-
-Supermarket& Company::getSupermarket(){
+Supermarket& Company::getSupermarket() {
 	return this->super;
 }
 
-bool Company::checkIfNodeExist(int id){
-	for(unsigned int i = 0; i < this->graph.getVertexSet().size(); i++){
-		if(this->graph.getVertexSet()[i]->getInfo().getId() == id)
+bool Company::checkIfNodeExist(int id) {
+	for (unsigned int i = 0; i < this->graph.getVertexSet().size(); i++) {
+		if (this->graph.getVertexSet()[i]->getInfo().getId() == id)
 			return true;
 	}
 	return false;
 }
 
-
-Graph<Info> Company::getGraph(){
+Graph<Info> Company::getGraph() {
 	return this->graph;
 }
 
-
-vector<Estrada> Company::getEstradas(){
+vector<Estrada> Company::getEstradas() {
 	return this->estradas;
+}
+
+void Company::setEstrada(Estrada e){
+	estradas.push_back(e);
 }

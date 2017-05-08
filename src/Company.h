@@ -11,13 +11,6 @@ using namespace std;
 #include "GraphViewer.h"
 #include "Supermarket.h"
 
-struct Estrada {
-	int id;
-	string NomeEstrada;
-	bool direction;
-};
-
-
 class Company {
 private:
 	Graph<Info> graph;
@@ -183,6 +176,8 @@ public:
 	Graph<Info> getGraph();
 
 	vector<Estrada> getEstradas();
+
+	void setEstrada(Estrada e);
 };
 
 #endif /* SRC_COMPANY_H_ */
