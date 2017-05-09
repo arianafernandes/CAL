@@ -1,5 +1,5 @@
-#ifndef SRC_ESTRADA_H_
-#define SRC_ESTRADA_H_
+#ifndef SRC_ROAD_H_
+#define SRC_ROAD_H_
 
 #include <fstream>
 #include <iostream>
@@ -9,22 +9,22 @@
 #include <cmath>
 using namespace std;
 
-class Estrada {
+class Road {
 private:
 	int id;
-	string NomeEstrada;
+	string name;
 	bool direction;
 public:
-	Estrada();
-	Estrada(int id, string name, bool d);
+	Road();
+	Road(int id, string name, bool d);
 	void setId(int id);
-	void setNomeEstrada(string n);
+	void setName(string n);
 	void setDirection(bool d);
 	int getId();
-	string getNomeEstrada();
+	string getName();
 	bool getDirection();
 };
 
 
 
-#endif /* SRC_ESTRADA_H_ */
+#endif /* SRC_ROAD_H_ */

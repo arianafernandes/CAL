@@ -44,10 +44,10 @@ double Company::calcDist(Info f1, Info f2) {
 
 }
 
-bool Company::Bidirection(vector<Estrada> estradas, int id) {
-	for (unsigned int i = 0; i < estradas.size(); i++) {
-		if (estradas.at(i).getId() == id) {
-			if (estradas.at(i).getDirection() == true)
+bool Company::Bidirection(vector<Road> roads, int id) {
+	for (unsigned int i = 0; i < roads.size(); i++) {
+		if (roads.at(i).getId() == id) {
+			if (roads.at(i).getDirection() == true)
 				return true;
 		}
 	}
@@ -121,7 +121,6 @@ void Company::readMaps() {
 		exit(1);   // call system to stop
 	}
 
-	vector <Estrada> es;
 	int i = 1;
 	while (getline(maps, line)) {
 
@@ -140,17 +139,17 @@ void Company::readMaps() {
 		cout << "direction: " << direction << endl << endl;
 
 
-		Estrada e = Estrada();
+		Road r = Road();
 
 		int idE = stoi(id);
-		e.setId(idE);
-		e.setNomeEstrada(name);
+		r.setId(idE);
+		r.setName(name);
 		if (direction == "False") {
-			e.setDirection(false);
+			r.setDirection(false);
 		} else {
-			e.setDirection(true);
+			r.setDirection(true);
 		}
-		super.addEstrada(e);
+		super.addRoad(r);
 		i++;
 	}
 
@@ -186,7 +185,7 @@ void Company::readMaps() {
 		//gv->addEdge(idAresta, idNoOrigem, idNoDestino, EdgeType::DIRECTED);
 
 
-		if (Bidirection(super.getEstradas(), idRua) == true) {
+		if (Bidirection(super.getRoads(), idRua) == true) {
 			idAresta++;
 			graph.addEdge(dest, source, w, idAresta);
 		}
@@ -468,10 +467,10 @@ Graph<Info> Company::getGraph() {
 	return this->graph;
 }
 
-vector<Estrada> Company::getEstradas() {
-	return this->estradas;
+vector<Road> Company::getRoads() {
+	return this->roads;
 }
 
-void Company::setEstrada(Estrada e){
-	estradas.push_back(e);
+void Company::setRoad(Road r){
+	roads.push_back(r);
 }

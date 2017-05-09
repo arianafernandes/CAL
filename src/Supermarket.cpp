@@ -14,8 +14,8 @@ vector<Truck> Supermarket::getTrucks() const {
 	return trucks;
 }
 
-vector<Estrada> Supermarket::getEstradas() const {
-	return estradas;
+vector<Road> Supermarket::getRoads() const {
+	return roads;
 }
 
 void Supermarket::addUser(User u1) {
@@ -27,8 +27,8 @@ void Supermarket::addTruck(Truck t) {
 	trucks.push_back(t);
 }
 
-void Supermarket::addEstrada(Estrada e) {
-	estradas.push_back(e);
+void Supermarket::addRoad(Road r) {
+	roads.push_back(r);
 }
 
 bool Supermarket::addOrderToTruck(Order o) {

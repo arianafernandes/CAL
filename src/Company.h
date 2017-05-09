@@ -18,7 +18,7 @@ private:
 	Supermarket super;
 	string colorDelivery;
 	int idSupers[];
-	vector<Estrada> estradas;
+	vector<Road> roads;
 public:
 
 	/**
@@ -57,7 +57,7 @@ public:
 	 *
 	 * @return true if the edge id is from a edge that is bidirectional, otherwise return false.
 	 */
-	bool Bidirection(vector<Estrada> estradas, int id);
+	bool Bidirection(vector<Road> roads, int id);
 
 	/**
 	 * @brief Read the maps files.
@@ -175,9 +175,9 @@ public:
 
 	Graph<Info> getGraph();
 
-	vector<Estrada> getEstradas();
+	vector<Road> getRoads();
 
-	void setEstrada(Estrada e);
+	void setRoad(Road r);
 };
 
 #endif /* SRC_COMPANY_H_ */

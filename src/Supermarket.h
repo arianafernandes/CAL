@@ -6,9 +6,10 @@
 #include <math.h>
 #include <vector>
 #include <cmath>
+
+#include "Road.h"
 #include "Truck.h"
 #include "User.h"
-#include "Estrada.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ class Supermarket {
 private:
 	vector<User> users;
 	vector<Truck> trucks;
-	vector<Estrada> estradas;
+	vector<Road> roads;
 	string name;
 	int idSuper;
 
@@ -39,7 +40,7 @@ public:
 	 */
 	vector<Truck> getTrucks() const;
 
-	vector<Estrada> getEstradas() const;
+	vector<Road> getRoads() const;
 
 	/**
 	 * @brief Add a user to the suepermarket.
@@ -55,7 +56,7 @@ public:
 	 */
 	void addTruck(Truck t);
 
-	void addEstrada(Estrada e);
+	void addRoad(Road r);
 
 	/**
 	 * @brief Add a order to the respective truck of the supermarket.
