@@ -130,14 +130,13 @@ void Company::readMaps() {
 		stringstream linestream(line);
 		string data;
 
-		cout << i << endl;
+		//cout << i << endl;
 		getline(linestream, id, ';');
-		cout << "id: " << id << endl;
+		//cout << "id: " << id << endl;
 		getline(linestream, name, ';');
-		cout << "name: " << name << endl;
+		//cout << "name: " << name << endl;
 		getline(linestream, direction, ';');
-		cout << "direction: " << direction << endl << endl;
-
+		//cout << "direction: " << direction << endl << endl;
 
 		Road r = Road();
 
@@ -181,15 +180,15 @@ void Company::readMaps() {
 		Info dest = graph.findInfo(idNoDestino);
 		double w = calcDist(source, dest);
 
-		graph.addEdge(source, dest, w, idAresta);
-		//gv->addEdge(idAresta, idNoOrigem, idNoDestino, EdgeType::DIRECTED);
 
+		graph.addEdge(source, dest, w, idAresta);
+		//cout << "id" << super.getRoadNameByID(idRua) << endl;
+		//gv->setEdgeLabel(idRua, super.getRoadNameByID(idRua));
 
 		if (Bidirection(super.getRoads(), idRua) == true) {
 			idAresta++;
 			graph.addEdge(dest, source, w, idAresta);
 		}
-
 		idAresta++;
 	}
 
@@ -248,15 +247,17 @@ void Company::createGraphViewer() {
 			gv->addEdge(id, idOrigem, idDestino, EdgeType::DIRECTED);
 			stringstream ss;
 			ss << id;
-			gv->setEdgeLabel(id, ss.str());
+			//gv->setEdgeLabel(id, ss.str());
+
+			//cout << "id" << super.getRoadNameByID(id) << endl;
+			//gv->setEdgeLabel(id, super.getRoadNameByID());
 		}
 	}
 
 	gv->rearrange();
 
-//for()
-
 }
+
 void Company::readDeliveries() {
 	ifstream maps;
 
@@ -471,6 +472,6 @@ vector<Road> Company::getRoads() {
 	return this->roads;
 }
 
-void Company::setRoad(Road r){
+void Company::setRoad(Road r) {
 	roads.push_back(r);
 }

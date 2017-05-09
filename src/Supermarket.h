@@ -137,6 +137,9 @@ public:
 	 *
 	 */
 	bool userExists(int nif);
+
+	string getRoadNameByID(int id);
+
 };
 
 #endif /* SRC_SUPERMARKET_H_ */

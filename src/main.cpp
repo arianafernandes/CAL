@@ -699,11 +699,11 @@ int main() {
 	comp.readMaps();
 	comp.readDeliveries();
 	comp.readUsers();
-	if(stringInterface())
-		checkifSupermarket(comp); //ve se existe um supermercado no cruzamento da rua indicado
+	//if(stringInterface())
+		//checkifSupermarket(comp); //ve se existe um supermercado no cruzamento da rua indicado
 	//interfUser(comp);
 	//saveFiles(comp);
-	//comp.createGraphViewer();
+	comp.createGraphViewer();
 	getchar();
 	return 0;
 }
