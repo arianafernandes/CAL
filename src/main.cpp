@@ -7,7 +7,7 @@
 
 #include "Company.h"
 #include "Auxi.h"
-#include "matcher.h"
+#include "Matcher.h"
 
 /**
  * @brief Test if input is correct number.
@@ -677,10 +677,10 @@ return false;
 void checkifSupermarket(Company &cmp){
 	//pesquisar nos vertices cujas edges pertencem ao idRua da rua indicada
 	//e ver se corresponde a um idSupermercado ou nao
-	vector<Vertex<Info>*> vertex =cmp.getGraph().getVertexSet();
+	//vector<Vertex<Info>*> vertex =cmp.getGraph().getVertexSet();
 
-	/*for(unsigned int i = 0; i< cmp.getEstradas().size();i++){
-		cout << "nome estrada "  << cmp.getEstradas()[i].NomeEstrada << " id Rua " << cmp.getEstradas()[i].id << endl;
+	for(unsigned int i = 0; i< cmp.getRoads().size(); i++){
+		cout << "Road name: "  << cmp.getRoads().at(i).getName() << " id Rua " <<cmp.getRoads().at(i).getId() << endl;
 	}
 	/*
 	for(unsigned int i = 0; i < vertex.size();i++{
@@ -699,11 +699,13 @@ int main() {
 	comp.readMaps();
 	comp.readDeliveries();
 	comp.readUsers();
-	//if(stringInterface())
-		//checkifSupermarket(comp); //ve se existe um supermercado no cruzamento da rua indicado
+	//stringInterface();
+	//checkifSupermarket(comp);
+     //ve se existe um supermercado no cruzamento da rua indicado
 	//interfUser(comp);
 	//saveFiles(comp);
 	comp.createGraphViewer();
+
 	getchar();
 	return 0;
 }

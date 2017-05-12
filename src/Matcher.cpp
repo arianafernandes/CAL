@@ -1,7 +1,7 @@
 /*
  * matcher.cpp
  */
-#include "matcher.h"
+#include "Matcher.h"
 
 void pre_kmp(string pattern, vector<int> & prefix)
 {
