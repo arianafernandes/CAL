@@ -181,15 +181,18 @@ void Company::readMaps() {
 		double w = calcDist(source, dest);
 
 
-		graph.addEdge(source, dest, w, idAresta);
-		//cout << "id" << super.getRoadNameByID(idRua) << endl;
+		graph.addEdge(source, dest, w, idAresta, idRua);
+
+		//cout << "idRua" << g << endl;
+
 		//gv->setEdgeLabel(idRua, super.getRoadNameByID(idRua));
 
 		if (Bidirection(super.getRoads(), idRua) == true) {
 			idAresta++;
-			graph.addEdge(dest, source, w, idAresta);
+			graph.addEdge(dest, source, w, idAresta, idRua);
 		}
 		idAresta++;
+
 	}
 
 	maps.close();
@@ -244,13 +247,17 @@ void Company::createGraphViewer() {
 			idDestino = ite->getDest()->getInfo().getId();
 
 			int id = ite->getID();
+			int idRua = ite->getIdRua();
 			gv->addEdge(id, idOrigem, idDestino, EdgeType::DIRECTED);
-			stringstream ss;
-			ss << id;
-			//gv->setEdgeLabel(id, ss.str());
+			//stringstream ss;
+			//ss << idRua;
+
+
+
+			gv->setEdgeLabel(id, super.getRoadNameByID(idRua));
 
 			//cout << "id" << super.getRoadNameByID(id) << endl;
-			//gv->setEdgeLabel(id, super.getRoadNameByID());
+			//gv->setEdgeLabel(id, );
 		}
 	}
 

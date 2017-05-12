@@ -39,7 +39,7 @@ public:
 	Vertex(T in);
 
 	friend class Graph<T> ;
-	void addEdge(Vertex<T> *dest, double w, int id);
+	void addEdge(Vertex<T> *dest, double w, int id, int idRua);
 	bool removeEdgeTo(Vertex<T> *d);
 
 	/**
@@ -108,6 +108,7 @@ public:
 	 */
 	Edge(Vertex<T> *d, double w, int id);
 
+	Edge(Vertex<T> *d, double w, int id, int idRua);
 	/**
 	 *
 	 * @return The destination node.
@@ -176,14 +177,8 @@ public:
 	 * @param id Id of the edge.
 	 * @return True of the edge was successfully added or false otherwise.
 	 */
-	bool addEdge(const T &sourc, const T &dest, double w, int id);
+	bool addEdge(const T &sourc, const T &dest, double w, int id, int idRua);
 
-	/**
-	 *
-	 * @param sourc Source vertex.
-	 * @param dest Destination vertex.
-	 * @return Returns the edge connecting the to vertexes passed as arguments.
-	 */
 
 	/**
 	 *
