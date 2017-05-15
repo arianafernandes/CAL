@@ -485,3 +485,32 @@ vector<Road> Company::getRoads() {
 void Company::setRoad(Road r) {
 	roads.push_back(r);
 }
+
+int Company::pesquisaAproximada(string name){
+		for(unsigned int i = 0; i < roads.size();i++){//para cada rua separar o nome da rua em palavras individuais
+			string name=roads[i].getName();
+			stringstream ss(name);
+			string token;
+			int distMin = 0; // minimo global
+			int distMinFrase = 0; // minimo para cada frase
+			int idRoad = 0;
+			vector<int> minimos;
+			while(ss >> token){
+
+				int min = editDistance(token,name);
+				if(min < distMinFrase){
+					distMinFrase = min;
+				}
+			}
+			if(distMinFrase == distMin){
+				minimos.push_back(roads.at(i).getId());
+			}
+			if(distMinFrase < distMin){
+				vector<int> m;
+				minimos = m;
+				m.push_back(roads.at(i).getId());
+			}
+		}
+		//cout << "pesquisa Aprox " << pesqAprox << endl;
+		return 0;
+}

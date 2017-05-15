@@ -196,6 +196,7 @@ public:
 	 * @param r Road r
 	 */
 	void setRoad(Road r);
+	int pesquisaAproximada(string name);
 };
 
 #endif /* SRC_COMPANY_H_ */

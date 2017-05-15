@@ -666,10 +666,10 @@ bool stringInterface(){
 	int n = numStringMatching("roads.txt",name);
 	cout << "n " << n << endl;
 	int pesqAprox;
+
 	if(n == 0){//nao existe nenhuma rua com esse nome
-		pesqAprox = numApproximateStringMatching("roads.txt",name);
-		cout << "pesquisa Aprox " << pesqAprox << endl;
-		return true;
+		//separar os nomes das ruas de cada road e comparar com name
+		//comp.pesquisaAproximada(name);
 	}else{//existe pelo menos uma rua com esse nome
 
 	}
