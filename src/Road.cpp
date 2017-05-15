@@ -1,7 +1,9 @@
 #include "Road.h"
 
 Road::Road() {
-
+	this->id = 0;
+	this->name = "";
+	this->direction = true;
 }
 
 Road::Road(int id, string name, bool d) {
@@ -32,6 +34,4 @@ string Road::getName() {
 bool Road::getDirection() {
 	return this->direction;
 }
-
-
 

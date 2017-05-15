@@ -699,7 +699,7 @@ int main() {
 	comp.readMaps();
 	comp.readDeliveries();
 	comp.readUsers();
-	//stringInterface();
+	stringInterface();
 	//checkifSupermarket(comp);
      //ve se existe um supermercado no cruzamento da rua indicado
 	//interfUser(comp);

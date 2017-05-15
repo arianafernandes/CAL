@@ -72,7 +72,10 @@ dest(d), weight(w), ID(id) {
 
 template<class T>
 Edge<T>::Edge(){
-
+this->ID = 0;
+this->idRua = 0;
+this->weight= 0;
+this->nomeRua = "";
 }
 
 template<class T>
