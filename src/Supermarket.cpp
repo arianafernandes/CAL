@@ -77,10 +77,15 @@ string Supermarket::getName() const {
 	return this->name;
 }
 
-void Supermarket::setIdSuper(int id) {
+void Supermarket::setIdSuper(vector<int> id) {
 	this->idSuper = id;
 }
+
 int Supermarket::getIdSuper() const {
+	return this->idSuper.at(0);
+}
+
+vector<int> Supermarket::getSuperIDs() const{
 	return this->idSuper;
 }
 

@@ -13,14 +13,13 @@
 
 using namespace std;
 
-
 class Supermarket {
 private:
 	vector<User> users;
 	vector<Truck> trucks;
 	vector<Road> roads;
 	string name;
-	int idSuper;
+	vector<int> idSuper;
 
 public:
 	/**
@@ -85,13 +84,19 @@ public:
 	 *
 	 * @param id Superarket Id.
 	 */
-	void setIdSuper(int id);
+	void setIdSuper(vector<int> id);
 
 	/**
 	 *
 	 * @return Supermarket id.
 	 */
 	int getIdSuper() const;
+
+	/**
+	 *
+	 * @return Supermarket ids.
+	 */
+	vector<int> getSuperIDs() const;
 
 	/**
 	 * @brief Prints all trucks from the supermarket.

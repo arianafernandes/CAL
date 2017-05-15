@@ -1,10 +1,3 @@
-/*
- * matcher.h
- *
- *  Created on: 07/05/2017
- *      Author: Marta
- */
-
 #ifndef SRC_MATCHER_H_
 #define SRC_MATCHER_H_
 

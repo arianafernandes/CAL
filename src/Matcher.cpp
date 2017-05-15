@@ -1,6 +1,3 @@
-/*
- * matcher.cpp
- */
 #include "Matcher.h"
 
 void pre_kmp(string pattern, vector<int> & prefix)

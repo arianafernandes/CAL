@@ -39,7 +39,9 @@ public:
 	Vertex(T in);
 
 	friend class Graph<T> ;
+
 	void addEdge(Vertex<T> *dest, double w, int id, int idRua);
+
 	bool removeEdgeTo(Vertex<T> *d);
 
 	/**

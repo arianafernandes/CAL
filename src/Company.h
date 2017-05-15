@@ -17,15 +17,13 @@ private:
 	GraphViewer *gv;
 	Supermarket super;
 	string colorDelivery;
-	int idSupers[];
 	vector<Road> roads;
 public:
 
 	/**
 	 * Default constructor.
-	 * @param id Supermarket id.
 	 */
-	Company(int id);
+	Company();
 
 	/**
 	 * @brief Calculates x from latitude and longitude.
@@ -171,12 +169,32 @@ public:
 	 */
 	Supermarket& getSupermarket();
 
+	/**
+	 * @brief Checks the node exists.
+	 *
+	 * @param id Node id.
+	 *
+	 * @return True if success, otherwise return false.
+	 */
 	bool checkIfNodeExist(int id);
 
+	/**
+	 *
+	 * @return The graph of the company.
+	 */
 	Graph<Info> getGraph();
 
+	/**
+	 *
+	 * @return The roads of the company.
+	 */
 	vector<Road> getRoads();
 
+	/**
+	 * @brief Set a new road to the vector roads of the company.
+	 *
+	 * @param r Road r
+	 */
 	void setRoad(Road r);
 };
 

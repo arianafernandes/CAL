@@ -9,11 +9,10 @@ using namespace std;
 
 #define M_PI 3.14159265359
 
-Company::Company(int id) {
-	this->super.setIdSuper(id);
+Company::Company() {
+	vector<int> superIDs = {96895428,1154801453,1154802471, 1154795592,1154804468};
+	this->super.setIdSuper(superIDs);
 	this->colorDelivery = "green";
-	this->idSupers[0] = 96895428;
-	this->idSupers[1] = 1154801453;
 }
 string Company::getColorDelivery() const {
 	return this->colorDelivery;
@@ -261,6 +260,11 @@ void Company::createGraphViewer() {
 		}
 	}
 
+	for(unsigned int i = 0; i < this->super.getSuperIDs().size(); i++){
+
+		gv->setVertexIcon(super.getSuperIDs().at(i), "super2.png");
+	}
+
 	gv->rearrange();
 
 }
@@ -391,8 +395,7 @@ vector<Order> Company::eliminateFromOrders(vector<Order> orders,
 boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck) {
 	double dist = source->getDist();
 	int id = source->getInfo().getId();
-	Vertex<Info> *superm = graph.getVertexFromId(
-			this->getSupermarket().getIdSuper());
+	Vertex<Info> *superm = graph.getVertexFromId(this->getSupermarket().getIdSuper());
 	graph.dijkstraShortestPath(superm->getInfo());
 	Vertex<Info>* dest = graph.getVertexFromId(id);
 	if (truck.getTravelledDist() + dist + dest->getDist() > truck.getMaxdist())

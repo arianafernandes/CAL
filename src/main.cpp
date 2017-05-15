@@ -399,6 +399,7 @@ void changeNameSuper(Company &comp){
  * @param comp Company.
  *
  */
+/*
 void changeAddressSuper(Company &comp){
 	string name;
 	do{
@@ -412,7 +413,7 @@ void changeAddressSuper(Company &comp){
 		cout << "A morada nao se encontra no mapa!" << endl;
 		return;
 	}
-}
+}*/
 
 /**
  * @brief Check set capacity.
@@ -555,7 +556,8 @@ void adminSuper(Company& comp){
 			changeNameSuper(comp);
 			break;
 		case 2:
-			changeAddressSuper(comp);
+			//changeAddressSuper(comp);
+			cout << "Nao e possivel alterar a morada do supermercado atualmente." << endl;
 			break;
 		case 3:
 			changeTrucks(comp);
@@ -695,7 +697,7 @@ void checkifSupermarket(Company &cmp){
 
 
 int main() {
-	Company comp = Company(137309415);
+	Company comp = Company();
 	comp.readMaps();
 	comp.readDeliveries();
 	comp.readUsers();
