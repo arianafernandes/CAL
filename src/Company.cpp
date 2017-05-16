@@ -500,7 +500,6 @@ vector<Road> Company::pesquisaAproximada(string name) {
 		stringstream ss(this->super.getRoads()[i].getName());
 		string token;
 		int distMinFrase = 99; // minimo para cada frase
-		int idRoad = 0;
 		while (ss >> token) {
 			int min = editDistance(token, name);
 			if (min < distMinFrase) {

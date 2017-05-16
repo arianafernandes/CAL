@@ -122,7 +122,7 @@ void Supermarket::displayOrdersFromTruck(int id) const {
 
 string Supermarket::getRoadNameByID(int id) {
 	string name;
-	for (int i = 0; i < roads.size(); i++) {
+	for (unsigned int i = 0; i < roads.size(); i++) {
 		if (roads.at(i).getId() == id) {
 			name = roads.at(i).getName();
 		}
