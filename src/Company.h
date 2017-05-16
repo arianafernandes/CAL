@@ -18,6 +18,7 @@ private:
 	Supermarket super;
 	string colorDelivery;
 	vector<Road> roads;
+	int superFound;
 public:
 
 	/**
@@ -197,6 +198,9 @@ public:
 	 */
 	void setRoad(Road r);
 	int pesquisaAproximada(string name);
+
+	void searchSupermarket(int roadID);
+	int checkSuperID(int id);
 };
 
 #endif /* SRC_COMPANY_H_ */

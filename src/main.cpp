@@ -659,29 +659,37 @@ bool stringInterface(Company& comp) {
 	cout << "Insira o nome de uma rua " << endl;
 	getline(cin, name);
 
-	/*int n = kmp("marta", name);
-	cout << "n " << n << endl;
-	n = kmp("cris", name);
-	cout << "n " << n << endl;
-	n = kmp("ariana", name);
-	cout << "n " << n << endl;*/
-
 	int n;
+	vector<Road> roads;
 	for (unsigned int i = 0; i < comp.getSupermarket().getRoads().size(); i++) {
-	 //cout << "Road name: " << comp.getSupermarket().getRoads().at(i).getName() << endl;
-	 cout << name;
-	 n = kmp(comp.getSupermarket().getRoads().at(i).getName(), name);
-	 //cout << "n " << n << endl;
+		//cout << "Road name: " << comp.getSupermarket().getRoads().at(i).getName() << endl;
+		//cout << name;
+		n = kmp(comp.getSupermarket().getRoads().at(i).getName(), name);
+		//cout << "n " << n << endl;
 
-	 if((n == 1) && (name.length() == comp.getSupermarket().getRoads().at(i).getName().length())){
-		 cout <<"Encontrou exatamente a rua." << endl;
-		 return true;
+		if (n == 1) {
+			roads.push_back(comp.getSupermarket().getRoads().at(i));
+			cout << "Encontrou exatamente a rua." << endl;
+			//cout << "Road name: " << comp.getSupermarket().getRoads().at(i).getName() << endl;
+		}
 	}
+	if (roads.size() > 0) {
+		cout << "Qual a rua que procurava?" << endl;
+		for (unsigned int i = 0; i < roads.size(); i++) {
+
+			cout << i << " Road: " << roads.at(i).getName() << endl;
+		}
+
+		string nameRoad;
+		getline(cin, nameRoad);
+		int number = stoi(nameRoad);
+
+		comp.searchSupermarket(roads.at(number).getId());
 	}
-	 //nao existe nenhuma rua com esse nome, separar os nomes das ruas de cada road e comparar com name
-	 cout << "Inicio de pesquisa aproximada..." << endl;
-	 comp.pesquisaAproximada(name);
-	 return false;
+	//nao existe nenhuma rua com esse nome, separar os nomes das ruas de cada road e comparar com name
+	//cout << "Inicio de pesquisa aproximada..." << endl;
+	//comp.pesquisaAproximada(name);
+	return false;
 
 }
 

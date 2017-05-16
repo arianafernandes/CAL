@@ -14,6 +14,7 @@ private:
 	int id;
 	string name;
 	bool direction;
+
 public:
 	Road();
 	Road(int id, string name, bool d);

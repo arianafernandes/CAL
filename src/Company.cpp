@@ -15,6 +15,7 @@ Company::Company() {
 			1154804468 };
 	this->super.setIdSuper(superIDs);
 	this->colorDelivery = "green";
+	this->superFound = 0;
 }
 string Company::getColorDelivery() const {
 	return this->colorDelivery;
@@ -262,6 +263,11 @@ void Company::createGraphViewer() {
 	for (unsigned int i = 0; i < this->super.getSuperIDs().size(); i++) {
 
 		gv->setVertexIcon(super.getSuperIDs().at(i), "super2.png");
+	}
+
+
+	if(superFound != 0){
+		gv->setVertexIcon(superFound, "super3.png");
 	}
 
 	gv->rearrange();
@@ -521,4 +527,33 @@ int Company::pesquisaAproximada(string name) {
 	}
 	//cout << "pesquisa Aprox " << pesqAprox << endl;
 	return 0;
+}
+
+int Company::checkSuperID(int id){
+	for(unsigned int i = 0; i < this->super.getSuperIDs().size(); i++){
+		if(id == this->super.getSuperIDs().at(i)){
+			cout << "id " << id << "supermercado encontrado " << this->super.getSuperIDs().at(i) << endl;
+			superFound = id;
+			return id;
+		}
+	}
+	return 0;
+}
+
+void Company::searchSupermarket(int roadID){
+//cout << "search supermarket" << endl;
+	for(unsigned int i = 0; i < graph.getVertexSet().size(); i++){
+		vector<Edge<Info> > adj = graph.getVertexSet().at(i)->getAdj();
+		//cout << "Vertex id " << graph.getVertexSet().at(i)->getInfo().getId() << endl;
+		for(unsigned int j = 0; j < adj.size(); j++){
+			if(adj.at(j).getIdRua() == roadID){
+				//cout << "search supermarket2" << endl;
+				if(checkSuperID(graph.getVertexSet().at(i)->getInfo().getId()) != 0){
+					//cout<< "encontrou super" << endl;
+					//display
+				}
+			}
+		}
+	}
+	//cout << "end search supermarket" << endl;
 }
