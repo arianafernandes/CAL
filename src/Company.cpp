@@ -1,4 +1,5 @@
 #include "Company.h"
+#include "Matcher.h"
 
 #include <string>
 #include <iostream>
@@ -10,7 +11,8 @@ using namespace std;
 #define M_PI 3.14159265359
 
 Company::Company() {
-	vector<int> superIDs = {96895428,1154801453,1154802471, 1154795592,1154804468};
+	vector<int> superIDs = { 96895428, 1154801453, 1154802471, 1154795592,
+			1154804468 };
 	this->super.setIdSuper(superIDs);
 	this->colorDelivery = "green";
 }
@@ -179,7 +181,6 @@ void Company::readMaps() {
 		Info dest = graph.findInfo(idNoDestino);
 		double w = calcDist(source, dest);
 
-
 		graph.addEdge(source, dest, w, idAresta, idRua);
 
 		//cout << "idRua" << g << endl;
@@ -251,8 +252,6 @@ void Company::createGraphViewer() {
 			//stringstream ss;
 			//ss << idRua;
 
-
-
 			gv->setEdgeLabel(id, super.getRoadNameByID(idRua));
 
 			//cout << "id" << super.getRoadNameByID(id) << endl;
@@ -260,7 +259,7 @@ void Company::createGraphViewer() {
 		}
 	}
 
-	for(unsigned int i = 0; i < this->super.getSuperIDs().size(); i++){
+	for (unsigned int i = 0; i < this->super.getSuperIDs().size(); i++) {
 
 		gv->setVertexIcon(super.getSuperIDs().at(i), "super2.png");
 	}
@@ -395,7 +394,8 @@ vector<Order> Company::eliminateFromOrders(vector<Order> orders,
 boolean Company::checkDistToSupermarket(Vertex<Info>* source, Truck truck) {
 	double dist = source->getDist();
 	int id = source->getInfo().getId();
-	Vertex<Info> *superm = graph.getVertexFromId(this->getSupermarket().getIdSuper());
+	Vertex<Info> *superm = graph.getVertexFromId(
+			this->getSupermarket().getIdSuper());
 	graph.dijkstraShortestPath(superm->getInfo());
 	Vertex<Info>* dest = graph.getVertexFromId(id);
 	if (truck.getTravelledDist() + dist + dest->getDist() > truck.getMaxdist())
@@ -486,31 +486,39 @@ void Company::setRoad(Road r) {
 	roads.push_back(r);
 }
 
-int Company::pesquisaAproximada(string name){
-		for(unsigned int i = 0; i < roads.size();i++){//para cada rua separar o nome da rua em palavras individuais
-			string name=roads[i].getName();
-			stringstream ss(name);
-			string token;
-			int distMin = 0; // minimo global
-			int distMinFrase = 0; // minimo para cada frase
-			int idRoad = 0;
-			vector<int> minimos;
-			while(ss >> token){
+int Company::pesquisaAproximada(string name) {
 
-				int min = editDistance(token,name);
-				if(min < distMinFrase){
-					distMinFrase = min;
-				}
-			}
-			if(distMinFrase == distMin){
-				minimos.push_back(roads.at(i).getId());
-			}
-			if(distMinFrase < distMin){
-				vector<int> m;
-				minimos = m;
-				m.push_back(roads.at(i).getId());
+	vector<int> minimos;
+
+	for (unsigned int i = 0; i < roads.size(); i++) {//para cada rua separar o nome da rua em palavras individuais
+		string name = roads[i].getName();
+		stringstream ss(name);
+		string token;
+		int distMin = 0; // minimo global
+		int distMinFrase = 0; // minimo para cada frase
+		int idRoad = 0;
+		while (ss >> token) {
+
+			int min = editDistance(token, name);
+			if (min < distMinFrase) {
+				distMinFrase = min;
 			}
 		}
-		//cout << "pesquisa Aprox " << pesqAprox << endl;
-		return 0;
+		if (distMinFrase == distMin) {
+			minimos.push_back(roads.at(i).getId());
+		}
+		if (distMinFrase < distMin) {
+			minimos.clear();
+			minimos.push_back(roads.at(i).getId());
+		}
+		for (int i = 0; i < minimos.size(); i++) {
+			cout << "minimo " << minimos.at(i) << endl;
+		}
+	}
+
+	for (int i = 0; i < minimos.size(); i++) {
+		cout << "minimo final " << minimos.at(i) << endl;
+	}
+	//cout << "pesquisa Aprox " << pesqAprox << endl;
+	return 0;
 }
