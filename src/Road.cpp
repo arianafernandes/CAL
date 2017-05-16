@@ -35,3 +35,5 @@ bool Road::getDirection() {
 	return this->direction;
 }
 
+
+

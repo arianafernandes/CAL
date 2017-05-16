@@ -145,6 +145,8 @@ public:
 
 	string getRoadNameByID(int id);
 
+	string getNameById(int id);
+
 };
 
 #endif /* SRC_SUPERMARKET_H_ */

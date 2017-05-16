@@ -129,3 +129,13 @@ string Supermarket::getRoadNameByID(int id) {
 	}
 	return name;
 }
+
+
+string Supermarket::getNameById(int id){
+	for(unsigned int i = 0; i < this->roads.size(); i++){
+		if(this->roads[i].getId() == id){
+			return this->roads[i].getName();
+		}
+	}
+	return "";
+}

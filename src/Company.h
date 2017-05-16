@@ -197,9 +197,9 @@ public:
 	 * @param r Road r
 	 */
 	void setRoad(Road r);
-	int pesquisaAproximada(string name);
+	vector<Road> pesquisaAproximada(string name);
 
-	void searchSupermarket(int roadID);
+	bool searchSupermarket(int roadID);
 	int checkSuperID(int id);
 };
 

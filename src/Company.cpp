@@ -40,7 +40,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-			+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+													+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -265,8 +265,7 @@ void Company::createGraphViewer() {
 		gv->setVertexIcon(super.getSuperIDs().at(i), "super2.png");
 	}
 
-
-	if(superFound != 0){
+	if (superFound != 0) {
 		gv->setVertexIcon(superFound, "super3.png");
 	}
 
@@ -454,7 +453,7 @@ void Company::distribution(int id) {
 			break;
 		}
 		dest = graph.getVertexFromId(nextPosition);
-//calcula a distancia total do caminho e se é possivel voltar para o supermercado
+		//calcula a distancia total do caminho e se é possivel voltar para o supermercado
 		if (checkDistToSupermarket(dest, truck) == false)
 			break;
 		truck.incDist(dest->getDist());
@@ -492,47 +491,40 @@ void Company::setRoad(Road r) {
 	roads.push_back(r);
 }
 
-int Company::pesquisaAproximada(string name) {
+vector<Road> Company::pesquisaAproximada(string name) {
 
-	vector<int> minimos;
+	vector<Road> minimos;
+	int distMin = 99; // minimo global
 
-	for (unsigned int i = 0; i < roads.size(); i++) {//para cada rua separar o nome da rua em palavras individuais
-		string name = roads[i].getName();
-		stringstream ss(name);
+	for (unsigned int i = 0; i < this->super.getRoads().size(); i++) {//para cada rua separar o nome da rua em palavras individuais
+		stringstream ss(this->super.getRoads()[i].getName());
 		string token;
-		int distMin = 0; // minimo global
-		int distMinFrase = 0; // minimo para cada frase
+		int distMinFrase = 99; // minimo para cada frase
 		int idRoad = 0;
 		while (ss >> token) {
-
 			int min = editDistance(token, name);
 			if (min < distMinFrase) {
 				distMinFrase = min;
 			}
 		}
+
 		if (distMinFrase == distMin) {
-			minimos.push_back(roads.at(i).getId());
+			minimos.push_back(this->super.getRoads().at(i));
 		}
 		if (distMinFrase < distMin) {
 			minimos.clear();
-			minimos.push_back(roads.at(i).getId());
+			minimos.push_back(this->super.getRoads().at(i));
+			distMin = distMinFrase;
 		}
-		for (int i = 0; i < minimos.size(); i++) {
-			cout << "minimo " << minimos.at(i) << endl;
-		}
+
 	}
 
-	for (int i = 0; i < minimos.size(); i++) {
-		cout << "minimo final " << minimos.at(i) << endl;
-	}
-	//cout << "pesquisa Aprox " << pesqAprox << endl;
-	return 0;
+	return minimos;
 }
 
-int Company::checkSuperID(int id){
-	for(unsigned int i = 0; i < this->super.getSuperIDs().size(); i++){
-		if(id == this->super.getSuperIDs().at(i)){
-			cout << "id " << id << "supermercado encontrado " << this->super.getSuperIDs().at(i) << endl;
+int Company::checkSuperID(int id) {
+	for (unsigned int i = 0; i < this->super.getSuperIDs().size(); i++) {
+		if (id == this->super.getSuperIDs().at(i)) {
 			superFound = id;
 			return id;
 		}
@@ -540,20 +532,18 @@ int Company::checkSuperID(int id){
 	return 0;
 }
 
-void Company::searchSupermarket(int roadID){
-//cout << "search supermarket" << endl;
-	for(unsigned int i = 0; i < graph.getVertexSet().size(); i++){
+bool Company::searchSupermarket(int roadID) {
+	bool check = false;
+	for (unsigned int i = 0; i < graph.getVertexSet().size(); i++) {
 		vector<Edge<Info> > adj = graph.getVertexSet().at(i)->getAdj();
-		//cout << "Vertex id " << graph.getVertexSet().at(i)->getInfo().getId() << endl;
-		for(unsigned int j = 0; j < adj.size(); j++){
-			if(adj.at(j).getIdRua() == roadID){
-				//cout << "search supermarket2" << endl;
-				if(checkSuperID(graph.getVertexSet().at(i)->getInfo().getId()) != 0){
-					//cout<< "encontrou super" << endl;
-					//display
+		for (unsigned int j = 0; j < adj.size(); j++) {
+			if (adj.at(j).getIdRua() == roadID) {
+				if (checkSuperID(graph.getVertexSet().at(i)->getInfo().getId())
+						!= 0) {
+					check = true;
 				}
 			}
 		}
 	}
-	//cout << "end search supermarket" << endl;
+	return check;
 }

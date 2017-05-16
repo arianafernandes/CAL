@@ -24,6 +24,7 @@ public:
 	int getId();
 	string getName();
 	bool getDirection();
+
 };
 
 
