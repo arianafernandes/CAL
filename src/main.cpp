@@ -566,6 +566,7 @@ void adminSuper(Company& comp) {
  *
  * @param comp Company.
  *
+ * @return True if success, otherwise return false.
  */
 void interfUser(Company& comp) {
 	int option = 0;
@@ -654,6 +655,15 @@ void saveFiles(Company& comp) {
 	saveDeliveries(comp);
 }
 
+/**
+ * @brief Select street.
+ *
+ * @param roads Vector of roads.
+ * @param comp Company
+ *
+ * @return True if success, otherwise return false.
+ *
+ */
 bool selectStreet(vector<Road> roads,Company & comp){
 	cout << "Qual a rua que procurava?" << endl;
 	for (unsigned int i = 0; i < roads.size(); i++) {
@@ -669,6 +679,14 @@ bool selectStreet(vector<Road> roads,Company & comp){
 	return ret;
 }
 
+
+/**
+ * @brief String inferface.
+ *
+ * @param comp Company
+ *
+ * @return True if success, otherwise return false.
+ */
 bool stringInterface(Company& comp) {
 	string name;
 	cout << "Insira o nome de uma rua " << endl;
@@ -706,6 +724,8 @@ bool stringInterface(Company& comp) {
 	return false;
 
 }
+
+
 
 void checkifSupermarket(Company &cmp) {
 	//pesquisar nos vertices cujas edges pertencem ao idRua da rua indicada
