@@ -5,7 +5,6 @@ Road::Road() {
 	this->name = "";
 	this->direction = true;
 }
-
 Road::Road(int id, string name, bool d) {
 	this->id = id;
 	this->name = name;
@@ -34,6 +33,4 @@ string Road::getName() {
 bool Road::getDirection() {
 	return this->direction;
 }
-
-
 

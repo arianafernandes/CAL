@@ -5,7 +5,7 @@ Truck::Truck() {
 	this->capacity = 500;
 	this->maxdist = 1.93622e+006;
 	this->isFull = false;
-	this->travelledDist=0;
+	this->travelledDist = 0;
 }
 
 int Truck::getWeight() const {
@@ -89,21 +89,19 @@ bool Truck::addOrder(Order o) {
 	return false;
 }
 
-
-void Truck::setTravelledDist(double dist){
+void Truck::setTravelledDist(double dist) {
 	this->travelledDist = dist;
 }
-double Truck::getTravelledDist() const{
+double Truck::getTravelledDist() const {
 	return this->travelledDist;
 }
 
-void Truck::incDist(double d){
+void Truck::incDist(double d) {
 	this->travelledDist += d;
 }
 
-
-ostream & operator<<(ostream &os, const Truck& truck){
-	for(unsigned int i= 0; i < truck.getOrders().size(); i++){
+ostream & operator<<(ostream &os, const Truck& truck) {
+	for (unsigned int i = 0; i < truck.getOrders().size(); i++) {
 		os << truck.getOrders()[i];
 	}
 	return os;

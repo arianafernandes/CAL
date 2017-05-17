@@ -1,7 +1,7 @@
 #include "User.h"
 using namespace std;
 
-User::User(string name,int nif,int addressId) {
+User::User(string name, int nif, int addressId) {
 	this->name = name;
 	this->nif = nif;
 	this->addressId = addressId;
@@ -31,7 +31,7 @@ void User::setAddressId(int addressId) {
 	this->addressId = addressId;
 }
 
-void User::viewProfile(){
+void User::viewProfile() {
 	cout << "Name: " << this->name << endl;
 	cout << "Nif: " << this->nif << endl;
 	cout << "Address id: " << this->addressId << endl << endl;

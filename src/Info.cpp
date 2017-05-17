@@ -1,12 +1,12 @@
 #include "Info.h"
 
-Info::Info(){
+Info::Info() {
 
 	id = 0;
 	dlat = 0;
 	dlon = 0;
 	rlat = 0;
-	rlon= 0;
+	rlon = 0;
 }
 
 double Info::getDlat() const {
@@ -53,8 +53,7 @@ bool Info::operator ==(const Info &i2) const {
 	return (id == i2.id);
 }
 
-bool Info::operator !=(const Info &i2) const{
-return !(id == i2.id);
+bool Info::operator !=(const Info &i2) const {
+	return !(id == i2.id);
 }
-
 

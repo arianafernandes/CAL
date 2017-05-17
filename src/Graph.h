@@ -181,7 +181,6 @@ public:
 	 */
 	bool addEdge(const T &sourc, const T &dest, double w, int id, int idRua);
 
-
 	/**
 	 *
 	 * @param sourc Source vertex.

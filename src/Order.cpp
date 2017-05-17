@@ -5,7 +5,7 @@
 
 #include "Order.h"
 
-Order::Order(int id,int weight,string date) {
+Order::Order(int id, int weight, string date) {
 	this->id = id;
 	this->weight = weight;
 	this->date = date;
@@ -36,12 +36,14 @@ void Order::setDate(string d) {
 	date = d;
 }
 
-void Order::setDelivery(bool d){
+void Order::setDelivery(bool d) {
 	this->delivery = d;
 }
-bool Order::getDelivery() const{
+bool Order::getDelivery() const {
 	return this->delivery;
 }
-ostream & operator<<(ostream &os, const Order& order){
-return (os << "Order id " << order.getId() << endl << "Peso da entrega " << order.getWeight() <<endl <<  "Data da entrega " << order.getDate() << endl<< endl);
+ostream & operator<<(ostream &os, const Order& order) {
+	return (os << "Order id " << order.getId() << endl << "Peso da entrega "
+			<< order.getWeight() << endl << "Data da entrega "
+			<< order.getDate() << endl << endl);
 }

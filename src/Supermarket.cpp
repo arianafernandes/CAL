@@ -85,7 +85,7 @@ int Supermarket::getIdSuper() const {
 	return this->idSuper.at(0);
 }
 
-vector<int> Supermarket::getSuperIDs() const{
+vector<int> Supermarket::getSuperIDs() const {
 	return this->idSuper;
 }
 
@@ -130,10 +130,9 @@ string Supermarket::getRoadNameByID(int id) {
 	return name;
 }
 
-
-string Supermarket::getNameById(int id){
-	for(unsigned int i = 0; i < this->roads.size(); i++){
-		if(this->roads[i].getId() == id){
+string Supermarket::getNameById(int id) {
+	for (unsigned int i = 0; i < this->roads.size(); i++) {
+		if (this->roads[i].getId() == id) {
 			return this->roads[i].getName();
 		}
 	}
