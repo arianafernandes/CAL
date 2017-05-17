@@ -25,13 +25,13 @@ void Company::setColorDelivery(string color) {
 }
 
 double Company::calcX(double lat, double lon) {
-	double X;
+	double X = 0;
 	X = RTerra * cos(lat) * cos(lon);
 	return X;
 }
 
 double Company::calcY(double lat, double lon) {
-	double Y;
+	double Y = 0;
 	Y = RTerra * cos(lat) * sin(lon);
 	return Y;
 }

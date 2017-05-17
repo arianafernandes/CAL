@@ -39,22 +39,31 @@ public:
 	 */
 	vector<Truck> getTrucks() const;
 
+	/**
+	 *
+	 * @return Roads of the supermarket.
+	 */
 	vector<Road> getRoads() const;
 
 	/**
-	 * @brief Add a user to the suepermarket.
+	 * @brief Add a user to the supermarket.
 	 *
 	 * @param u User.
 	 */
 	void addUser(User u);
 
 	/**
-	 * @brief Add a truck to the suepermarket.
+	 * @brief Add a truck to the supermarket.
 	 *
 	 * @param t Truck.
 	 */
 	void addTruck(Truck t);
 
+	/**
+	 * @brief Add a road to the supermarket.
+	 *
+	 * @param r Road.
+	 */
 	void addRoad(Road r);
 
 	/**
@@ -66,6 +75,13 @@ public:
 	 */
 	bool addOrderToTruck(Order o);
 
+	/**
+	 * @brief Find user of the supermarket from nif number.
+	 *
+	 * @param nif User nif.
+	 *
+	 * @return User.
+	 */
 	User findUserFromNif(int nif);
 
 	/**
@@ -143,8 +159,26 @@ public:
 	 */
 	bool userExists(int nif);
 
+	/**
+	 * @brief Display roads name by id.
+	 *
+	 *
+	 * @param id Road id.
+	 *
+	 * @return Road name.
+	 *
+	 */
 	string getRoadNameByID(int id);
 
+	/**
+	 * @brief Display name by id.
+	 *
+	 *
+	 * @param id ID.
+	 *
+	 * @return Name
+	 *
+	 */
 	string getNameById(int id);
 
 };

@@ -695,7 +695,7 @@ bool stringInterface(Company& comp) {
 			cout << "Supermercado nao encontrado na rua" << endl;
 	}else if(roads.size()==0){
 		//nao existe nenhuma rua com esse nome, separar os nomes das ruas de cada road e comparar com name
-		//cout << "Inicio de pesquisa aproximada..." << endl;
+		cout << "Inicio de pesquisa aproximada..." << endl;
 		roads = comp.pesquisaAproximada(name);
 		if(selectStreet(roads,comp))
 				cout << "Supermercado encontrado na rua" << endl;

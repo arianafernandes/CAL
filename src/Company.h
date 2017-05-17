@@ -1,7 +1,6 @@
 #ifndef SRC_COMPANY_H_
 #define SRC_COMPANY_H_
 
-using namespace std;
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -10,6 +9,7 @@ using namespace std;
 #include "Graph.h"
 #include "GraphViewer.h"
 #include "Supermarket.h"
+using namespace std;
 
 class Company {
 private:
@@ -197,9 +197,30 @@ public:
 	 * @param r Road r
 	 */
 	void setRoad(Road r);
+
+	/**
+	 * @brief Search approximately.
+	 *
+	 * @param name Name to be searched.
+	 */
 	vector<Road> pesquisaAproximada(string name);
 
+	/**
+	 * @brief Search a supermarket in a road.
+	 *
+	 * @param roadID ID of the road to be searched.
+	 *
+	 * @return True if success, otherwise return false.
+	 */
 	bool searchSupermarket(int roadID);
+
+	/**
+	 * @brief Check Supermarket id.
+	 *
+	 * @param id ID of the supermarket.
+	 *
+	 * @return ID of the supermarket found.
+	 */
 	int checkSuperID(int id);
 };
 
