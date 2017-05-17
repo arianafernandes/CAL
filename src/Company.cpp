@@ -40,7 +40,7 @@ double Company::calcDist(Info f1, Info f2) {
 	double deltalat = f1.getRlat() - f2.getRlat();
 	double deltalon = f1.getRlon() - f2.getRlon();
 	double a = pow(sin(deltalat / 2), 2)
-													+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
+			+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
 	double c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
@@ -208,7 +208,9 @@ void Company::createGraphViewer() {
 	gv->createWindow(1366, 768);
 
 	gv->defineEdgeColor("blue");
-	gv->defineVertexColor("yellow");
+	gv->defineVertexColor("red");
+	gv->defineVertexSize(1);
+	//gv->setBackground("images/background.png");
 
 	double minLong = Graph<Info>::minLong - 2 * M_PI;
 	double minLat = Graph<Info>::minLat - 2 * M_PI;
@@ -262,11 +264,11 @@ void Company::createGraphViewer() {
 
 	for (unsigned int i = 0; i < this->super.getSuperIDs().size(); i++) {
 
-		gv->setVertexIcon(super.getSuperIDs().at(i), "super2.png");
+		gv->setVertexIcon(super.getSuperIDs().at(i), "images/super4.png");
 	}
 
 	if (superFound != 0) {
-		gv->setVertexIcon(superFound, "super3.png");
+		gv->setVertexIcon(superFound, "images/super3.png");
 	}
 
 	gv->rearrange();
@@ -356,7 +358,7 @@ void Company::paintRoad(Vertex<Info>* source, Vertex<Info>* dest) {
 void Company::paintDeliveries(vector<Order> orders) {
 	for (unsigned int j = 0; j < orders.size(); j++) {
 		Vertex<Info>* no = graph.getVertexFromId(orders[j].getId());
-		gv->setVertexIcon(no->getInfo().getId(), "home.png");
+		gv->setVertexIcon(no->getInfo().getId(), "images/home.png");
 		gv->setVertexColor(no->getInfo().getId(), "green");
 	}
 }
@@ -492,14 +494,15 @@ void Company::setRoad(Road r) {
 }
 
 vector<Road> Company::pesquisaAproximada(string name) {
-
 	vector<Road> minimos;
 	int distMin = 99; // minimo global
 
-	for (unsigned int i = 0; i < this->super.getRoads().size(); i++) {//para cada rua separar o nome da rua em palavras individuais
+	//Para cada rua separa o nome da rua em palavras individuais
+	for (unsigned int i = 0; i < this->super.getRoads().size(); i++) {
 		stringstream ss(this->super.getRoads()[i].getName());
 		string token;
-		int distMinFrase = 99; // minimo para cada frase
+		//Minimo para cada frase
+		int distMinFrase = 99;
 		while (ss >> token) {
 			int min = editDistance(token, name);
 			if (min < distMinFrase) {

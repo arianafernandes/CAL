@@ -549,8 +549,8 @@ void adminSuper(Company& comp) {
 		case 2:
 			//changeAddressSuper(comp);
 			cout
-			<< "Nao e possivel alterar a morada do supermercado atualmente."
-			<< endl;
+					<< "Nao e possivel alterar a morada do supermercado atualmente."
+					<< endl;
 			break;
 		case 3:
 			changeTrucks(comp);
@@ -664,21 +664,29 @@ void saveFiles(Company& comp) {
  * @return True if success, otherwise return false.
  *
  */
-bool selectStreet(vector<Road> roads,Company & comp){
-	cout << "Qual a rua que procurava?" << endl;
-	for (unsigned int i = 0; i < roads.size(); i++) {
+bool selectStreet(vector<Road> roads, Company & comp) {
+	bool ret;
+	if (roads.size() == 1) {
+		//cout << "Pesquisa exata realizada com sucesso." << endl;
+		cout << "A rua que procurava foi encontrada: " << roads.at(0).getName() << endl;
+		ret = comp.searchSupermarket(roads.at(0).getId());
+		return ret;
+	} else {
+		cout << "Foram encontradas varias ruas que coincidem com a sua procura..." << endl;
+		cout << "Alguma destas ruas é a que procurava? Pf insira o nr da rua escolhida." << endl;
+		for (unsigned int i = 0; i < roads.size(); i++) {
 
-		cout << i << " Road: " << roads.at(i).getName() << endl;
+			cout << i << " Road: " << roads.at(i).getName() << endl;
+		}
+
+		string nameRoad;
+		getline(cin, nameRoad);
+		int number = stoi(nameRoad);
+
+		ret = comp.searchSupermarket(roads.at(number).getId());
+		return ret;
 	}
-
-	string nameRoad;
-	getline(cin, nameRoad);
-	int number = stoi(nameRoad);
-
-	bool ret = comp.searchSupermarket(roads.at(number).getId());
-	return ret;
 }
-
 
 /**
  * @brief String inferface.
@@ -689,43 +697,37 @@ bool selectStreet(vector<Road> roads,Company & comp){
  */
 bool stringInterface(Company& comp) {
 	string name;
-	cout << "Insira o nome de uma rua " << endl;
+	cout << "Bem-Vindo à pesquisa de Supermercado por rua! Pf insira o nome de uma rua que deseja procurar." << endl;
 	getline(cin, name);
-
 	int n;
 	vector<Road> roads;
 	for (unsigned int i = 0; i < comp.getSupermarket().getRoads().size(); i++) {
-		//cout << "Road name: " << comp.getSupermarket().getRoads().at(i).getName() << endl;
-		//cout << name;
 		n = kmp(comp.getSupermarket().getRoads().at(i).getName(), name);
-		//cout << "n " << n << endl;
 
 		if (n == 1) {
 			roads.push_back(comp.getSupermarket().getRoads().at(i));
-			cout << "Encontrou exatamente a rua." << endl;
-			//cout << "Road name: " << comp.getSupermarket().getRoads().at(i).getName() << endl;
 		}
 	}
 	if (roads.size() > 0) {
-		if(selectStreet(roads,comp))
-			cout << "Supermercado encontrado na rua" << endl;
+		cout << "Inicio de pesquisa exata..." << endl;
+		if (selectStreet(roads, comp))
+			cout << "Supermercado encontrado na rua pesquisada." << endl;
 		else
-			cout << "Supermercado nao encontrado na rua" << endl;
-	}else if(roads.size()==0){
+			cout << "Supermercado nao encontrado na rua pesquisada."<< endl;
+	}
+	if (roads.size() == 0) {
 		//nao existe nenhuma rua com esse nome, separar os nomes das ruas de cada road e comparar com name
 		cout << "Inicio de pesquisa aproximada..." << endl;
 		roads = comp.pesquisaAproximada(name);
-		if(selectStreet(roads,comp))
-				cout << "Supermercado encontrado na rua" << endl;
-			else
-				cout << "Supermercado nao encontrado na rua" << endl;
+		if (selectStreet(roads, comp))
+			cout << "Supermercado encontrado na rua pesquisada." << endl;
+		else
+			cout << "Supermercado nao encontrado na rua pesquisada."<< endl;
 
 	}
 	return false;
 
 }
-
-
 
 void checkifSupermarket(Company &cmp) {
 	//pesquisar nos vertices cujas edges pertencem ao idRua da rua indicada
