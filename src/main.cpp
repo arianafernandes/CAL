@@ -561,41 +561,10 @@ void adminSuper(Company& comp) {
 	}
 }
 
-/**
- * @brief User interface menu.
- *
- * @param comp Company.
- *
- * @return True if success, otherwise return false.
- */
-void interfUser(Company& comp) {
-	int option = 0;
-	string ss;
-	while (option != 4) {
-		do {
-			cout << "Bem-vindo ao Super Precos Baixos!!" << endl;
-			cout << "1 - Clientes " << endl << "2 - Distribuicao de entregas"
-					<< endl << "3 - Administrar Supermercado" << endl
-					<< "4 - Sair." << endl;
-			cout << "Insira o numero da sua escolha. Obrigado." << endl;
-			getline(cin, ss);
-		} while (ss.size() == 0);
-		option = stoi(ss);
-		switch (option) {
-		case 1:
-			Clientes(comp);
-			break;
-		case 2:
-			watchDistribuition(comp);
-			break;
-		case 3:
-			adminSuper(comp);
-			break;
-		default:
-			break;
-		}
-	}
-}
+
+
+
+
 
 /**
  * @brief Save users informations.
@@ -736,14 +705,53 @@ bool stringInterface(Company& comp) {
 
 }
 
+/**
+ * @brief User interface menu.
+ *
+ * @param comp Company.
+ *
+ * @return True if success, otherwise return false.
+ */
+void interfUser(Company& comp) {
+	int option = 0;
+	string ss;
+	while (option != 5) {
+		do {
+			cout << "Bem-vindo ao Super Precos Baixos!!" << endl;
+			cout << "1 - Clientes " << endl << "2 - Distribuicao de entregas"
+					<< endl << "3 - Administrar Supermercado" << endl
+					<< "4 - Pesquisar Ruas" << endl
+					<< "5 - Sair." << endl;
+			cout << "Insira o numero da sua escolha. Obrigado." << endl;
+			getline(cin, ss);
+		} while (ss.size() == 0);
+		option = stoi(ss);
+		switch (option) {
+		case 1:
+			Clientes(comp);
+			break;
+		case 2:
+			watchDistribuition(comp);
+			break;
+		case 3:
+			adminSuper(comp);
+			break;
+		case 4:
+			stringInterface(comp);
+			break;
+		default:
+			break;
+		}
+	}
+}
+
 int main() {
 	Company comp = Company();
 	comp.readMaps();
 	comp.readDeliveries();
 	comp.readUsers();
-	stringInterface(comp);
-	//interfUser(comp);
-	//saveFiles(comp);
+	interfUser(comp);
+	saveFiles(comp);
 	comp.createGraphViewer();
 
 	getchar();
