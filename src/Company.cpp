@@ -37,11 +37,15 @@ double Company::calcY(double lat, double lon) {
 }
 
 double Company::calcDist(Info f1, Info f2) {
-	double deltalat = f1.getRlat() - f2.getRlat();
-	double deltalon = f1.getRlon() - f2.getRlon();
-	double a = pow(sin(deltalat / 2), 2)
+	double deltalat = 0;
+	double deltalon = 0;
+	double a = 0;
+	double c = 0;
+	deltalat = f1.getRlat() - f2.getRlat();
+	deltalon = f1.getRlon() - f2.getRlon();
+	a = pow(sin(deltalat / 2), 2)
 			+ pow(sin(deltalon / 2), 2) * cos(f1.getRlat()) * cos(f2.getRlat());
-	double c = 2 * asin(sqrt(a));
+	c = 2 * asin(sqrt(a));
 	return RTerra * c * 100;
 
 }
@@ -184,10 +188,6 @@ void Company::readMaps() {
 
 		graph.addEdge(source, dest, w, idAresta, idRua);
 
-		//cout << "idRua" << g << endl;
-
-		//gv->setEdgeLabel(idRua, super.getRoadNameByID(idRua));
-
 		if (Bidirection(super.getRoads(), idRua) == true) {
 			idAresta++;
 			graph.addEdge(dest, source, w, idAresta, idRua);
@@ -212,10 +212,15 @@ void Company::createGraphViewer() {
 	gv->defineVertexSize(1);
 	//gv->setBackground("images/background.png");
 
-	double minLong = Graph<Info>::minLong - 2 * M_PI;
-	double minLat = Graph<Info>::minLat - 2 * M_PI;
-	double maxLat = Graph<Info>::maxLat - 2 * M_PI;
-	double maxLong = Graph<Info>::maxLong - 2 * M_PI;
+	double minLong = 0;
+	double minLat = 0;
+	double maxLat = 0;
+	double maxLong = 0;
+
+	minLong = Graph<Info>::minLong - 2 * M_PI;
+	minLat = Graph<Info>::minLat - 2 * M_PI;
+	maxLat = Graph<Info>::maxLat - 2 * M_PI;
+	maxLong = Graph<Info>::maxLong - 2 * M_PI;
 
 	int r = 60000000;
 	int ymin = (minLong / M_PI) * r;
@@ -223,14 +228,16 @@ void Company::createGraphViewer() {
 	int ymax = (maxLong / M_PI) * r;
 	int xmax = (log((1 + sin(maxLat)) / (1 - sin(maxLat))) / (4 * M_PI)) * r;
 
-	int id;
+	int id = 0;
 
 	vector<Vertex<Info> *>::const_iterator itv = vertexSet.begin();
 	for (; itv != vertexSet.end(); itv++) {
 
 		id = (*itv)->getInfo().getId();
-		double longt = (*itv)->getInfo().getRlon() - 2 * M_PI;
-		double latt = (*itv)->getInfo().getRlat() - 2 * M_PI;
+		double longt = 0;
+		double latt = 0;
+		longt = (*itv)->getInfo().getRlon() - 2 * M_PI;
+		latt = (*itv)->getInfo().getRlat() - 2 * M_PI;
 		int y = -((longt / M_PI) * r - (ymax + ymin) / 2);
 		int x = (log((1 + sin(latt)) / (1 - sin(latt))) / (4 * M_PI)) * r
 				- (xmin + xmax) / 2;
