@@ -60,7 +60,7 @@ void Company::readMaps() {
 
 	ifstream maps;
 
-	maps.open("vertex.txt");
+	maps.open("files/vertex.txt");
 
 	if (!maps) {
 		cerr << "Unable to open file datafile.txt";
@@ -117,7 +117,7 @@ void Company::readMaps() {
 	}
 	maps.close();
 
-	maps.open("roads.txt");
+	maps.open("files/roads.txt");
 	if (!maps) {
 		cerr << "Unable to open file datafile.txt";
 		exit(1);   // call system to stop
@@ -156,7 +156,7 @@ void Company::readMaps() {
 
 	maps.close();
 
-	maps.open("edges.txt");
+	maps.open("files/edges.txt");
 
 	if (!maps) {
 		cerr << "Unable to open file datafile.txt";
@@ -278,7 +278,7 @@ void Company::createGraphViewer() {
 void Company::readDeliveries() {
 	ifstream maps;
 
-	maps.open("delivery.txt");
+	maps.open("files/delivery.txt");
 
 	if (!maps) {
 		cerr << "Unable to open file users.txt";
@@ -312,7 +312,7 @@ void Company::readDeliveries() {
 void Company::readUsers() {
 	ifstream maps;
 
-	maps.open("users.txt");
+	maps.open("files/users.txt");
 
 	if (!maps) {
 		cerr << "Unable to open file users.txt";

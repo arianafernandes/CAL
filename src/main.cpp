@@ -605,7 +605,7 @@ void interfUser(Company& comp) {
  */
 void saveUsers(Company comp) {
 	ofstream users;
-	users.open("users.txt");
+	users.open("files/users.txt");
 	if (!users) {
 		cerr << "Unable to open file users.txt";
 		return;
@@ -627,7 +627,7 @@ void saveUsers(Company comp) {
  */
 void saveDeliveries(Company comp) {
 	ofstream file;
-	file.open("delivery.txt");
+	file.open("files/delivery.txt");
 	if (!file) {
 		cerr << "Unable to open file delivery.txt";
 		return;
@@ -729,6 +729,7 @@ bool stringInterface(Company& comp) {
 
 }
 
+/*
 void checkifSupermarket(Company &cmp) {
 	//pesquisar nos vertices cujas edges pertencem ao idRua da rua indicada
 	//e ver se corresponde a um idSupermercado ou nao
@@ -738,15 +739,8 @@ void checkifSupermarket(Company &cmp) {
 		cout << "Road name: " << cmp.getRoads().at(i).getName() << " id Rua "
 				<< cmp.getRoads().at(i).getId() << endl;
 	}
-	/*
-	 for(unsigned int i = 0; i < vertex.size();i++{
-	 vector<Edge<Info>> adj = vertex[i].getAdj();
-	 for(unsigned int j = 0; j < adj.size();j++){
-	 //adj[j].getIdRua();
-	 }
-
-	 }*/
 }
+*/
 
 int main() {
 	Company comp = Company();
