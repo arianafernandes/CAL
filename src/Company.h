@@ -222,6 +222,11 @@ public:
 	 * @return ID of the supermarket found.
 	 */
 	int checkSuperID(int id);
+
+	/**
+	 * @brief Changes supermarkets icons
+	 */
+	void changeIconSuper();
 };
 
 #endif /* SRC_COMPANY_H_ */

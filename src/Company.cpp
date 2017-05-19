@@ -11,8 +11,7 @@ using namespace std;
 #define M_PI 3.14159265359
 
 Company::Company() {
-	vector<int> superIDs = { 96895428, 1154801453, 1154802471, 1154795592,
-			1154804468 };
+	vector<int> superIDs = { 1154801453, 1154802471, 1154795592,1154804468,137319910,1122712084,1154799884,1154801425,1154801793,1154802240,1154799868 };
 	this->super.setIdSuper(superIDs);
 	this->colorDelivery = "green";
 	this->superFound = 0;
@@ -208,7 +207,7 @@ void Company::createGraphViewer() {
 	gv->createWindow(1366, 768);
 
 	gv->defineEdgeColor("blue");
-	gv->defineVertexColor("red");
+	gv->defineVertexColor("yellow");
 	gv->defineVertexSize(1);
 	//gv->setBackground("images/background.png");
 
@@ -269,10 +268,7 @@ void Company::createGraphViewer() {
 		}
 	}
 
-	for (unsigned int i = 0; i < this->super.getSuperIDs().size(); i++) {
-
-		gv->setVertexIcon(super.getSuperIDs().at(i), "images/super4.png");
-	}
+	changeIconSuper();
 
 	if (superFound != 0) {
 		gv->setVertexIcon(superFound, "images/super3.png");
@@ -280,6 +276,12 @@ void Company::createGraphViewer() {
 
 	gv->rearrange();
 
+}
+
+void Company::changeIconSuper(){
+	for (unsigned int i = 0; i < this->super.getSuperIDs().size(); i++) {
+		gv->setVertexIcon(super.getSuperIDs().at(i), "images/super4.png");
+	}
 }
 
 void Company::readDeliveries() {
@@ -372,6 +374,7 @@ void Company::paintDeliveries(vector<Order> orders) {
 
 int Company::getNextDelivery(vector<Order> &orders, int currentPosition) {
 	Vertex<Info>* currentNo = graph.getVertexFromId(currentPosition);
+	cout << "current no id " << currentNo->getInfo().getId() << endl;
 	graph.dijkstraShortestPath(currentNo->getInfo());
 	int distance = INT_INFINITY;
 	int id = -1;
@@ -446,6 +449,7 @@ void Company::returnToSupermarket(int currentPosition, int idSupermarket) {
 	}
 }
 
+
 void Company::distribution(int id) {
 	int nextPosition;
 	Vertex<Info>* source;
@@ -453,6 +457,7 @@ void Company::distribution(int id) {
 	int currentPosition;
 	int supermarket = this->getSupermarket().getIdSuper();
 	currentPosition = supermarket;
+	cout << "current Position " << currentPosition << endl;
 	Truck truck = super.getTrucks()[id];
 	vector<Order> orders = truck.getOrders();
 	while (true) {
@@ -472,7 +477,7 @@ void Company::distribution(int id) {
 	returnToSupermarket(currentPosition, supermarket);
 	paintDeliveries(super.getTrucks()[id].getOrders());
 
-	gv->setVertexIcon(supermarket, "super2.png");
+	gv->setVertexIcon(supermarket, "images/super4.png");
 
 }
 

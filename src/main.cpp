@@ -4,6 +4,8 @@
 #include <math.h>
 #include <vector>
 #include <cmath>
+#include <sys/time.h>
+#include <stdio.h>
 
 #include "Company.h"
 #include "Auxi.h"
@@ -357,9 +359,9 @@ void watchDistribuition(Company &comp) {
 		cout << "Indique, por favor, o id do camiao!" << endl;
 		getline(cin, id);
 	} while (!checkDistribution(id, comp));
-	comp.getSupermarket().displayOrdersFromTruck(stoi(id));
-	comp.createGraphViewer();
-	comp.distribution(stoi(id));
+		comp.getSupermarket().displayOrdersFromTruck(stoi(id));
+		comp.createGraphViewer();
+		comp.distribution(stoi(id));
 	//ver quais as encomendas nao foram entregues
 	Truck truck = comp.getSupermarket().getTrucks()[stoi(id)];
 	vector<Order> orders = truck.getOrders();
@@ -669,7 +671,7 @@ bool selectStreet(vector<Road> roads, Company & comp) {
  *
  * @return True if success, otherwise return false.
  */
-bool stringInterface(Company& comp) {
+void stringInterface(Company& comp) {
 	string name;
 	cout
 			<< "Bem-Vindo à pesquisa de Supermercado por rua! Pf insira o nome de uma rua que deseja procurar."
@@ -684,24 +686,32 @@ bool stringInterface(Company& comp) {
 			roads.push_back(comp.getSupermarket().getRoads().at(i));
 		}
 	}
+
 	if (roads.size() > 0) {
 		cout << "Inicio de pesquisa exata..." << endl;
-		if (selectStreet(roads, comp))
+		if (selectStreet(roads, comp)){
 			cout << "Supermercado encontrado na rua pesquisada." << endl;
-		else
+			comp.createGraphViewer();
+		}else
 			cout << "Supermercado nao encontrado na rua pesquisada." << endl;
 	}
 	if (roads.size() == 0) {
+		struct timeval time;
+		gettimeofday(&time,NULL);
+		long timetotal = (time.tv_sec * 1000) + (time.tv_usec/1000);
 		//nao existe nenhuma rua com esse nome, separar os nomes das ruas de cada road e comparar com name
 		cout << "Inicio de pesquisa aproximada..." << endl;
 		roads = comp.pesquisaAproximada(name);
-		if (selectStreet(roads, comp))
+		gettimeofday(&time,NULL);
+		timetotal = ((time.tv_sec * 1000) + (time.tv_usec/1000) -timetotal);
+		cout << "timeTotal "  << timetotal << endl;
+		if (selectStreet(roads, comp)){
 			cout << "Supermercado encontrado na rua pesquisada." << endl;
-		else
+			comp.createGraphViewer();
+		}else
 			cout << "Supermercado nao encontrado na rua pesquisada." << endl;
 
 	}
-	return false;
 
 }
 
@@ -752,7 +762,7 @@ int main() {
 	comp.readUsers();
 	interfUser(comp);
 	saveFiles(comp);
-	comp.createGraphViewer();
+
 
 	getchar();
 	return 0;
