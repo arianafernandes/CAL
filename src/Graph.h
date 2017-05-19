@@ -40,8 +40,19 @@ public:
 
 	friend class Graph<T> ;
 
+	/**
+	 * @brief Add Edge.
+	 * @param dest Vertex destination.
+	 * @param w Weight.
+	 * @param id Id.
+	 * @param idRua idRoad.
+	 */
 	void addEdge(Vertex<T> *dest, double w, int id, int idRua);
 
+	/**
+	 * @brief Remove Edge.
+	 * @param d Vertex.
+	 */
 	bool removeEdgeTo(Vertex<T> *d);
 
 	/**
@@ -110,7 +121,15 @@ public:
 	 */
 	Edge(Vertex<T> *d, double w, int id);
 
+	/**
+	 * Edge constructor.
+	 * @param d Destination node.
+	 * @param w Edge weight.
+	 * @param id Edge id.
+	 * @param idRua RoadID.
+	 */
 	Edge(Vertex<T> *d, double w, int id, int idRua);
+
 	/**
 	 *
 	 * @return The destination node.
