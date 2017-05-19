@@ -1,0 +1,244 @@
+\hypertarget{class_truck}{}\section{Truck Class Reference}
+\label{class_truck}\index{Truck@{Truck}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_truck_a87e358bca8fe34e6299c6ff233afb08b}\label{class_truck_a87e358bca8fe34e6299c6ff233afb08b}} 
+\hyperlink{class_truck_a87e358bca8fe34e6299c6ff233afb08b}{Truck} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+int \hyperlink{class_truck_a91423efd30332b934bc3114ffccd4816}{get\+Weight} () const
+\item 
+void \hyperlink{class_truck_acd688c98b6052bd720ade2e8eb8b3c8e}{set\+Weight} (int w)
+\item 
+int \hyperlink{class_truck_aaf7fec768243188128d40344216daeaf}{get\+Total\+Weight\+Orders} ()
+\item 
+int \hyperlink{class_truck_a412e4de460eda1dc2100ecc1e47fb368}{get\+Capacity} () const
+\item 
+void \hyperlink{class_truck_ac4491b8f4aac4f0fe4e45126fc29fb5f}{set\+Capacity} (int capacity)
+\item 
+int \hyperlink{class_truck_a97ab69fced09f49cf05cf50712e15342}{get\+Current\+Capacity} ()
+\item 
+double \hyperlink{class_truck_a89b2c4e211f4477caa7609b1f8622712}{get\+Maxdist} () const
+\item 
+void \hyperlink{class_truck_a90bcc83666d4722838bf3ccfc87b4bfd}{set\+Maxdist} (double maxdist)
+\item 
+bool \hyperlink{class_truck_abc77aa027e9bd1c5bbaf0f35ed73d375}{get\+Is\+Full} () const
+\item 
+\mbox{\Hypertarget{class_truck_a3af6004bbd86aa697b9d7ffb63a158ae}\label{class_truck_a3af6004bbd86aa697b9d7ffb63a158ae}} 
+void \hyperlink{class_truck_a3af6004bbd86aa697b9d7ffb63a158ae}{set\+Is\+Full} ()
+\begin{DoxyCompactList}\small\item\em Set a truck full. \end{DoxyCompactList}\item 
+string \hyperlink{class_truck_af27d980c66b104973ddac58ed64d3ddd}{get\+Date} () const
+\item 
+void \hyperlink{class_truck_a97755be533acca6e29f00c4ee1695d29}{set\+Date} (string d)
+\item 
+const vector$<$ \hyperlink{class_order}{Order} $>$ \& \hyperlink{class_truck_ac463b5227326e17da5f9dc087425d618}{get\+Orders} () const
+\item 
+void \hyperlink{class_truck_ac62db578f4c1cc35d889cfde61d695bb}{set\+Orders} (const vector$<$ \hyperlink{class_order}{Order} $>$ \&orders)
+\begin{DoxyCompactList}\small\item\em Make a truck empty and then add orders to the truck. \end{DoxyCompactList}\item 
+bool \hyperlink{class_truck_a0f9ac918d68526eacb91b63be3eefc56}{add\+Order} (\hyperlink{class_order}{Order} o)
+\begin{DoxyCompactList}\small\item\em Add a order to the truck. \end{DoxyCompactList}\item 
+void \hyperlink{class_truck_a3a1cf7bfe48843206b8e20b4bd32782f}{set\+Travelled\+Dist} (double dist)
+\item 
+double \hyperlink{class_truck_a7564742600274c25fd7cdd85d7e5391a}{get\+Travelled\+Dist} () const
+\item 
+void \hyperlink{class_truck_a42d199a149bb144de2da8163c8340c6c}{inc\+Dist} (double d)
+\begin{DoxyCompactList}\small\item\em Adds distance to the actual distance of the truck. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_truck_adf379082533537dc5add3a9d55ccfcbb}\label{class_truck_adf379082533537dc5add3a9d55ccfcbb}} 
+ostream \& {\bfseries operator$<$$<$} (ostream \&os, const \hyperlink{class_truck}{Truck} \&truck)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_truck_a0f9ac918d68526eacb91b63be3eefc56}\label{class_truck_a0f9ac918d68526eacb91b63be3eefc56}} 
+\index{Truck@{Truck}!add\+Order@{add\+Order}}
+\index{add\+Order@{add\+Order}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{add\+Order()}{addOrder()}}
+{\footnotesize\ttfamily bool Truck\+::add\+Order (\begin{DoxyParamCaption}\item[{\hyperlink{class_order}{Order}}]{o }\end{DoxyParamCaption})}
+
+
+
+Add a order to the truck. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & \hyperlink{class_order}{Order}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if possible to add the order, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_a412e4de460eda1dc2100ecc1e47fb368}\label{class_truck_a412e4de460eda1dc2100ecc1e47fb368}} 
+\index{Truck@{Truck}!get\+Capacity@{get\+Capacity}}
+\index{get\+Capacity@{get\+Capacity}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Capacity()}{getCapacity()}}
+{\footnotesize\ttfamily int Truck\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_truck}{Truck} capacity. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_a97ab69fced09f49cf05cf50712e15342}\label{class_truck_a97ab69fced09f49cf05cf50712e15342}} 
+\index{Truck@{Truck}!get\+Current\+Capacity@{get\+Current\+Capacity}}
+\index{get\+Current\+Capacity@{get\+Current\+Capacity}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Current\+Capacity()}{getCurrentCapacity()}}
+{\footnotesize\ttfamily int Truck\+::get\+Current\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_truck}{Truck} current capacity. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_af27d980c66b104973ddac58ed64d3ddd}\label{class_truck_af27d980c66b104973ddac58ed64d3ddd}} 
+\index{Truck@{Truck}!get\+Date@{get\+Date}}
+\index{get\+Date@{get\+Date}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Date()}{getDate()}}
+{\footnotesize\ttfamily string Truck\+::get\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_truck}{Truck} date. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_abc77aa027e9bd1c5bbaf0f35ed73d375}\label{class_truck_abc77aa027e9bd1c5bbaf0f35ed73d375}} 
+\index{Truck@{Truck}!get\+Is\+Full@{get\+Is\+Full}}
+\index{get\+Is\+Full@{get\+Is\+Full}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Is\+Full()}{getIsFull()}}
+{\footnotesize\ttfamily bool Truck\+::get\+Is\+Full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+true if truck is full, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_a89b2c4e211f4477caa7609b1f8622712}\label{class_truck_a89b2c4e211f4477caa7609b1f8622712}} 
+\index{Truck@{Truck}!get\+Maxdist@{get\+Maxdist}}
+\index{get\+Maxdist@{get\+Maxdist}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Maxdist()}{getMaxdist()}}
+{\footnotesize\ttfamily double Truck\+::get\+Maxdist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_truck}{Truck} maximum distance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_ac463b5227326e17da5f9dc087425d618}\label{class_truck_ac463b5227326e17da5f9dc087425d618}} 
+\index{Truck@{Truck}!get\+Orders@{get\+Orders}}
+\index{get\+Orders@{get\+Orders}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Orders()}{getOrders()}}
+{\footnotesize\ttfamily const vector$<$ \hyperlink{class_order}{Order} $>$ \& Truck\+::get\+Orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_truck}{Truck} orders. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_aaf7fec768243188128d40344216daeaf}\label{class_truck_aaf7fec768243188128d40344216daeaf}} 
+\index{Truck@{Truck}!get\+Total\+Weight\+Orders@{get\+Total\+Weight\+Orders}}
+\index{get\+Total\+Weight\+Orders@{get\+Total\+Weight\+Orders}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Total\+Weight\+Orders()}{getTotalWeightOrders()}}
+{\footnotesize\ttfamily int Truck\+::get\+Total\+Weight\+Orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_truck}{Truck} total weight. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_a7564742600274c25fd7cdd85d7e5391a}\label{class_truck_a7564742600274c25fd7cdd85d7e5391a}} 
+\index{Truck@{Truck}!get\+Travelled\+Dist@{get\+Travelled\+Dist}}
+\index{get\+Travelled\+Dist@{get\+Travelled\+Dist}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Travelled\+Dist()}{getTravelledDist()}}
+{\footnotesize\ttfamily double Truck\+::get\+Travelled\+Dist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Travelled distance of the truck. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_a91423efd30332b934bc3114ffccd4816}\label{class_truck_a91423efd30332b934bc3114ffccd4816}} 
+\index{Truck@{Truck}!get\+Weight@{get\+Weight}}
+\index{get\+Weight@{get\+Weight}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{get\+Weight()}{getWeight()}}
+{\footnotesize\ttfamily int Truck\+::get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_truck}{Truck} weight. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_truck_a42d199a149bb144de2da8163c8340c6c}\label{class_truck_a42d199a149bb144de2da8163c8340c6c}} 
+\index{Truck@{Truck}!inc\+Dist@{inc\+Dist}}
+\index{inc\+Dist@{inc\+Dist}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{inc\+Dist()}{incDist()}}
+{\footnotesize\ttfamily void Truck\+::inc\+Dist (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption})}
+
+
+
+Adds distance to the actual distance of the truck. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & distance of the truck. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_truck_ac4491b8f4aac4f0fe4e45126fc29fb5f}\label{class_truck_ac4491b8f4aac4f0fe4e45126fc29fb5f}} 
+\index{Truck@{Truck}!set\+Capacity@{set\+Capacity}}
+\index{set\+Capacity@{set\+Capacity}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{set\+Capacity()}{setCapacity()}}
+{\footnotesize\ttfamily void Truck\+::set\+Capacity (\begin{DoxyParamCaption}\item[{int}]{capacity }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & \hyperlink{class_truck}{Truck} capacity. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_truck_a97755be533acca6e29f00c4ee1695d29}\label{class_truck_a97755be533acca6e29f00c4ee1695d29}} 
+\index{Truck@{Truck}!set\+Date@{set\+Date}}
+\index{set\+Date@{set\+Date}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{set\+Date()}{setDate()}}
+{\footnotesize\ttfamily void Truck\+::set\+Date (\begin{DoxyParamCaption}\item[{string}]{d }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \hyperlink{class_truck}{Truck} date. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_truck_a90bcc83666d4722838bf3ccfc87b4bfd}\label{class_truck_a90bcc83666d4722838bf3ccfc87b4bfd}} 
+\index{Truck@{Truck}!set\+Maxdist@{set\+Maxdist}}
+\index{set\+Maxdist@{set\+Maxdist}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{set\+Maxdist()}{setMaxdist()}}
+{\footnotesize\ttfamily void Truck\+::set\+Maxdist (\begin{DoxyParamCaption}\item[{double}]{maxdist }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em maxdist} & \hyperlink{class_truck}{Truck} maximum distance. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_truck_ac62db578f4c1cc35d889cfde61d695bb}\label{class_truck_ac62db578f4c1cc35d889cfde61d695bb}} 
+\index{Truck@{Truck}!set\+Orders@{set\+Orders}}
+\index{set\+Orders@{set\+Orders}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{set\+Orders()}{setOrders()}}
+{\footnotesize\ttfamily void Truck\+::set\+Orders (\begin{DoxyParamCaption}\item[{const vector$<$ \hyperlink{class_order}{Order} $>$ \&}]{orders }\end{DoxyParamCaption})}
+
+
+
+Make a truck empty and then add orders to the truck. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orders} & \hyperlink{class_truck}{Truck} orders. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_truck_a3a1cf7bfe48843206b8e20b4bd32782f}\label{class_truck_a3a1cf7bfe48843206b8e20b4bd32782f}} 
+\index{Truck@{Truck}!set\+Travelled\+Dist@{set\+Travelled\+Dist}}
+\index{set\+Travelled\+Dist@{set\+Travelled\+Dist}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{set\+Travelled\+Dist()}{setTravelledDist()}}
+{\footnotesize\ttfamily void Truck\+::set\+Travelled\+Dist (\begin{DoxyParamCaption}\item[{double}]{dist }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em dist} & Travelled distance of the truck. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_truck_acd688c98b6052bd720ade2e8eb8b3c8e}\label{class_truck_acd688c98b6052bd720ade2e8eb8b3c8e}} 
+\index{Truck@{Truck}!set\+Weight@{set\+Weight}}
+\index{set\+Weight@{set\+Weight}!Truck@{Truck}}
+\subsubsection{\texorpdfstring{set\+Weight()}{setWeight()}}
+{\footnotesize\ttfamily void Truck\+::set\+Weight (\begin{DoxyParamCaption}\item[{int}]{w }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & \hyperlink{class_truck}{Truck} weight. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Truck.\+h\item 
+Truck.\+cpp\end{DoxyCompactItemize}

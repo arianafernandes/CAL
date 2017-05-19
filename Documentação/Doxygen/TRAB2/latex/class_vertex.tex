@@ -1,0 +1,164 @@
+\hypertarget{class_vertex}{}\section{Vertex$<$ T $>$ Class Template Reference}
+\label{class_vertex}\index{Vertex$<$ T $>$@{Vertex$<$ T $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vertex_afcbdd4d4198b672356559cb8fa088408}{Vertex} (T in)
+\item 
+void \hyperlink{class_vertex_a0c7f0692945984cc656e28d2a2044e3c}{add\+Edge} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$dest, double w, int id, int id\+Rua)
+\begin{DoxyCompactList}\small\item\em Add \hyperlink{class_edge}{Edge}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_vertex_ab2b5b43fb1709a901b78718436763a84}{remove\+Edge\+To} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$d)
+\begin{DoxyCompactList}\small\item\em Remove \hyperlink{class_edge}{Edge}. \end{DoxyCompactList}\item 
+T \hyperlink{class_vertex_a48eae2f7af2362634adab02b7b2dbec6}{get\+Info} () const
+\item 
+void \hyperlink{class_vertex_a31cd60c26640f8072a928ba70eb2f95e}{set\+Info} (T info)
+\item 
+int \hyperlink{class_vertex_a645a81161bc9f70ebfda8e292b91c24b}{get\+Dist} () const
+\item 
+void \hyperlink{class_vertex_aeb33d223aa111db88df4151f282b0a86}{set\+Dist} (int d)
+\item 
+int \hyperlink{class_vertex_ac78980191ea1f9d22e6617e9e511b755}{get\+Indegree} () const
+\item 
+vector$<$ \hyperlink{class_edge}{Edge}$<$ T $>$ $>$ \& \hyperlink{class_vertex_a23491e86779a2d2de8fa012710fef170}{get\+Adj} ()
+\item 
+\mbox{\Hypertarget{class_vertex_a7091b26f281a5041b1775a3d3f9cb7a6}\label{class_vertex_a7091b26f281a5041b1775a3d3f9cb7a6}} 
+bool {\bfseries operator$<$} (const \hyperlink{class_vertex}{Vertex}$<$ T $>$ vertex)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_vertex_abd40febd917aa25add6bd42237c8463a}\label{class_vertex_abd40febd917aa25add6bd42237c8463a}} 
+\hyperlink{class_vertex}{Vertex} $\ast$ {\bfseries path}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_vertex_aefa9b76cd57411c5354e5620dc2d84dd}\label{class_vertex_aefa9b76cd57411c5354e5620dc2d84dd}} 
+class {\bfseries Graph$<$ T $>$}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_vertex_afcbdd4d4198b672356559cb8fa088408}\label{class_vertex_afcbdd4d4198b672356559cb8fa088408}} 
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{Vertex()}{Vertex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_vertex}{Vertex}$<$ T $>$\+::\hyperlink{class_vertex}{Vertex} (\begin{DoxyParamCaption}\item[{T}]{in }\end{DoxyParamCaption})}
+
+\hyperlink{class_vertex}{Vertex} constructor. 
+\begin{DoxyParams}{Parameters}
+{\em in} & Class to represent the vertex info. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vertex_a0c7f0692945984cc656e28d2a2044e3c}\label{class_vertex_a0c7f0692945984cc656e28d2a2044e3c}} 
+\index{Vertex@{Vertex}!add\+Edge@{add\+Edge}}
+\index{add\+Edge@{add\+Edge}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{add\+Edge()}{addEdge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_vertex}{Vertex}$<$ T $>$\+::add\+Edge (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$}]{dest,  }\item[{double}]{w,  }\item[{int}]{id,  }\item[{int}]{id\+Rua }\end{DoxyParamCaption})}
+
+
+
+Add \hyperlink{class_edge}{Edge}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & \hyperlink{class_vertex}{Vertex} destination. \\
+\hline
+{\em w} & Weight. \\
+\hline
+{\em id} & Id. \\
+\hline
+{\em id\+Rua} & id\+Road. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vertex_a23491e86779a2d2de8fa012710fef170}\label{class_vertex_a23491e86779a2d2de8fa012710fef170}} 
+\index{Vertex@{Vertex}!get\+Adj@{get\+Adj}}
+\index{get\+Adj@{get\+Adj}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{get\+Adj()}{getAdj()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ \hyperlink{class_edge}{Edge}$<$ T $>$ $>$ \& \hyperlink{class_vertex}{Vertex}$<$ T $>$\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The vector with the adjacent edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a645a81161bc9f70ebfda8e292b91c24b}\label{class_vertex_a645a81161bc9f70ebfda8e292b91c24b}} 
+\index{Vertex@{Vertex}!get\+Dist@{get\+Dist}}
+\index{get\+Dist@{get\+Dist}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{get\+Dist()}{getDist()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \hyperlink{class_vertex}{Vertex}$<$ T $>$\+::get\+Dist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The distance of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_ac78980191ea1f9d22e6617e9e511b755}\label{class_vertex_ac78980191ea1f9d22e6617e9e511b755}} 
+\index{Vertex@{Vertex}!get\+Indegree@{get\+Indegree}}
+\index{get\+Indegree@{get\+Indegree}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{get\+Indegree()}{getIndegree()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \hyperlink{class_vertex}{Vertex}$<$ T $>$\+::get\+Indegree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The indegree of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_a48eae2f7af2362634adab02b7b2dbec6}\label{class_vertex_a48eae2f7af2362634adab02b7b2dbec6}} 
+\index{Vertex@{Vertex}!get\+Info@{get\+Info}}
+\index{get\+Info@{get\+Info}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{get\+Info()}{getInfo()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \hyperlink{class_vertex}{Vertex}$<$ T $>$\+::get\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The object of the class representing the vertex info. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vertex_ab2b5b43fb1709a901b78718436763a84}\label{class_vertex_ab2b5b43fb1709a901b78718436763a84}} 
+\index{Vertex@{Vertex}!remove\+Edge\+To@{remove\+Edge\+To}}
+\index{remove\+Edge\+To@{remove\+Edge\+To}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{remove\+Edge\+To()}{removeEdgeTo()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \hyperlink{class_vertex}{Vertex}$<$ T $>$\+::remove\+Edge\+To (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$}]{d }\end{DoxyParamCaption})}
+
+
+
+Remove \hyperlink{class_edge}{Edge}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \hyperlink{class_vertex}{Vertex}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vertex_aeb33d223aa111db88df4151f282b0a86}\label{class_vertex_aeb33d223aa111db88df4151f282b0a86}} 
+\index{Vertex@{Vertex}!set\+Dist@{set\+Dist}}
+\index{set\+Dist@{set\+Dist}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{set\+Dist()}{setDist()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_vertex}{Vertex}$<$ T $>$\+::set\+Dist (\begin{DoxyParamCaption}\item[{int}]{d }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Set d as distance of the \hyperlink{class_vertex}{Vertex}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vertex_a31cd60c26640f8072a928ba70eb2f95e}\label{class_vertex_a31cd60c26640f8072a928ba70eb2f95e}} 
+\index{Vertex@{Vertex}!set\+Info@{set\+Info}}
+\index{set\+Info@{set\+Info}!Vertex@{Vertex}}
+\subsubsection{\texorpdfstring{set\+Info()}{setInfo()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_vertex}{Vertex}$<$ T $>$\+::set\+Info (\begin{DoxyParamCaption}\item[{T}]{info }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & Object of the class that represents the vertex info. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

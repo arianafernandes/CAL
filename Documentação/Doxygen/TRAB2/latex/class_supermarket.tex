@@ -1,0 +1,320 @@
+\hypertarget{class_supermarket}{}\section{Supermarket Class Reference}
+\label{class_supermarket}\index{Supermarket@{Supermarket}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_supermarket_a637738d742f352615e0e82022344bb2c}\label{class_supermarket_a637738d742f352615e0e82022344bb2c}} 
+\hyperlink{class_supermarket_a637738d742f352615e0e82022344bb2c}{Supermarket} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+vector$<$ \hyperlink{class_user}{User} $>$ \& \hyperlink{class_supermarket_afd4a6608933bbdb0937fd69804cfe5ff}{get\+Users} ()
+\item 
+vector$<$ \hyperlink{class_truck}{Truck} $>$ \hyperlink{class_supermarket_a7f7bb99593c521362fd5df23368beb94}{get\+Trucks} () const
+\item 
+vector$<$ \hyperlink{class_road}{Road} $>$ \hyperlink{class_supermarket_a3fdea775417ae5f96cd99eff5759c46e}{get\+Roads} () const
+\item 
+void \hyperlink{class_supermarket_a89fbe6a4ae27587af7dc9644f84bd5d5}{add\+User} (\hyperlink{class_user}{User} u)
+\begin{DoxyCompactList}\small\item\em Add a user to the supermarket. \end{DoxyCompactList}\item 
+void \hyperlink{class_supermarket_a6c3cb4629ad39cfd581fb6527390f13f}{add\+Truck} (\hyperlink{class_truck}{Truck} t)
+\begin{DoxyCompactList}\small\item\em Add a truck to the supermarket. \end{DoxyCompactList}\item 
+void \hyperlink{class_supermarket_ae26172ed726f1c54cfdbf425552647b1}{add\+Road} (\hyperlink{class_road}{Road} r)
+\begin{DoxyCompactList}\small\item\em Add a road to the supermarket. \end{DoxyCompactList}\item 
+bool \hyperlink{class_supermarket_a47b8391aece9861f2c59c0ada7c1ca13}{add\+Order\+To\+Truck} (\hyperlink{class_order}{Order} o)
+\begin{DoxyCompactList}\small\item\em Add a order to the respective truck of the supermarket. \end{DoxyCompactList}\item 
+\hyperlink{class_user}{User} \hyperlink{class_supermarket_ab900c1e7be95d28533e93dff117fc277}{find\+User\+From\+Nif} (int nif)
+\begin{DoxyCompactList}\small\item\em Find user of the supermarket from nif number. \end{DoxyCompactList}\item 
+void \hyperlink{class_supermarket_a4073d7d0b8aeb1d1dd585d2394e37394}{set\+Name} (string name)
+\item 
+string \hyperlink{class_supermarket_a917fbd070f9b9740a57d6baedbe57bde}{get\+Name} () const
+\item 
+void \hyperlink{class_supermarket_a51e31e345ce723c816739a98b8eea826}{set\+Id\+Super} (vector$<$ int $>$ id)
+\item 
+int \hyperlink{class_supermarket_a83e6d49d86781085d1dcfef8d48a26c1}{get\+Id\+Super} () const
+\item 
+vector$<$ int $>$ \hyperlink{class_supermarket_a0fdfd6a3d01f655a16a5297697852be6}{get\+Super\+I\+Ds} () const
+\item 
+\mbox{\Hypertarget{class_supermarket_ab72f2f422efc910993f0e1a15e1ff114}\label{class_supermarket_ab72f2f422efc910993f0e1a15e1ff114}} 
+void \hyperlink{class_supermarket_ab72f2f422efc910993f0e1a15e1ff114}{print\+All\+Trucks} () const
+\begin{DoxyCompactList}\small\item\em Prints all trucks from the supermarket. \end{DoxyCompactList}\item 
+bool \hyperlink{class_supermarket_aa18f0ce05a8ce75b4ef2da141edb18d2}{set\+Capacity\+To\+Truck} (int capacity, int id)
+\begin{DoxyCompactList}\small\item\em Sets a capacity to truck. \end{DoxyCompactList}\item 
+bool \hyperlink{class_supermarket_a269aaf6964940e920d9706d0b433a47d}{set\+Distance\+To\+Truck} (int dist, int id)
+\begin{DoxyCompactList}\small\item\em Sets a distance to truck. \end{DoxyCompactList}\item 
+void \hyperlink{class_supermarket_a181298e23d410a1db1b257780044bdd7}{display\+Orders\+From\+Truck} (int id) const
+\begin{DoxyCompactList}\small\item\em Display orders from truck. \end{DoxyCompactList}\item 
+bool \hyperlink{class_supermarket_a12f1deca7800f765ace1f4b8f6b13e3f}{user\+Exists} (int nif)
+\item 
+string \hyperlink{class_supermarket_a1863ad3453bfecefbd203f2a945a92f6}{get\+Road\+Name\+By\+ID} (int id)
+\begin{DoxyCompactList}\small\item\em Display roads name by id. \end{DoxyCompactList}\item 
+string \hyperlink{class_supermarket_a427143f25488b61db997b693fb9fed4b}{get\+Name\+By\+Id} (int id)
+\begin{DoxyCompactList}\small\item\em Display name by id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_supermarket_a47b8391aece9861f2c59c0ada7c1ca13}\label{class_supermarket_a47b8391aece9861f2c59c0ada7c1ca13}} 
+\index{Supermarket@{Supermarket}!add\+Order\+To\+Truck@{add\+Order\+To\+Truck}}
+\index{add\+Order\+To\+Truck@{add\+Order\+To\+Truck}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{add\+Order\+To\+Truck()}{addOrderToTruck()}}
+{\footnotesize\ttfamily bool Supermarket\+::add\+Order\+To\+Truck (\begin{DoxyParamCaption}\item[{\hyperlink{class_order}{Order}}]{o }\end{DoxyParamCaption})}
+
+
+
+Add a order to the respective truck of the supermarket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & \hyperlink{class_order}{Order}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it is possible to add the order, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_ae26172ed726f1c54cfdbf425552647b1}\label{class_supermarket_ae26172ed726f1c54cfdbf425552647b1}} 
+\index{Supermarket@{Supermarket}!add\+Road@{add\+Road}}
+\index{add\+Road@{add\+Road}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{add\+Road()}{addRoad()}}
+{\footnotesize\ttfamily void Supermarket\+::add\+Road (\begin{DoxyParamCaption}\item[{\hyperlink{class_road}{Road}}]{r }\end{DoxyParamCaption})}
+
+
+
+Add a road to the supermarket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \hyperlink{class_road}{Road}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_supermarket_a6c3cb4629ad39cfd581fb6527390f13f}\label{class_supermarket_a6c3cb4629ad39cfd581fb6527390f13f}} 
+\index{Supermarket@{Supermarket}!add\+Truck@{add\+Truck}}
+\index{add\+Truck@{add\+Truck}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{add\+Truck()}{addTruck()}}
+{\footnotesize\ttfamily void Supermarket\+::add\+Truck (\begin{DoxyParamCaption}\item[{\hyperlink{class_truck}{Truck}}]{t }\end{DoxyParamCaption})}
+
+
+
+Add a truck to the supermarket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \hyperlink{class_truck}{Truck}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_supermarket_a89fbe6a4ae27587af7dc9644f84bd5d5}\label{class_supermarket_a89fbe6a4ae27587af7dc9644f84bd5d5}} 
+\index{Supermarket@{Supermarket}!add\+User@{add\+User}}
+\index{add\+User@{add\+User}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{add\+User()}{addUser()}}
+{\footnotesize\ttfamily void Supermarket\+::add\+User (\begin{DoxyParamCaption}\item[{\hyperlink{class_user}{User}}]{u }\end{DoxyParamCaption})}
+
+
+
+Add a user to the supermarket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & \hyperlink{class_user}{User}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_supermarket_a181298e23d410a1db1b257780044bdd7}\label{class_supermarket_a181298e23d410a1db1b257780044bdd7}} 
+\index{Supermarket@{Supermarket}!display\+Orders\+From\+Truck@{display\+Orders\+From\+Truck}}
+\index{display\+Orders\+From\+Truck@{display\+Orders\+From\+Truck}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{display\+Orders\+From\+Truck()}{displayOrdersFromTruck()}}
+{\footnotesize\ttfamily void Supermarket\+::display\+Orders\+From\+Truck (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption}) const}
+
+
+
+Display orders from truck. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{class_truck}{Truck} id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_supermarket_ab900c1e7be95d28533e93dff117fc277}\label{class_supermarket_ab900c1e7be95d28533e93dff117fc277}} 
+\index{Supermarket@{Supermarket}!find\+User\+From\+Nif@{find\+User\+From\+Nif}}
+\index{find\+User\+From\+Nif@{find\+User\+From\+Nif}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{find\+User\+From\+Nif()}{findUserFromNif()}}
+{\footnotesize\ttfamily \hyperlink{class_user}{User} Supermarket\+::find\+User\+From\+Nif (\begin{DoxyParamCaption}\item[{int}]{nif }\end{DoxyParamCaption})}
+
+
+
+Find user of the supermarket from nif number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nif} & \hyperlink{class_user}{User} nif.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_user}{User}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a83e6d49d86781085d1dcfef8d48a26c1}\label{class_supermarket_a83e6d49d86781085d1dcfef8d48a26c1}} 
+\index{Supermarket@{Supermarket}!get\+Id\+Super@{get\+Id\+Super}}
+\index{get\+Id\+Super@{get\+Id\+Super}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{get\+Id\+Super()}{getIdSuper()}}
+{\footnotesize\ttfamily int Supermarket\+::get\+Id\+Super (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_supermarket}{Supermarket} id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a917fbd070f9b9740a57d6baedbe57bde}\label{class_supermarket_a917fbd070f9b9740a57d6baedbe57bde}} 
+\index{Supermarket@{Supermarket}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily string Supermarket\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_supermarket}{Supermarket} name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a427143f25488b61db997b693fb9fed4b}\label{class_supermarket_a427143f25488b61db997b693fb9fed4b}} 
+\index{Supermarket@{Supermarket}!get\+Name\+By\+Id@{get\+Name\+By\+Id}}
+\index{get\+Name\+By\+Id@{get\+Name\+By\+Id}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{get\+Name\+By\+Id()}{getNameById()}}
+{\footnotesize\ttfamily string Supermarket\+::get\+Name\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Display name by id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a1863ad3453bfecefbd203f2a945a92f6}\label{class_supermarket_a1863ad3453bfecefbd203f2a945a92f6}} 
+\index{Supermarket@{Supermarket}!get\+Road\+Name\+By\+ID@{get\+Road\+Name\+By\+ID}}
+\index{get\+Road\+Name\+By\+ID@{get\+Road\+Name\+By\+ID}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{get\+Road\+Name\+By\+I\+D()}{getRoadNameByID()}}
+{\footnotesize\ttfamily string Supermarket\+::get\+Road\+Name\+By\+ID (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Display roads name by id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{class_road}{Road} id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_road}{Road} name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a3fdea775417ae5f96cd99eff5759c46e}\label{class_supermarket_a3fdea775417ae5f96cd99eff5759c46e}} 
+\index{Supermarket@{Supermarket}!get\+Roads@{get\+Roads}}
+\index{get\+Roads@{get\+Roads}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{get\+Roads()}{getRoads()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_road}{Road} $>$ Supermarket\+::get\+Roads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Roads of the supermarket. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a0fdfd6a3d01f655a16a5297697852be6}\label{class_supermarket_a0fdfd6a3d01f655a16a5297697852be6}} 
+\index{Supermarket@{Supermarket}!get\+Super\+I\+Ds@{get\+Super\+I\+Ds}}
+\index{get\+Super\+I\+Ds@{get\+Super\+I\+Ds}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{get\+Super\+I\+Ds()}{getSuperIDs()}}
+{\footnotesize\ttfamily vector$<$ int $>$ Supermarket\+::get\+Super\+I\+Ds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_supermarket}{Supermarket} ids. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a7f7bb99593c521362fd5df23368beb94}\label{class_supermarket_a7f7bb99593c521362fd5df23368beb94}} 
+\index{Supermarket@{Supermarket}!get\+Trucks@{get\+Trucks}}
+\index{get\+Trucks@{get\+Trucks}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{get\+Trucks()}{getTrucks()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_truck}{Truck} $>$ Supermarket\+::get\+Trucks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Trucks of the supermarket. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_afd4a6608933bbdb0937fd69804cfe5ff}\label{class_supermarket_afd4a6608933bbdb0937fd69804cfe5ff}} 
+\index{Supermarket@{Supermarket}!get\+Users@{get\+Users}}
+\index{get\+Users@{get\+Users}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{get\+Users()}{getUsers()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_user}{User} $>$ \& Supermarket\+::get\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Users of the supermarket. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_aa18f0ce05a8ce75b4ef2da141edb18d2}\label{class_supermarket_aa18f0ce05a8ce75b4ef2da141edb18d2}} 
+\index{Supermarket@{Supermarket}!set\+Capacity\+To\+Truck@{set\+Capacity\+To\+Truck}}
+\index{set\+Capacity\+To\+Truck@{set\+Capacity\+To\+Truck}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{set\+Capacity\+To\+Truck()}{setCapacityToTruck()}}
+{\footnotesize\ttfamily bool Supermarket\+::set\+Capacity\+To\+Truck (\begin{DoxyParamCaption}\item[{int}]{capacity,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Sets a capacity to truck. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & New capacity. \\
+\hline
+{\em id} & \hyperlink{class_truck}{Truck} id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if success, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a269aaf6964940e920d9706d0b433a47d}\label{class_supermarket_a269aaf6964940e920d9706d0b433a47d}} 
+\index{Supermarket@{Supermarket}!set\+Distance\+To\+Truck@{set\+Distance\+To\+Truck}}
+\index{set\+Distance\+To\+Truck@{set\+Distance\+To\+Truck}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{set\+Distance\+To\+Truck()}{setDistanceToTruck()}}
+{\footnotesize\ttfamily bool Supermarket\+::set\+Distance\+To\+Truck (\begin{DoxyParamCaption}\item[{int}]{dist,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Sets a distance to truck. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dist} & New distance. \\
+\hline
+{\em id} & \hyperlink{class_truck}{Truck} id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if success, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_supermarket_a51e31e345ce723c816739a98b8eea826}\label{class_supermarket_a51e31e345ce723c816739a98b8eea826}} 
+\index{Supermarket@{Supermarket}!set\+Id\+Super@{set\+Id\+Super}}
+\index{set\+Id\+Super@{set\+Id\+Super}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{set\+Id\+Super()}{setIdSuper()}}
+{\footnotesize\ttfamily void Supermarket\+::set\+Id\+Super (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{id }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Superarket Id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_supermarket_a4073d7d0b8aeb1d1dd585d2394e37394}\label{class_supermarket_a4073d7d0b8aeb1d1dd585d2394e37394}} 
+\index{Supermarket@{Supermarket}!set\+Name@{set\+Name}}
+\index{set\+Name@{set\+Name}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{set\+Name()}{setName()}}
+{\footnotesize\ttfamily void Supermarket\+::set\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Superarket name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_supermarket_a12f1deca7800f765ace1f4b8f6b13e3f}\label{class_supermarket_a12f1deca7800f765ace1f4b8f6b13e3f}} 
+\index{Supermarket@{Supermarket}!user\+Exists@{user\+Exists}}
+\index{user\+Exists@{user\+Exists}!Supermarket@{Supermarket}}
+\subsubsection{\texorpdfstring{user\+Exists()}{userExists()}}
+{\footnotesize\ttfamily bool Supermarket\+::user\+Exists (\begin{DoxyParamCaption}\item[{int}]{nif }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nif} & \hyperlink{class_user}{User} nif.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if success, otherwise return false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Supermarket.\+h\item 
+Supermarket.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,326 @@
+\hypertarget{class_graph}{}\section{Graph$<$ T $>$ Class Template Reference}
+\label{class_graph}\index{Graph$<$ T $>$@{Graph$<$ T $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_graph_a00be284ea2be3b3d0f0d2e493b70245b}{add\+Vertex} (const T \&in)
+\item 
+bool \hyperlink{class_graph_a15aafe73d3523d78f4be24cd41b02c6b}{add\+Edge} (const T \&sourc, const T \&dest, double w, int id, int id\+Rua)
+\item 
+\hyperlink{class_edge}{Edge}$<$ T $>$ \hyperlink{class_graph_a3e43c4322abd26753ed9a33ebba17067}{get\+Edge} (const T \&source, const T \&dest)
+\item 
+bool \hyperlink{class_graph_af9c903104ad69a7782979fa9caedf163}{remove\+Vertex} (const T \&in)
+\item 
+bool \hyperlink{class_graph_a1106092a37366486cf55576f9ec01692}{remove\+Edge} (const T \&sourc, const T \&dest)
+\item 
+vector$<$ T $>$ \hyperlink{class_graph_a911798b1a89f8c4ae90ba3eee849cff8}{dfs} () const
+\item 
+\mbox{\Hypertarget{class_graph_a56a5ea2c3aa7c0bd3849849be404a631}\label{class_graph_a56a5ea2c3aa7c0bd3849849be404a631}} 
+vector$<$ T $>$ {\bfseries bfs} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$v) const
+\item 
+\mbox{\Hypertarget{class_graph_a675559f8cddfe43bc416023ad9f28cfa}\label{class_graph_a675559f8cddfe43bc416023ad9f28cfa}} 
+int {\bfseries max\+New\+Children} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$v, T \&inf) const
+\item 
+vector$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ $>$ \hyperlink{class_graph_a923b43995f81ad9319bbc81a1e433e64}{get\+Vertex\+Set} () const
+\item 
+int \hyperlink{class_graph_a0853eac15cdf0f06d63f4b8a7820ec71}{get\+Num\+Vertex} () const
+\item 
+T \hyperlink{class_graph_aa8d29bce3bdde30a467af15cd67bebcf}{find\+Info} (double id)
+\item 
+\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{class_graph_a67453d232f04e85c642b51554df1bc6a}{get\+Vertex} (const T \&v) const
+\item 
+void \hyperlink{class_graph_af34eb86d804272e6e3e221a9ed688c53}{reset\+Indegrees} ()
+\item 
+vector$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ $>$ \hyperlink{class_graph_a947115150a94f88ac9aedbcec59dd07e}{get\+Sources} () const
+\item 
+vector$<$ T $>$ \hyperlink{class_graph_ab4054ca572c10669dd3e05d6d41c116c}{get\+Path} (const T \&origin, const T \&dest)
+\item 
+void \hyperlink{class_graph_a445a38cf4045797198eae2b818b602de}{dijkstra\+Shortest\+Path} (const T \&s)
+\item 
+int \hyperlink{class_graph_a7e137f1ef838395ac1044a944fa54448}{edge\+Cost} (int v\+Orig\+Index, int v\+Dest\+Index)
+\item 
+T \hyperlink{class_graph_a4381ffcd7b26938461c08561fa8bec6c}{get\+Info\+Vertex\+Id} (int id) const
+\item 
+\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{class_graph_ae4591fdf391d3a06a77a3394b7336cfa}{get\+Vertex\+From\+Id} (int id) const
+\item 
+\hyperlink{class_edge}{Edge}$<$ T $>$ \hyperlink{class_graph_a05fe0254b4f8ac9d3af0fb47561212d8}{get\+Edge\+From\+Vertex} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$source, \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$dest)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a20cee280046c04973100579dad94df0a}\label{class_graph_a20cee280046c04973100579dad94df0a}} 
+static double {\bfseries min\+Lat} = M\+\_\+\+PI / 2
+\item 
+\mbox{\Hypertarget{class_graph_a9033117ba69c8a705981543e33ad2bd1}\label{class_graph_a9033117ba69c8a705981543e33ad2bd1}} 
+static double {\bfseries min\+Long} = M\+\_\+\+PI
+\item 
+\mbox{\Hypertarget{class_graph_aee83a4a3968c681cc6d5ef1ccb4c58e0}\label{class_graph_aee83a4a3968c681cc6d5ef1ccb4c58e0}} 
+static double {\bfseries max\+Lat} = -\/ M\+\_\+\+PI / 2
+\item 
+\mbox{\Hypertarget{class_graph_aa06562c2cf1457406deb48f63e890ecf}\label{class_graph_aa06562c2cf1457406deb48f63e890ecf}} 
+static double {\bfseries max\+Long} = -\/M\+\_\+\+PI
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a15aafe73d3523d78f4be24cd41b02c6b}\label{class_graph_a15aafe73d3523d78f4be24cd41b02c6b}} 
+\index{Graph@{Graph}!add\+Edge@{add\+Edge}}
+\index{add\+Edge@{add\+Edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{add\+Edge()}{addEdge()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+bool \hyperlink{class_graph}{Graph}$<$ T $>$\+::add\+Edge (\begin{DoxyParamCaption}\item[{const T \&}]{sourc,  }\item[{const T \&}]{dest,  }\item[{double}]{w,  }\item[{int}]{id,  }\item[{int}]{id\+Rua }\end{DoxyParamCaption})}
+
+Adds an edge to the graph. 
+\begin{DoxyParams}{Parameters}
+{\em sourc} & Source vertex. \\
+\hline
+{\em dest} & Destination vertex. \\
+\hline
+{\em w} & Weight of the edge. \\
+\hline
+{\em id} & Id of the edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True of the edge was successfully added or false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a00be284ea2be3b3d0f0d2e493b70245b}\label{class_graph_a00be284ea2be3b3d0f0d2e493b70245b}} 
+\index{Graph@{Graph}!add\+Vertex@{add\+Vertex}}
+\index{add\+Vertex@{add\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{add\+Vertex()}{addVertex()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+bool \hyperlink{class_graph}{Graph}$<$ T $>$\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const T \&}]{in }\end{DoxyParamCaption})}
+
+Adds a vertex to the graph. 
+\begin{DoxyParams}{Parameters}
+{\em in} & Object of the class representing the vertex info.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the vertex was successfully added or false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a911798b1a89f8c4ae90ba3eee849cff8}\label{class_graph_a911798b1a89f8c4ae90ba3eee849cff8}} 
+\index{Graph@{Graph}!dfs@{dfs}}
+\index{dfs@{dfs}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{dfs()}{dfs()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+vector$<$ T $>$ \hyperlink{class_graph}{Graph}$<$ T $>$\+::dfs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+A vector with the information of the vertexes in the same order as they were visited using a dfs algorithm. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a445a38cf4045797198eae2b818b602de}\label{class_graph_a445a38cf4045797198eae2b818b602de}} 
+\index{Graph@{Graph}!dijkstra\+Shortest\+Path@{dijkstra\+Shortest\+Path}}
+\index{dijkstra\+Shortest\+Path@{dijkstra\+Shortest\+Path}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{dijkstra\+Shortest\+Path()}{dijkstraShortestPath()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \hyperlink{class_graph}{Graph}$<$ T $>$\+::dijkstra\+Shortest\+Path (\begin{DoxyParamCaption}\item[{const T \&}]{s }\end{DoxyParamCaption})}
+
+Dijkstra Shortest Path algorithm 
+\begin{DoxyParams}{Parameters}
+{\em T} & \hyperlink{class_info}{Info} class \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a7e137f1ef838395ac1044a944fa54448}\label{class_graph_a7e137f1ef838395ac1044a944fa54448}} 
+\index{Graph@{Graph}!edge\+Cost@{edge\+Cost}}
+\index{edge\+Cost@{edge\+Cost}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{edge\+Cost()}{edgeCost()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \hyperlink{class_graph}{Graph}$<$ T $>$\+::edge\+Cost (\begin{DoxyParamCaption}\item[{int}]{v\+Orig\+Index,  }\item[{int}]{v\+Dest\+Index }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+Orig\+Index} & Source vertex. \\
+\hline
+{\em v\+Dest\+Index} & Destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The weight of the edge connecting the two vertexes passed as arguments. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_aa8d29bce3bdde30a467af15cd67bebcf}\label{class_graph_aa8d29bce3bdde30a467af15cd67bebcf}} 
+\index{Graph@{Graph}!find\+Info@{find\+Info}}
+\index{find\+Info@{find\+Info}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{find\+Info()}{findInfo()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \hyperlink{class_graph}{Graph}$<$ T $>$\+::find\+Info (\begin{DoxyParamCaption}\item[{double}]{id }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the vertex.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The class \hyperlink{class_info}{Info} of the vertex with that id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a3e43c4322abd26753ed9a33ebba17067}\label{class_graph_a3e43c4322abd26753ed9a33ebba17067}} 
+\index{Graph@{Graph}!get\+Edge@{get\+Edge}}
+\index{get\+Edge@{get\+Edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Edge()}{getEdge()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_edge}{Edge}$<$ T $>$ \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Edge (\begin{DoxyParamCaption}\item[{const T \&}]{source,  }\item[{const T \&}]{dest }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em sourc} & Source vertex. \\
+\hline
+{\em dest} & Destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the edge connecting the to vertexes passed as arguments. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a05fe0254b4f8ac9d3af0fb47561212d8}\label{class_graph_a05fe0254b4f8ac9d3af0fb47561212d8}} 
+\index{Graph@{Graph}!get\+Edge\+From\+Vertex@{get\+Edge\+From\+Vertex}}
+\index{get\+Edge\+From\+Vertex@{get\+Edge\+From\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Edge\+From\+Vertex()}{getEdgeFromVertex()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_edge}{Edge}$<$ T $>$ \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Edge\+From\+Vertex (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$}]{source,  }\item[{\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$}]{dest }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & \hyperlink{class_vertex}{Vertex} source. \\
+\hline
+{\em dest} & \hyperlink{class_vertex}{Vertex} destination.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the edge connecting the to vertexes passed as arguments. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a4381ffcd7b26938461c08561fa8bec6c}\label{class_graph_a4381ffcd7b26938461c08561fa8bec6c}} 
+\index{Graph@{Graph}!get\+Info\+Vertex\+Id@{get\+Info\+Vertex\+Id}}
+\index{get\+Info\+Vertex\+Id@{get\+Info\+Vertex\+Id}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Info\+Vertex\+Id()}{getInfoVertexId()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Info\+Vertex\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id do \hyperlink{class_vertex}{Vertex}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return the \hyperlink{class_info}{Info} class of the \hyperlink{class_vertex}{Vertex} with that Id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a0853eac15cdf0f06d63f4b8a7820ec71}\label{class_graph_a0853eac15cdf0f06d63f4b8a7820ec71}} 
+\index{Graph@{Graph}!get\+Num\+Vertex@{get\+Num\+Vertex}}
+\index{get\+Num\+Vertex@{get\+Num\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Num\+Vertex()}{getNumVertex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Num\+Vertex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The number of exisiting vertexes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_ab4054ca572c10669dd3e05d6d41c116c}\label{class_graph_ab4054ca572c10669dd3e05d6d41c116c}} 
+\index{Graph@{Graph}!get\+Path@{get\+Path}}
+\index{get\+Path@{get\+Path}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Path()}{getPath()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+vector$<$ T $>$ \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Path (\begin{DoxyParamCaption}\item[{const T \&}]{origin,  }\item[{const T \&}]{dest }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & Origin of the edge \\
+\hline
+{\em dest} & Destination of the edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The vector with \hyperlink{class_info}{Info}\textquotesingle{}s of the path from the edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a947115150a94f88ac9aedbcec59dd07e}\label{class_graph_a947115150a94f88ac9aedbcec59dd07e}} 
+\index{Graph@{Graph}!get\+Sources@{get\+Sources}}
+\index{get\+Sources@{get\+Sources}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Sources()}{getSources()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ $>$ \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Sources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The vector of vertexs that are de sources of the edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a67453d232f04e85c642b51554df1bc6a}\label{class_graph_a67453d232f04e85c642b51554df1bc6a}} 
+\index{Graph@{Graph}!get\+Vertex@{get\+Vertex}}
+\index{get\+Vertex@{get\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Vertex()}{getVertex()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Vertex (\begin{DoxyParamCaption}\item[{const T \&}]{v }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & class \hyperlink{class_info}{Info}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{class_vertex}{Vertex} with that \hyperlink{class_info}{Info} . 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_ae4591fdf391d3a06a77a3394b7336cfa}\label{class_graph_ae4591fdf391d3a06a77a3394b7336cfa}} 
+\index{Graph@{Graph}!get\+Vertex\+From\+Id@{get\+Vertex\+From\+Id}}
+\index{get\+Vertex\+From\+Id@{get\+Vertex\+From\+Id}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Vertex\+From\+Id()}{getVertexFromId()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Vertex\+From\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id do \hyperlink{class_vertex}{Vertex}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return the \hyperlink{class_vertex}{Vertex} with that Id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a923b43995f81ad9319bbc81a1e433e64}\label{class_graph_a923b43995f81ad9319bbc81a1e433e64}} 
+\index{Graph@{Graph}!get\+Vertex\+Set@{get\+Vertex\+Set}}
+\index{get\+Vertex\+Set@{get\+Vertex\+Set}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{get\+Vertex\+Set()}{getVertexSet()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ \hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ $>$ \hyperlink{class_graph}{Graph}$<$ T $>$\+::get\+Vertex\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The vector of the exisiting vertexes of the graph. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a1106092a37366486cf55576f9ec01692}\label{class_graph_a1106092a37366486cf55576f9ec01692}} 
+\index{Graph@{Graph}!remove\+Edge@{remove\+Edge}}
+\index{remove\+Edge@{remove\+Edge}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{remove\+Edge()}{removeEdge()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+bool \hyperlink{class_graph}{Graph}$<$ T $>$\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const T \&}]{sourc,  }\item[{const T \&}]{dest }\end{DoxyParamCaption})}
+
+Removes an edge from the graph. 
+\begin{DoxyParams}{Parameters}
+{\em sourc} & Source vertex. \\
+\hline
+{\em dest} & Destination source. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edge was successfully removed or false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_af9c903104ad69a7782979fa9caedf163}\label{class_graph_af9c903104ad69a7782979fa9caedf163}} 
+\index{Graph@{Graph}!remove\+Vertex@{remove\+Vertex}}
+\index{remove\+Vertex@{remove\+Vertex}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{remove\+Vertex()}{removeVertex()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+bool \hyperlink{class_graph}{Graph}$<$ T $>$\+::remove\+Vertex (\begin{DoxyParamCaption}\item[{const T \&}]{in }\end{DoxyParamCaption})}
+
+Removes a vertex from the graph. 
+\begin{DoxyParams}{Parameters}
+{\em in} & \hyperlink{class_info}{Info} of the vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the vertex was successfully removed or false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_af34eb86d804272e6e3e221a9ed688c53}\label{class_graph_af34eb86d804272e6e3e221a9ed688c53}} 
+\index{Graph@{Graph}!reset\+Indegrees@{reset\+Indegrees}}
+\index{reset\+Indegrees@{reset\+Indegrees}!Graph@{Graph}}
+\subsubsection{\texorpdfstring{reset\+Indegrees()}{resetIndegrees()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_graph}{Graph}$<$ T $>$\+::reset\+Indegrees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reset indegrees of the edge. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

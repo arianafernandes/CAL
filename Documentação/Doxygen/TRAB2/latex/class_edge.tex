@@ -1,0 +1,149 @@
+\hypertarget{class_edge}{}\section{Edge$<$ T $>$ Class Template Reference}
+\label{class_edge}\index{Edge$<$ T $>$@{Edge$<$ T $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_edge_a15b7017ce7b7cac044d8422727e2bf77}{Edge} ()
+\item 
+\hyperlink{class_edge_a5add774efcea94577be9050a531a1d72}{Edge} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$d, double w, int id)
+\item 
+\hyperlink{class_edge_a2df110af8c1acb39ad74cb60a99db814}{Edge} (\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$d, double w, int id, int id\+Rua)
+\item 
+\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{class_edge_a9a2de066dff8513dd788d553fc1d0c81}{get\+Dest} () const
+\item 
+int \hyperlink{class_edge_a7fc99513075d0b4fa36b439382be704e}{get\+ID} () const
+\item 
+int \hyperlink{class_edge_a2abecff6ce38cb2b4d5483bbf89f8eb1}{get\+Id\+Rua} () const
+\item 
+void \hyperlink{class_edge_ac146f766ba24b17954cc02a78ad99464}{set\+ID} (int id)
+\item 
+void \hyperlink{class_edge_ab9dd68e497ed9abdf8f5f97215045acc}{set\+Id\+Rua} (int id)
+\item 
+double \hyperlink{class_edge_a3df378e283d6c8be5be4170ac8d7f4e8}{get\+Weight} () const
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_edge_aefa9b76cd57411c5354e5620dc2d84dd}\label{class_edge_aefa9b76cd57411c5354e5620dc2d84dd}} 
+class {\bfseries Graph$<$ T $>$}
+\item 
+\mbox{\Hypertarget{class_edge_a2e120a12dec663fa334633b4f26cbed8}\label{class_edge_a2e120a12dec663fa334633b4f26cbed8}} 
+class {\bfseries Vertex$<$ T $>$}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_edge_a15b7017ce7b7cac044d8422727e2bf77}\label{class_edge_a15b7017ce7b7cac044d8422727e2bf77}} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{Edge()}{Edge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_edge}{Edge}$<$ T $>$\+::\hyperlink{class_edge}{Edge} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{class_edge}{Edge} default constructor. \mbox{\Hypertarget{class_edge_a5add774efcea94577be9050a531a1d72}\label{class_edge_a5add774efcea94577be9050a531a1d72}} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{Edge()}{Edge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_edge}{Edge}$<$ T $>$\+::\hyperlink{class_edge}{Edge} (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$}]{d,  }\item[{double}]{w,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+\hyperlink{class_edge}{Edge} constructor. 
+\begin{DoxyParams}{Parameters}
+{\em d} & Destination node. \\
+\hline
+{\em w} & \hyperlink{class_edge}{Edge} weight. \\
+\hline
+{\em id} & \hyperlink{class_edge}{Edge} id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_a2df110af8c1acb39ad74cb60a99db814}\label{class_edge_a2df110af8c1acb39ad74cb60a99db814}} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{Edge()}{Edge()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_edge}{Edge}$<$ T $>$\+::\hyperlink{class_edge}{Edge} (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$}]{d,  }\item[{double}]{w,  }\item[{int}]{id,  }\item[{int}]{id\+Rua }\end{DoxyParamCaption})}
+
+\hyperlink{class_edge}{Edge} constructor. 
+\begin{DoxyParams}{Parameters}
+{\em d} & Destination node. \\
+\hline
+{\em w} & \hyperlink{class_edge}{Edge} weight. \\
+\hline
+{\em id} & \hyperlink{class_edge}{Edge} id. \\
+\hline
+{\em id\+Rua} & Road\+ID. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_edge_a9a2de066dff8513dd788d553fc1d0c81}\label{class_edge_a9a2de066dff8513dd788d553fc1d0c81}} 
+\index{Edge@{Edge}!get\+Dest@{get\+Dest}}
+\index{get\+Dest@{get\+Dest}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Dest()}{getDest()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\hyperlink{class_vertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{class_edge}{Edge}$<$ T $>$\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The destination node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a7fc99513075d0b4fa36b439382be704e}\label{class_edge_a7fc99513075d0b4fa36b439382be704e}} 
+\index{Edge@{Edge}!get\+ID@{get\+ID}}
+\index{get\+ID@{get\+ID}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+I\+D()}{getID()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \hyperlink{class_edge}{Edge}$<$ T $>$\+::get\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The edge id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a2abecff6ce38cb2b4d5483bbf89f8eb1}\label{class_edge_a2abecff6ce38cb2b4d5483bbf89f8eb1}} 
+\index{Edge@{Edge}!get\+Id\+Rua@{get\+Id\+Rua}}
+\index{get\+Id\+Rua@{get\+Id\+Rua}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Id\+Rua()}{getIdRua()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \hyperlink{class_edge}{Edge}$<$ T $>$\+::get\+Id\+Rua (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The id of the Street of the edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a3df378e283d6c8be5be4170ac8d7f4e8}\label{class_edge_a3df378e283d6c8be5be4170ac8d7f4e8}} 
+\index{Edge@{Edge}!get\+Weight@{get\+Weight}}
+\index{get\+Weight@{get\+Weight}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+Weight()}{getWeight()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+double \hyperlink{class_edge}{Edge}$<$ T $>$\+::get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The weight of the edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_ac146f766ba24b17954cc02a78ad99464}\label{class_edge_ac146f766ba24b17954cc02a78ad99464}} 
+\index{Edge@{Edge}!set\+ID@{set\+ID}}
+\index{set\+ID@{set\+ID}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{set\+I\+D()}{setID()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_edge}{Edge}$<$ T $>$\+::set\+ID (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{class_edge}{Edge} ID. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_ab9dd68e497ed9abdf8f5f97215045acc}\label{class_edge_ab9dd68e497ed9abdf8f5f97215045acc}} 
+\index{Edge@{Edge}!set\+Id\+Rua@{set\+Id\+Rua}}
+\index{set\+Id\+Rua@{set\+Id\+Rua}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{set\+Id\+Rua()}{setIdRua()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{class_edge}{Edge}$<$ T $>$\+::set\+Id\+Rua (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Street ID. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

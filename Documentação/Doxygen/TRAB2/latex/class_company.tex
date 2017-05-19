@@ -1,0 +1,412 @@
+\hypertarget{class_company}{}\section{Company Class Reference}
+\label{class_company}\index{Company@{Company}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_company_a29937dda711b09df306ae7ca9b3d6b42}{Company} ()
+\item 
+double \hyperlink{class_company_abd0b1a606cefd9264ef3d88933298bcf}{calcX} (double lat, double lon)
+\begin{DoxyCompactList}\small\item\em Calculates x from latitude and longitude. \end{DoxyCompactList}\item 
+double \hyperlink{class_company_a304161b9fc41ffbfd4ee5b611bc0970d}{calcY} (double lat, double lon)
+\begin{DoxyCompactList}\small\item\em Calculates y from latitude and longitude. \end{DoxyCompactList}\item 
+double \hyperlink{class_company_a71a2abfa49e7940f50e09659ec5ad45e}{calc\+Dist} (\hyperlink{class_info}{Info} f1, \hyperlink{class_info}{Info} f2)
+\begin{DoxyCompactList}\small\item\em Calculates distance between two \hyperlink{class_info}{Info} classes. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_aa76aa2736a1deb9a8679804b79de6d73}{Bidirection} (vector$<$ \hyperlink{class_road}{Road} $>$ roads, int id)
+\item 
+\mbox{\Hypertarget{class_company_a73d4e9b6527ae0b1382058a3bbe72a28}\label{class_company_a73d4e9b6527ae0b1382058a3bbe72a28}} 
+void \hyperlink{class_company_a73d4e9b6527ae0b1382058a3bbe72a28}{read\+Maps} ()
+\begin{DoxyCompactList}\small\item\em Read the maps files. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_company_a3354d9b8df72709b55edeaf14af14530}\label{class_company_a3354d9b8df72709b55edeaf14af14530}} 
+void \hyperlink{class_company_a3354d9b8df72709b55edeaf14af14530}{read\+Deliveries} ()
+\begin{DoxyCompactList}\small\item\em Read the delivery file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_company_aa1add2b87e0d8d20cb1151b633821cc5}\label{class_company_aa1add2b87e0d8d20cb1151b633821cc5}} 
+void \hyperlink{class_company_aa1add2b87e0d8d20cb1151b633821cc5}{read\+Users} ()
+\begin{DoxyCompactList}\small\item\em Read the users file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_company_af64bc7caa64b0c8dff8509b3567854db}\label{class_company_af64bc7caa64b0c8dff8509b3567854db}} 
+void \hyperlink{class_company_af64bc7caa64b0c8dff8509b3567854db}{create\+Graph\+Viewer} ()
+\begin{DoxyCompactList}\small\item\em Creates the graph viewer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_company_a1e8265128584c21d8cdb826a776fb2e7}\label{class_company_a1e8265128584c21d8cdb826a776fb2e7}} 
+void \hyperlink{class_company_a1e8265128584c21d8cdb826a776fb2e7}{distribution} (int id)
+\begin{DoxyCompactList}\small\item\em Distribution and shipping of the orders to the trucks and users. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a7511f8d62b4ab7640d8c00fb105cd6e2}{paint\+Road} (\hyperlink{class_vertex}{Vertex}$<$ \hyperlink{class_info}{Info} $>$ $\ast$source, \hyperlink{class_vertex}{Vertex}$<$ \hyperlink{class_info}{Info} $>$ $\ast$dest)
+\begin{DoxyCompactList}\small\item\em Coloring the edge(road) from vertex source to vertex dest. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_ac6798bd8fb544d3297cb8b11becb5014}{paint\+Deliveries} (vector$<$ \hyperlink{class_order}{Order} $>$ orders)
+\begin{DoxyCompactList}\small\item\em Coloring the vertex that represents a order. \end{DoxyCompactList}\item 
+int \hyperlink{class_company_a59aed26c4a06ccdaeb86daf6029e8455}{get\+Next\+Delivery} (vector$<$ \hyperlink{class_order}{Order} $>$ \&orders, int current\+Position)
+\item 
+vector$<$ \hyperlink{class_order}{Order} $>$ \hyperlink{class_company_a8a7826dfc219bd2dbd470fb3c125e465}{eliminate\+From\+Orders} (vector$<$ \hyperlink{class_order}{Order} $>$ orders, int current\+Position)
+\item 
+void \hyperlink{class_company_a113b614767a4ca7762c5f24cb5ec65cd}{return\+To\+Supermarket} (int current\+Position, int id\+Supermarket)
+\begin{DoxyCompactList}\small\item\em Gets the return from the current position to the supermarket. \end{DoxyCompactList}\item 
+string \hyperlink{class_company_a101cd0004c4ae653257ec2ece1adc2d4}{get\+Color\+Delivery} () const
+\item 
+void \hyperlink{class_company_a402565d3fea370859d04d2b06d083bb0}{set\+Color\+Delivery} (string color)
+\begin{DoxyCompactList}\small\item\em Changes the color of the delivery. \end{DoxyCompactList}\item 
+void \hyperlink{class_company_a07dc835ddc41d4156a50e270a7a7521c}{print\+Orders} (vector$<$ \hyperlink{class_order}{Order} $>$ orders)
+\begin{DoxyCompactList}\small\item\em Prints all the orders of the supermarket. \end{DoxyCompactList}\item 
+boolean \hyperlink{class_company_a0e42957c25959699229475aa7f634def}{check\+Dist\+To\+Supermarket} (\hyperlink{class_vertex}{Vertex}$<$ \hyperlink{class_info}{Info} $>$ $\ast$dest, \hyperlink{class_truck}{Truck} truck)
+\begin{DoxyCompactList}\small\item\em Checks the distance from a truck to the supermarket. \end{DoxyCompactList}\item 
+\hyperlink{class_supermarket}{Supermarket} \& \hyperlink{class_company_ad875d99d9e04d1e5ea87510970444a21}{get\+Supermarket} ()
+\item 
+bool \hyperlink{class_company_a06095b0acb0b928cc5795c2e69aa3448}{check\+If\+Node\+Exist} (int id)
+\begin{DoxyCompactList}\small\item\em Checks the node exists. \end{DoxyCompactList}\item 
+\hyperlink{class_graph}{Graph}$<$ \hyperlink{class_info}{Info} $>$ \hyperlink{class_company_aa54486b77c4b2bd8ca101bc8a2795e81}{get\+Graph} ()
+\item 
+vector$<$ \hyperlink{class_road}{Road} $>$ \hyperlink{class_company_ac6513a2b52e71b72d6325e2c4ab79c43}{get\+Roads} ()
+\item 
+void \hyperlink{class_company_a16143da40ff033ea6122358b75f488c2}{set\+Road} (\hyperlink{class_road}{Road} r)
+\begin{DoxyCompactList}\small\item\em Set a new road to the vector roads of the company. \end{DoxyCompactList}\item 
+vector$<$ \hyperlink{class_road}{Road} $>$ \hyperlink{class_company_adec1bb75aae59543cd1ad3186b67d960}{pesquisa\+Aproximada} (string name)
+\begin{DoxyCompactList}\small\item\em Search approximately. \end{DoxyCompactList}\item 
+bool \hyperlink{class_company_a64b1ee56a796ebd5bb3e2c3bf0e1d9b1}{search\+Supermarket} (int road\+ID)
+\begin{DoxyCompactList}\small\item\em Search a supermarket in a road. \end{DoxyCompactList}\item 
+int \hyperlink{class_company_ac0f6d8bd213be6f0ac7fd778a1612fe9}{check\+Super\+ID} (int id)
+\begin{DoxyCompactList}\small\item\em Check \hyperlink{class_supermarket}{Supermarket} id. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_company_acf1223dcb15cb1e36bc6c09a8cb781e3}\label{class_company_acf1223dcb15cb1e36bc6c09a8cb781e3}} 
+void \hyperlink{class_company_acf1223dcb15cb1e36bc6c09a8cb781e3}{change\+Icon\+Super} ()
+\begin{DoxyCompactList}\small\item\em Changes supermarkets icons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_company_a29937dda711b09df306ae7ca9b3d6b42}\label{class_company_a29937dda711b09df306ae7ca9b3d6b42}} 
+\index{Company@{Company}!Company@{Company}}
+\index{Company@{Company}!Company@{Company}}
+\subsubsection{\texorpdfstring{Company()}{Company()}}
+{\footnotesize\ttfamily Company\+::\+Company (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default constructor. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_company_aa76aa2736a1deb9a8679804b79de6d73}\label{class_company_aa76aa2736a1deb9a8679804b79de6d73}} 
+\index{Company@{Company}!Bidirection@{Bidirection}}
+\index{Bidirection@{Bidirection}!Company@{Company}}
+\subsubsection{\texorpdfstring{Bidirection()}{Bidirection()}}
+{\footnotesize\ttfamily bool Company\+::\+Bidirection (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{class_road}{Road} $>$}]{roads,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{class_edge}{Edge} id. \\
+\hline
+{\em estradas} & Vector of estradas.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the edge id is from a edge that is bidirectional, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a71a2abfa49e7940f50e09659ec5ad45e}\label{class_company_a71a2abfa49e7940f50e09659ec5ad45e}} 
+\index{Company@{Company}!calc\+Dist@{calc\+Dist}}
+\index{calc\+Dist@{calc\+Dist}!Company@{Company}}
+\subsubsection{\texorpdfstring{calc\+Dist()}{calcDist()}}
+{\footnotesize\ttfamily double Company\+::calc\+Dist (\begin{DoxyParamCaption}\item[{\hyperlink{class_info}{Info}}]{f1,  }\item[{\hyperlink{class_info}{Info}}]{f2 }\end{DoxyParamCaption})}
+
+
+
+Calculates distance between two \hyperlink{class_info}{Info} classes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f1} & \hyperlink{class_info}{Info} f1. \\
+\hline
+{\em f2} & \hyperlink{class_info}{Info} f2. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+distance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_abd0b1a606cefd9264ef3d88933298bcf}\label{class_company_abd0b1a606cefd9264ef3d88933298bcf}} 
+\index{Company@{Company}!calcX@{calcX}}
+\index{calcX@{calcX}!Company@{Company}}
+\subsubsection{\texorpdfstring{calc\+X()}{calcX()}}
+{\footnotesize\ttfamily double Company\+::calcX (\begin{DoxyParamCaption}\item[{double}]{lat,  }\item[{double}]{lon }\end{DoxyParamCaption})}
+
+
+
+Calculates x from latitude and longitude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat} & Latitude \\
+\hline
+{\em lon} & Longitute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a304161b9fc41ffbfd4ee5b611bc0970d}\label{class_company_a304161b9fc41ffbfd4ee5b611bc0970d}} 
+\index{Company@{Company}!calcY@{calcY}}
+\index{calcY@{calcY}!Company@{Company}}
+\subsubsection{\texorpdfstring{calc\+Y()}{calcY()}}
+{\footnotesize\ttfamily double Company\+::calcY (\begin{DoxyParamCaption}\item[{double}]{lat,  }\item[{double}]{lon }\end{DoxyParamCaption})}
+
+
+
+Calculates y from latitude and longitude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat} & Latitude \\
+\hline
+{\em lon} & Longitute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a0e42957c25959699229475aa7f634def}\label{class_company_a0e42957c25959699229475aa7f634def}} 
+\index{Company@{Company}!check\+Dist\+To\+Supermarket@{check\+Dist\+To\+Supermarket}}
+\index{check\+Dist\+To\+Supermarket@{check\+Dist\+To\+Supermarket}!Company@{Company}}
+\subsubsection{\texorpdfstring{check\+Dist\+To\+Supermarket()}{checkDistToSupermarket()}}
+{\footnotesize\ttfamily boolean Company\+::check\+Dist\+To\+Supermarket (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}$<$ \hyperlink{class_info}{Info} $>$ $\ast$}]{dest,  }\item[{\hyperlink{class_truck}{Truck}}]{truck }\end{DoxyParamCaption})}
+
+
+
+Checks the distance from a truck to the supermarket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & \hyperlink{class_vertex}{Vertex} destination. \\
+\hline
+{\em truck} & \hyperlink{class_truck}{Truck}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if success, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a06095b0acb0b928cc5795c2e69aa3448}\label{class_company_a06095b0acb0b928cc5795c2e69aa3448}} 
+\index{Company@{Company}!check\+If\+Node\+Exist@{check\+If\+Node\+Exist}}
+\index{check\+If\+Node\+Exist@{check\+If\+Node\+Exist}!Company@{Company}}
+\subsubsection{\texorpdfstring{check\+If\+Node\+Exist()}{checkIfNodeExist()}}
+{\footnotesize\ttfamily bool Company\+::check\+If\+Node\+Exist (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Checks the node exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Node id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if success, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ac0f6d8bd213be6f0ac7fd778a1612fe9}\label{class_company_ac0f6d8bd213be6f0ac7fd778a1612fe9}} 
+\index{Company@{Company}!check\+Super\+ID@{check\+Super\+ID}}
+\index{check\+Super\+ID@{check\+Super\+ID}!Company@{Company}}
+\subsubsection{\texorpdfstring{check\+Super\+I\+D()}{checkSuperID()}}
+{\footnotesize\ttfamily int Company\+::check\+Super\+ID (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Check \hyperlink{class_supermarket}{Supermarket} id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of the supermarket.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ID of the supermarket found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a8a7826dfc219bd2dbd470fb3c125e465}\label{class_company_a8a7826dfc219bd2dbd470fb3c125e465}} 
+\index{Company@{Company}!eliminate\+From\+Orders@{eliminate\+From\+Orders}}
+\index{eliminate\+From\+Orders@{eliminate\+From\+Orders}!Company@{Company}}
+\subsubsection{\texorpdfstring{eliminate\+From\+Orders()}{eliminateFromOrders()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_order}{Order} $>$ Company\+::eliminate\+From\+Orders (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{class_order}{Order} $>$}]{orders,  }\item[{int}]{current\+Position }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em orders} & Vector of orders. \\
+\hline
+{\em current\+Position} & Current position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Eliminates the current position order from the vector of orders. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a101cd0004c4ae653257ec2ece1adc2d4}\label{class_company_a101cd0004c4ae653257ec2ece1adc2d4}} 
+\index{Company@{Company}!get\+Color\+Delivery@{get\+Color\+Delivery}}
+\index{get\+Color\+Delivery@{get\+Color\+Delivery}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Color\+Delivery()}{getColorDelivery()}}
+{\footnotesize\ttfamily string Company\+::get\+Color\+Delivery (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the color of the delivery. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_aa54486b77c4b2bd8ca101bc8a2795e81}\label{class_company_aa54486b77c4b2bd8ca101bc8a2795e81}} 
+\index{Company@{Company}!get\+Graph@{get\+Graph}}
+\index{get\+Graph@{get\+Graph}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Graph()}{getGraph()}}
+{\footnotesize\ttfamily \hyperlink{class_graph}{Graph}$<$ \hyperlink{class_info}{Info} $>$ Company\+::get\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The graph of the company. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a59aed26c4a06ccdaeb86daf6029e8455}\label{class_company_a59aed26c4a06ccdaeb86daf6029e8455}} 
+\index{Company@{Company}!get\+Next\+Delivery@{get\+Next\+Delivery}}
+\index{get\+Next\+Delivery@{get\+Next\+Delivery}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Next\+Delivery()}{getNextDelivery()}}
+{\footnotesize\ttfamily int Company\+::get\+Next\+Delivery (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{class_order}{Order} $>$ \&}]{orders,  }\item[{int}]{current\+Position }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em orders} & Vector of orders. \\
+\hline
+{\em current\+Position} & Current position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the next position of order. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ac6513a2b52e71b72d6325e2c4ab79c43}\label{class_company_ac6513a2b52e71b72d6325e2c4ab79c43}} 
+\index{Company@{Company}!get\+Roads@{get\+Roads}}
+\index{get\+Roads@{get\+Roads}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Roads()}{getRoads()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_road}{Road} $>$ Company\+::get\+Roads (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+The roads of the company. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ad875d99d9e04d1e5ea87510970444a21}\label{class_company_ad875d99d9e04d1e5ea87510970444a21}} 
+\index{Company@{Company}!get\+Supermarket@{get\+Supermarket}}
+\index{get\+Supermarket@{get\+Supermarket}!Company@{Company}}
+\subsubsection{\texorpdfstring{get\+Supermarket()}{getSupermarket()}}
+{\footnotesize\ttfamily \hyperlink{class_supermarket}{Supermarket} \& Company\+::get\+Supermarket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_supermarket}{Supermarket}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_ac6798bd8fb544d3297cb8b11becb5014}\label{class_company_ac6798bd8fb544d3297cb8b11becb5014}} 
+\index{Company@{Company}!paint\+Deliveries@{paint\+Deliveries}}
+\index{paint\+Deliveries@{paint\+Deliveries}!Company@{Company}}
+\subsubsection{\texorpdfstring{paint\+Deliveries()}{paintDeliveries()}}
+{\footnotesize\ttfamily void Company\+::paint\+Deliveries (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{class_order}{Order} $>$}]{orders }\end{DoxyParamCaption})}
+
+
+
+Coloring the vertex that represents a order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orders} & Vector of orders to color. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a7511f8d62b4ab7640d8c00fb105cd6e2}\label{class_company_a7511f8d62b4ab7640d8c00fb105cd6e2}} 
+\index{Company@{Company}!paint\+Road@{paint\+Road}}
+\index{paint\+Road@{paint\+Road}!Company@{Company}}
+\subsubsection{\texorpdfstring{paint\+Road()}{paintRoad()}}
+{\footnotesize\ttfamily void Company\+::paint\+Road (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex}$<$ \hyperlink{class_info}{Info} $>$ $\ast$}]{source,  }\item[{\hyperlink{class_vertex}{Vertex}$<$ \hyperlink{class_info}{Info} $>$ $\ast$}]{dest }\end{DoxyParamCaption})}
+
+
+
+Coloring the edge(road) from vertex source to vertex dest. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & \hyperlink{class_vertex}{Vertex} source. \\
+\hline
+{\em dest} & \hyperlink{class_vertex}{Vertex} destination. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_adec1bb75aae59543cd1ad3186b67d960}\label{class_company_adec1bb75aae59543cd1ad3186b67d960}} 
+\index{Company@{Company}!pesquisa\+Aproximada@{pesquisa\+Aproximada}}
+\index{pesquisa\+Aproximada@{pesquisa\+Aproximada}!Company@{Company}}
+\subsubsection{\texorpdfstring{pesquisa\+Aproximada()}{pesquisaAproximada()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_road}{Road} $>$ Company\+::pesquisa\+Aproximada (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Search approximately. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name to be searched. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a07dc835ddc41d4156a50e270a7a7521c}\label{class_company_a07dc835ddc41d4156a50e270a7a7521c}} 
+\index{Company@{Company}!print\+Orders@{print\+Orders}}
+\index{print\+Orders@{print\+Orders}!Company@{Company}}
+\subsubsection{\texorpdfstring{print\+Orders()}{printOrders()}}
+{\footnotesize\ttfamily void Company\+::print\+Orders (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{class_order}{Order} $>$}]{orders }\end{DoxyParamCaption})}
+
+
+
+Prints all the orders of the supermarket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orders} & Vector of orders. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a113b614767a4ca7762c5f24cb5ec65cd}\label{class_company_a113b614767a4ca7762c5f24cb5ec65cd}} 
+\index{Company@{Company}!return\+To\+Supermarket@{return\+To\+Supermarket}}
+\index{return\+To\+Supermarket@{return\+To\+Supermarket}!Company@{Company}}
+\subsubsection{\texorpdfstring{return\+To\+Supermarket()}{returnToSupermarket()}}
+{\footnotesize\ttfamily void Company\+::return\+To\+Supermarket (\begin{DoxyParamCaption}\item[{int}]{current\+Position,  }\item[{int}]{id\+Supermarket }\end{DoxyParamCaption})}
+
+
+
+Gets the return from the current position to the supermarket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Supermarket} & Id of the vertex of the supermarket. \\
+\hline
+{\em current\+Position} & Current position. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a64b1ee56a796ebd5bb3e2c3bf0e1d9b1}\label{class_company_a64b1ee56a796ebd5bb3e2c3bf0e1d9b1}} 
+\index{Company@{Company}!search\+Supermarket@{search\+Supermarket}}
+\index{search\+Supermarket@{search\+Supermarket}!Company@{Company}}
+\subsubsection{\texorpdfstring{search\+Supermarket()}{searchSupermarket()}}
+{\footnotesize\ttfamily bool Company\+::search\+Supermarket (\begin{DoxyParamCaption}\item[{int}]{road\+ID }\end{DoxyParamCaption})}
+
+
+
+Search a supermarket in a road. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road\+ID} & ID of the road to be searched.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if success, otherwise return false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_company_a402565d3fea370859d04d2b06d083bb0}\label{class_company_a402565d3fea370859d04d2b06d083bb0}} 
+\index{Company@{Company}!set\+Color\+Delivery@{set\+Color\+Delivery}}
+\index{set\+Color\+Delivery@{set\+Color\+Delivery}!Company@{Company}}
+\subsubsection{\texorpdfstring{set\+Color\+Delivery()}{setColorDelivery()}}
+{\footnotesize\ttfamily void Company\+::set\+Color\+Delivery (\begin{DoxyParamCaption}\item[{string}]{color }\end{DoxyParamCaption})}
+
+
+
+Changes the color of the delivery. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & Color to dye the deliveries. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_company_a16143da40ff033ea6122358b75f488c2}\label{class_company_a16143da40ff033ea6122358b75f488c2}} 
+\index{Company@{Company}!set\+Road@{set\+Road}}
+\index{set\+Road@{set\+Road}!Company@{Company}}
+\subsubsection{\texorpdfstring{set\+Road()}{setRoad()}}
+{\footnotesize\ttfamily void Company\+::set\+Road (\begin{DoxyParamCaption}\item[{\hyperlink{class_road}{Road}}]{r }\end{DoxyParamCaption})}
+
+
+
+Set a new road to the vector roads of the company. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \hyperlink{class_road}{Road} r \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Company.\+h\item 
+Company.\+cpp\end{DoxyCompactItemize}
